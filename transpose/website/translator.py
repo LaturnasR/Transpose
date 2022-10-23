@@ -30,7 +30,7 @@ operator = {
     'EXACT':{
         'add': ['plus', 'add', 'increase'], 
         'minus':['subtract', 'minus', 'decrease', 'diminish', 'reduce', 'lost'],
-        'times': ['multiply', 'time', 'times'],
+        'times': ['time', 'times', 'multiply'],
         'divide': ['divide']
     },
     'LEADING':{
