@@ -15,7 +15,7 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def index():
 	example_sent = example_list[random.randint(1, len(example_list) - 1)]
-	return render_template('index.html', translation="", example_sent = example_sent)
+	return render_template('index.html', translation="", example_sent = example_sent, last_input = example_sent)
 
 @views.route('/', methods=['POST'])
 def post():
@@ -25,4 +25,4 @@ def post():
 	if type(lis) is list and all(lis):
 		temp += "<br>".join([i for i in lis])
 		lis = temp
-	return render_template('index.html', translation=lis, example_sent = example_sent)
+	return render_template('index.html', translation=lis, example_sent = example_sent, last_input = request.form.get('sentence'))
