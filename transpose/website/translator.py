@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk import ChartParser
 
-import re
+from re import search, match, findall
 
 from text2digits import text2digits
 t2d = text2digits.Text2Digits()
@@ -55,7 +55,7 @@ operator_sign = {
     'divide': '/',
 }
 keyword = [word for i in operator.keys() for j in operator[i].keys() for word in operator[i][j]]
-stopword = ["by", "to", "the", "than", " a ", "of", "A "]
+stopword = ["by", "to", "the", "than", "a", "of"]
 
 
 # In[4]:
@@ -64,16 +64,22 @@ stopword = ["by", "to", "the", "than", " a ", "of", "A "]
 def _preprocess(sentence):
     #simplification
     
+    sentence = sentence.lower()
+    sentence = sentence.replace('.', '')
+
     #Tokenization, POS Tagging
     token = word_tokenize(sentence)
     pos = pos_tag(token)
     
     #Lemmatization
-    sentence = ' '.join([WordNetLemmatizer().lemmatize(word, 'v') for word in token])
-    sentence = sentence.replace('.', '')
+    sentence = [WordNetLemmatizer().lemmatize(word, 'v') for word in token]
+
+    temp = []
     #Stopword filtering
-    for i in stopword:
-        sentence = sentence.replace(i, " ")
+    for i in sentence:
+        if i not in stopword:
+            temp.append(i)
+    sentence = ' '.join(temp)
     
     #keyword standardization
     for i in operator.keys():
@@ -82,8 +88,6 @@ def _preprocess(sentence):
                 if(str(k) in sentence):
                     sentence = sentence.replace(k, j)
     sentence = " ".join(sentence.split())
-    sentence = sentence.lower()
-        
     return sentence
 
 
@@ -179,33 +183,32 @@ def _word_math_tree_to_list(tree, lead_op = None):
 # In[7]:
 
 
-def _simplification(pos_transform):
-    #unknown nouns to variables and retagging
+def _simplification(pos):
+    temp = []
+    #unknown nouns to variables
     variable = ['x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v']
-    for i in range(len(pos_transform)):
-        
+    for word, pos in pos:
         #one -> 1, two -> 2
-        if pos_transform[i][1] in ('CD'):
-            pos_transform[i] = (pos_transform[i][0], 'NUM')
-            continue
-        
-        # standardizing keywords
-        if pos_transform[i][0] in keyword:
-            for j in operator.keys():#exact, leading
-                for k in operator[j].keys():#add, sum
-                    if pos_transform[i][0] in operator[j][k]:
-                        pos_transform[i] = (pos_transform[i][0], (j))
-            continue
-        # converting variables
-        if pos_transform[i][1] not in ('NN', 'NNS', 'NNP'):
-            continue
-        if pos_transform[i][0] not in variable:
-            pos_transform[i] = (variable[0],'VAR')
-        pos_transform[i] = (pos_transform[i][0], 'VAR')
-        variable.remove(pos_transform[i][0])
-        
-    return pos_transform
+        if pos in ('CD') or word in keyword+['and', ',']:
+            
+            # if word is 2x, 2y, 4z, etc....
+            if match("^[0-9]+[a-z]$", word):
+                temp.append(search("[0-9]+", word).group())
+                temp.append("times")
+                v = search("[a-z]", word).group()
+                variable.remove(v)
+                temp.append(v)
+                temp.append(',')
+                continue
 
+            temp.append(word)
+            continue
+        
+        # if it gets here
+        # it means word is unknown, and will be turned into a variable
+        temp.append(variable[0])
+        variable.remove(variable[0])
+    return temp
 
 # In[8]:
 
@@ -242,21 +245,22 @@ def translation(sentence):
     pos = pos_tag(token)
     
     #simplication, variables conversion
-    pos_transform = _simplification(pos)
+    token = _simplification(pos)
     
     #keywords translation
     #get word from pos_transform as token
-    token = [word for word, pos in pos_transform]
+
     # for recognizing constants and variables
     # recreates the original sentence with #VAR# #NUM# replacements
     mod_token = ['#NUM#' if i.isdigit() else i for i in token]
-    mod_token = ['#VAR#' if re.match("^[0-9]*[a-z]$", i) else i for i in mod_token]
+    mod_token = ['#VAR#' if match("^[a-z]$", i) else i for i in mod_token]
     numbers = [i for i in token if i.isdigit()]
-    vars = [i for i in token if re.match("^[0-9]*[a-z]$", i)]
+    vars = [i for i in token if match("^[a-z]$", i)]
 
     #converting the token to TREE object
     trees = []
     parser = ChartParser(math_word_grammar)
+
     for tree in parser.parse(mod_token):
         treestr = str(tree)
         for n in numbers:
@@ -269,7 +273,7 @@ def translation(sentence):
     all_sent = []
     
     if len(trees) == 0:
-        return None
+        return "Input Error: Structure Unidentified"
     for tree in trees:
         temp = _word_math_tree_to_list(tree)
         all_sent.append(_semi_flattener(temp))
@@ -288,9 +292,7 @@ def translation(sentence):
         all_sent[0] = _parenthesis_adder(all_sent[0])
         return(' '.join(_flatten(all_sent[0])))
 
-    
-
-#usage sample
+#output processing
 def _flatten(S):
     if S == []:
         return S
@@ -305,3 +307,31 @@ def _parenthesis_adder(l):
                 l[i].append(')')
                 l[i] = _parenthesis_adder(l[i])
     return l
+
+#making output more readable
+#only use on one branch, 
+    #if the translation is ambiguous, use this iteratively
+def prettier(trans):
+    """( 2 * y ) + ( 2 * 4 * 8 * ( 2 * x ) )"""
+    txt = trans
+    txt = txt.replace("( ", "(")
+    txt = txt.replace(" )", ")")
+    x = findall("[0-9]+ \* [a-z]", txt)
+    if x:
+        x = list(set(x))
+        y = [i.replace(" * ", "") for i in x]
+        for i, j in zip(x, y):
+            txt = txt.replace(i, j)
+
+    x = findall("\([0-9]+[a-z]\)", txt)
+
+    if x:
+        x = list(set(x))
+        y = [i.strip("()") for i in x]
+        for i, j in zip(x, y):
+            txt = txt.replace(i, j)
+
+    if txt != trans:
+        return txt
+    else:
+        return trans

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from .translator import translation
+from .translator import prettier
 import random
 
 
@@ -14,15 +15,18 @@ example_list = [
 views = Blueprint('views', __name__)
 @views.route('/')
 def index():
-	example_sent = example_list[random.randint(1, len(example_list) - 1)]
+	example_sent = example_list[random.randint(0, len(example_list) - 1)]
 	return render_template('index.html', translation="", example_sent = example_sent, last_input = example_sent)
 
 @views.route('/', methods=['POST'])
 def post():
-	example_sent = example_list[random.randint(1, len(example_list) - 1)]
+	example_sent = example_list[random.randint(0, len(example_list) - 1)]
 	lis = translation(request.form.get('sentence'))
-	temp = "<h5>Ambiguous Sentence</h5><br>"
-	if type(lis) is list and all(lis):
-		temp += "<br>".join([i for i in lis])
-		lis = temp
+	try: 
+		lis = prettier(lis)
+	except:
+		if type(lis) is list and all(lis):
+			temp = "<h5>Ambiguous Sentence</h5><br>"
+			temp += "<br>".join([prettier(i) for i in lis])
+			lis = temp
 	return render_template('index.html', translation=lis, example_sent = example_sent, last_input = request.form.get('sentence'))
