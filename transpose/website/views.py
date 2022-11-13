@@ -3,7 +3,6 @@ from .translator import translation
 from .translator import prettier
 import random
 
-
 example_list = [
     "Product of a number, 5 less than 1, 1 and sum of 4, a number, and seventy seven, times 4",
     "y added to the product of 2, forty four, eight, and a number.",
