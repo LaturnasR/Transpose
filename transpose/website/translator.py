@@ -221,6 +221,8 @@ def _mid_operator_convert(s):
             continue
         #swap i-1 and i+1 then change to EXACT
         if s[i] in operator['REVERSE'].keys():
+            if type(s[i+1]) is list:
+                s[i+1] = _mid_operator_convert(s[i+1])
             s[i-1], s[i+1] = s[i+1], s[i-1]
             s[i] = 'add' if s[i] == 'more' else 'minus'
         #keyword to signs
