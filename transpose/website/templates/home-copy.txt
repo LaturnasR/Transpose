@@ -1,44 +1,24 @@
 <!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-  document.getElementById("translator").style.marginLeft = "250px";
-}
 
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-  document.getElementById("translator").style.marginLeft= "113px";
-}
-</script>
+
 
 <html>
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bayon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
 	<navbar>
 	<div id="main">
 	<button class="openbtn" onclick="openNav()">
-	<a style="font-family: Bayon; color: #FFFFFF">☰</a></button>  
-	</div>
-	<divMain>
+	<a style="font-family: Bayon; font-size: 1.5em; margin-left:5px; color: #FFFFFF">☰ TRANSPOSE</a></button>  
+</div>
+	<divMain style="padding-left: 1%">
 	<ul class="list">
-		<li class="list-item"><a href="Home" class ="list-link">
-		<img id = "Home" title = "Home" style="width:1.6em; height:1.6em;" src="/images/Home.png" onmouseover="homeOver()" onmouseout="homeOut()"/></a></li>
-		
-		<li class="list-item"><a href="Learn" class ="list-link">
-		<img id = "Learn" title = "Learn" style="width:1.6em; height:1.6em;" src="/images/Learn.png" onmouseover="learnOver()" onmouseout="learnOut()"/></a></li>
-		
-		<li class="list-item"><a href="How_To_Use" class ="list-link">
-		<img id = "How_To_Use" title = "How To Use" style="width:1.6em; height:1.6em;" src="/images/How_To_Use.png" onmouseover="howtouseOver()" onmouseout="howtouseOut()"/></a></li>
-		
-		<li class="list-item"><a class ="list-link1">
-		<img id = "About_Us" title = "About Us" style="width:1.6em; height:1.6em;" src="/images/About_Us_Selected.png"/></a></li>
-		
-
+		<li class="list-item"><a class ="list-link1" style = "color: #8AB4EA"><b>Home</b></a></li>
+		<li class="list-item"><a href="Learn" class ="list-link">Learn</a></li>
+		<li class="list-item"><a href="How_To_Use" class ="list-link">How To Use</a></li>
+		<li class="list-item"><a href="About_Us" class ="list-link">About Us</a></li>
 		</ul>
 	</divMain>
 	</navbar>
@@ -55,16 +35,35 @@ function closeNav() {
   <a href="#">Contact</a>
   </div>
 
+  
   <body>
-    <div class="container" style="float: right; width: 80%;">
+    <div class="container">
       <main>
-       
+        <div class="py-5 text-center" style="height:20em;">
+		<img style="width:11.7em; height:9em;" src="/images/Logo.png">
+          <h2 style="font-family: Bayon; color: #FFFFFF; font-size: 3em;">TRANSPOSE</h2>
+          <p class="lead" style="font-family: Montserrat; color: #FFFFFF; font-size: 1.15em;">English Sentence to Math Expression</p>
+        </div>
+
+        <div>
+          <form method="POST" id="sentence_form" class="justify-content-center text-muted text-center text-small" >
+            <p>Example: {{ example_sent }}</p>
+            <div class="input-group mb-3" style="width: 70%; margin: auto";>
+                <input type="text"  for="sentence" name="sentence"id="sentence" class="form-control" placeholder="{{last_input}}">
+                <button class="btn btn-outline-primary">
+                    Enter
+                </button>
+            </div>
+          </form>
+		  
+        </div>
+			
+        <div id="output" class="output"
+		style="width: 70%; margin: auto; color: black; background-color: #E8F0FE; border-radius: 10px; padding: 0.5em; text-align: center;">
+		<h5><b>Output:</b></h5>
+		</div>
       </main>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2022-2023 JMDB</p>
-        <h6 class="text-info">Prototype phase</h6>
-      </footer>
     </div>
 
     <script>
@@ -102,8 +101,8 @@ navbar {
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	padding-top: 1%;
-	position: static;
+	padding-top: 18px;
+	position: fixed;
 	border-bottom-style: solid;
 	background-color: #202124;
 	border-color: #FFFFFF;
@@ -135,13 +134,12 @@ navbar {
 	border-bottom-style: solid;
 	border-color: #8AB4EA;
 	border-bottom-width: 4px;
-	padding-bottom:15px;
+	padding-bottom:7px;
 }
 
 .list .list-link::after {
 	content: '';
 	position: absolute;
-	top:108%;
 	bottom: 0;
 	left: 50%;
 	width: 0%;
@@ -163,7 +161,6 @@ li{
 	color: #03122E;
 	font-size: 1.5em;
 	font-family: Mukta;
-	padding-top:10px;
 }
 
 
@@ -174,10 +171,12 @@ h5{
 }
 
 divMain{
-    width:100%;
-	float:right;
+    width:80%;
 }
 	
+divSide{
+    width:20%;
+}
 .sidebar {
   height: 100%;
   width: 0;
@@ -213,25 +212,30 @@ divMain{
 }
 
 .openbtn {
-  font-size: 2em;
+  font-size: 20px;
   cursor: pointer;
   background-color: #20212400;
   color: white;
   border: none;
-  padding-bottom: 0px;
-  overflow:hidden;
+  padding-bottom: 10px;
 }
 
 
 #main {
   transition: margin-left .5s;
-  padding-right:2%;
-  float:left;
-  display:block;
-  overflow:hidden;
+  width:20%;
 }
 
-#translator {
-  transition: margin-left .5s;
-}
 </style>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
