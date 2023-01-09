@@ -3,19 +3,20 @@
 <script>
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("main").style.marginLeft = "10%";
   document.getElementById("translator").style.marginLeft = "250px";
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
-  document.getElementById("translator").style.marginLeft= "113px";
+  document.getElementById("translator").style.marginLeft= "0";
 }
 </script>
 
 <html>
   <head>
+  <script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bayon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
@@ -27,16 +28,16 @@ function closeNav() {
 	<divMain>
 	<ul class="list">
 		<li class="list-item"><a href="Home" class ="list-link">
-		<img id = "Home" title = "Home" style="width:1.6em; height:1.6em;" src="/images/Home.png" onmouseover="homeOver()" onmouseout="homeOut()"/></a></li>
+		<i id = "Home" title = "Home" class="fa-solid fa-house-chimney fa-xl" style = "color: #FFFFFF;"></i></a></li>
 		
 		<li class="list-item"><a class ="list-link1">
-		<img id = "Learn" title = "Learn" style="width:1.6em; height:1.6em;" src="/images/Learn_Selected.png" /></a></li>
+		<i id = "Learn" title = "Learn" class="fa-solid fa-book fa-xl" style = "color: #8AB4EA;"></i></a></li>
 		
 		<li class="list-item"><a href="How_To_Use" class ="list-link">
-		<img id = "How_To_Use" title = "How To Use" style="width:1.6em; height:1.6em;" src="/images/How_To_Use.png" onmouseover="howtouseOver()" onmouseout="howtouseOut()"/></a></li>
+		<i id = "How_To_Use" title = "How To Use" class="fa-solid fa-circle-info fa-xl" style = "color: #FFFFFF;"></i></a></li>
 		
 		<li class="list-item"><a href="About_Us" class ="list-link">
-		<img id = "About_Us" title = "About Us" style="width:1.6em; height:1.6em;" src="/images/About_Us.png" onmouseover="aboutusOver()" onmouseout="aboutusOut()"/></a></li>
+		<i id = "About_Us" title = "About Us" class="fa-sharp fa-solid fa-people-group fa-xl" style = "color: #FFFFFF;"></i></a></li>
 		
 
 		</ul>
@@ -47,7 +48,6 @@ function closeNav() {
     <title> Transpose | English Sentence to Math Expression Translator </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
   </head>
-  <br><br><br>
   
   <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
