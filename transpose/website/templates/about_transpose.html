@@ -17,6 +17,7 @@ function closeNav() {
 <html>
   <head>
   <script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="https://i.ibb.co/YTkmTmt/Logo.png" type="image/x-icon type">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bayon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
@@ -34,10 +35,10 @@ function closeNav() {
 		<i id = "Learn" title = "Learn" class="fa-solid fa-book fa-xl" style = "color: #FFFFFF;"></i></a></li>
 		
 		<li class="list-item"><a class ="list-link1">
-		<i id = "How_To_Use" title = "How To Use" class="fa-solid fa-circle-info fa-xl" style = "color: #8AB4EA;"/></i></a></li>
+		<i id = "About_Transpose" title = "About Transpose" class="fa-solid fa-circle-info fa-xl" style = "color: #8AB4EA;"/></i></a></li>
 		
-		<li class="list-item"><a href="About_Us" class ="list-link">
-		<i id = "About_Us" title = "About Us" class="fa-sharp fa-solid fa-people-group fa-xl" style = "color: #FFFFFF;"></i></a></li>
+		<li class="list-item"><a href="The_Team" class ="list-link">
+		<i id = "The_Team" title = "The Team" class="fa-sharp fa-solid fa-people-group fa-xl" style = "color: #FFFFFF;"></i></a></li>
 		
 
 		</ul>
@@ -49,18 +50,55 @@ function closeNav() {
   
   <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="Home">Home</a>
+  <a href="Learn">Learn</a>
+  <a href="#" style = "color: #8AB4EA;">About Transpose</a>
+  <a href="The_Team">The Team</a>
   </div>
   
   <body>
     <div class="container">
-      <main>
-
-      </main>
-
+	<br><br><br>
+		<main>
+      <div style="width: 85%; color: black; background-color: #E8F0FE; border-radius: 10px; margin: auto; padding: 0.5em; text-align: center;">
+		<h2 style="font-family: Bayon; color: #202124; font-size: 3em;">WHAT IS TRANSPOSE?</h2>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Transpose is a website that acts as a supplemental tool for students, 
+		especially Grade 7 students, in learning a specific topic namely: "Translating English phrases to mathematical expressions". The tool does exactly 
+		what the topic says, it translates english phrases inputted by the user, then outputs its mathematical expression equivalent.</h5>
+		<br>
+		<h2 style="font-family: Bayon; color: #202124; font-size: 3em;">WHY TRANSPOSE?</h2>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;According to Programme for International Student Assessment or PISA's statistics in 2018, the mean score of 15 year-old Filipinos' 
+		performance in secondary level mathematics is 353, that is 136 points lower than the average of 489 points among 77 countries participating in PISA, 
+		making the Philippines ranked 75th or the 3rd lowest performing country. According to the studies, one of the students' hindrance in learning 
+		mathematics is comprehending word problems. Students are having difficulties formulating these problems to turn into math expressions for easier 
+		solving.</h5>
+		<br>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Based on DepEd’s K-12 Basic Education Curriculum, the translation of English phrases to mathematical phrases and vice versa are mostly 
+		encountered by Grade 7 students. Although online tools that solve math problems exist, they are either not broad enough to perceive problems 
+		involving multiple operators or complex enough to perceive simple structured phrases that are commonly used in grade 7 curriculum. This where 
+		Transpose comes in, a supplemental tool that caters to the phrases encountered in Grade 7 that would aid the students translate them sensibly.</h5>
+		<br>
+		<h2 style="font-family: Bayon; color: #202124; font-size: 3em;">HOW DOES IT WORK?</h2>
+		
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Transpose accepts a maximum of one (1) English sentence that contain number values and arithmetic operations derivable from keywords. 
+		Appropriate grammar and syntax is needed for the sentence to be optimally translated. Transpose is case insensitive.</h5>
+		<br>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;<b>Accepted inputs include:</b></h5>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Number values in numerical form (e.g "1" , "2")  or standard number words
+		(e.g "one", "two") </h5>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Words with an equivalent arithmetic operation</h5>
+		
+		<br>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;<b>Transpose is unable to accept or recognize the following inputs:</b></h5>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Worded problems that contain scenarios</h5>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Altered words that represent numbers or arithmetic operations
+		(s!x, tw3lve, sum_)</h5>
+		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Words with incorrect spellings</h5>
+		
+</div>
+	
+	
+		</main>
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2022-2023 JMDB & RL-IT</p>
         <h6 class="text-info">Prototype phase</h6>
@@ -170,7 +208,6 @@ li{
 h5{
 	font-family: Mukta;
 	font-size: 1.1em;
-	text-align: center;
 }
 
 divMain{
