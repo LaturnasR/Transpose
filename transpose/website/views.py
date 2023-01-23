@@ -24,14 +24,14 @@ def home():
 @views.route('/Learn')
 def learn():
 	return render_template('learn.html')
-    
-@views.route('/How_To_Use')
+
+@views.route('/The_Team')
 def how_to_use():
-	return render_template('how_to_use.html')
-    
-@views.route('/About_Us')
+	return render_template('the_team.html')
+
+@views.route('/About_Transpose')
 def about_us():
-	return render_template('about_us.html')
+	return render_template('about_transpose.html')
 
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():
