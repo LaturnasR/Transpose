@@ -79,7 +79,127 @@ function closeNav() {
 		Transpose comes in, a supplemental tool that caters to the phrases encountered in Grade 7 that would aid the students translate them sensibly.</h5>
 		<br>
 		<h2 style="font-family: Bayon; color: #202124; font-size: 3em;">HOW DOES IT WORK?</h2>
-		
+		<br>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;There are two algorithms in play: Pre-processing and Conversion.
+		The Pre-processing algorithm denoises and simplies the input. While the Conversion algorithm converts the preprocessed input into a translation output.</h5>
+		<br>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">To understand the algorithms better, let's take a look at this example:</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;"><mark>Three diminished by the sum of a number and four</mark></h5>
+		<br>
+		<hr style="border-top: 3px dashed #111111; margin-left: 2%; margin-right: 2%;">
+		<h2 style="font-family: Bayon; color: #202124; font-size: 2em;">PRE-PROCESSING</h2>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Tokenization and POS Tagging</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Through Preprocessing's tokenization and parts of speech (POS) tagging, each word will be categorized.</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFB6C1">diminished <span style="font-family: Mukta; font-size: 0.5em;"><b>VERB</b></span></span>
+		<span style="background-color: #C4A484">by <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">the <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #C4A484">of <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">a <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Lemmatization</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Words will then be lemmatized (reduced into their root word).</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFD580">diminish <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #C4A484">by <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">the <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #C4A484">of <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">a <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Filtering stop words</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Then, stop words (words that bear no significant meaning) are removed.</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFD580">diminish <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Standardization</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Last step for Preprocessing, keywords are standardized into its basic concept.</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<hr style="border-top: 3px dashed #111111; margin-left: 2%; margin-right: 2%;">
+		<h2 style="font-family: Bayon; color: #202124; font-size: 2em;">CONVERSION</h2>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Number Conversion</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Words that indicate numbers will be converted into their integer counterparts.</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">3 <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">4 <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Variables</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Unknown words (words not defined in our algorithm), become variables.</h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">3 <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">x <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">4 <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></h5>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<h5 class="card-title" align="left"><b>Interpretation</b></h5>
+		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">Using a defined context-free grammar and imposing a parse tree. The algorithm
+		 is able to identify and interpret the sentence structure of the given input. See sample interpretation below:</h5>
+		<h5 align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>['3',&emsp;'minus',&emsp;('x',&emsp;'sum',&emsp;'4')&emsp;]</mark></span>
+		<h5 align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>3&emsp;minus&emsp;(x&emsp;sum&emsp;4)</mark></span>
+		<h5 align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>3&emsp;-&emsp;(x&emsp;+&emsp;4)</mark></span>
+		</div>
+		</div>
+		<br>
+		<br>
 		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Transpose accepts a maximum of one (1) English sentence that contain number values and arithmetic operations derivable from keywords. 
 		Appropriate grammar and syntax is needed for the sentence to be optimally translated. Transpose is case insensitive.</h5>
 		<br>
