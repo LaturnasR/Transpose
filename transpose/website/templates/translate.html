@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta">
   </head>
-  
+
  <body>
   <div class="sidebar">
     <div class="logo-details">
@@ -80,82 +80,67 @@
     </ul>
   </div>
   <section class="home-section">
-      <div class="container">
-	    <br><br><br>
-       <div style="width: 85%; color: black; background-color: #E8F0FE; border-radius: 10px; margin: auto; padding: 0.5em; text-align: center;">
-		<h2 style="font-family: Bayon; color: #202124; font-size: 3em;">TRANSLATING ENGLISH PHRASES TO MATHEMATICAL EXPRESSIONS</h2>
-		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Worded Mathematical Problems follow the order of operations the way 
-		they are written, unless stated that one operation precedes the other. A simple step-by-step guide to follow would be:</h5>
-		<br>
-		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">1. Read the problem</h5>
-		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">2. Highlight the question (example, “The sum of ... “, “The quotient of ...”)</h5>
-		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">3. Identify and take note of the keywords and givens (e.g, “Twice the difference of 12 and 7 )</h5>
-		<h5 align="left" style = "margin-left: 2%; margin-right: 2%;">4. Solve the problem using the details sorted out in steps 2 and 3.</h5>
-		<br>
-		<br>
-		<h5 align="justify" style = "margin-left: 2%; margin-right: 2%;">&emsp;&emsp;Certain words symbolize operations. For example, the addition operation can be 
-		symbolized by the phrases "the sum of ..." , "the total of .. ", "combined", or "the tally of ..." , indicating the grand total of numbers combined.
-		On the other hand, words like "difference" or "less than" indicate that the operation to be done is subtraction. Multiplication can be represented 
-		by the words "product", "times" and by using modified number words like "once", "twice" and "thrice" to indicate the number of times a variable 
-		would be multiplied. (e.g twice the sum of 3 and 5 = 2 * ( 3 + 5 )  ). Division can be identified by using the words "quotient",  "remainder of ", 
-		and  "divided by"  .</h5>
-		<br>
-		<h5 align="left" style = "p-left: 2%; margin-right: 2%;">&emsp;Here are some of the commonly used words that indicates an expression:</h5>
-		
-	<div class="table-responsive">
-	<table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-  <thead>
-    <tr>
-      <th scope="col">Addition</th>
-      <th scope="col">Subtraction</th>
-      <th scope="col">Multiplication</th>
-      <th scope="col">Division</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row">added to</td>
-      <td>decreased by</td>
-      <td>multiplied by</td>
-      <td>divided by</td>
-    </tr>
-    <tr>
-      <td scope="row">increased by</td>
-      <td>less than</td>
-      <td>the product of</td>
-      <td>the quotient of</td>
-    </tr>
-    <tr>
-      <td scope="row">more than</td>
-      <td>minus</td>
-      <td>times</td>
-      <td></td>
-    </tr>
-	<tr>
-      <td scope="row">plus</td>
-      <td>subtracted from</td>
-      <td>twice</td>
-      <td></td>
-    </tr>
-	<tr>
-      <td scope="row">the sum of</td>
-      <td>the difference of</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+		<div id = "translator" class="container">
+      <main>
+        <div class="py-5 text-center" style="height:20em;">
+		<br><br>
+		<img style="width:11.7em; height:9em;" src="/images/Logo.png">
+          <h2 style="font-family: Bayon; color: #FFFFFF; font-size: 3em;">TRANSPOSE</h2>
+          <p class="lead" style="font-family: Montserrat; color: #FFFFFF; font-size: 1.15em;">English Sentence to Math Expression</p>
+        </div>
+
+        <div>
+          <form method="POST" id="sentence_form" class="justify-content-center text-muted text-center text-small" >
+            <p style="color: #808080"><br><br><br>Example: {{ example_sent }}</p>
+			<br>
+            <div class="input-group mb-3" style="width: 70%; margin: auto";>
+                <input type="text"  for="sentence" name="sentence"id="sentence" class="form-control" placeholder="{{last_input}}">
+                <button class="btn btn-outline-primary">
+                    Enter
+                </button>
+            </div>
+          </form>
+		  
+        </div>
+			
+        <div id="output" class="output"
+		style="width: 70%; margin: auto; color: black; background-color: #202124; border-radius: 10px; padding: 0.5em; text-align: center;">
 		</div>
-		</div>
-		<footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2022-2023 JMDB & RL-IT</p>
-        <h6 class="text-info">Prototype phase</h6>
-      </footer>
+      </main>
     </div>
-
+	<br>
+	  <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2022-2023 JMDB & RL-IT</p>
+      <h6 class="text-info">Prototype phase</h6>
+    </footer>
   </section>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
 
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
 
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+</body>
+
+	
     <script>
       $SCRIPT_ROOT = {{ request.script_root|tojson }};
     </script>
@@ -181,244 +166,246 @@
         })
       });
     </script>
-  </body>
 </html>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
-}
-#main {
-  transition: margin-left .5s;
-  padding-right:2%;
-  float:left;
-  display:block;
-  overflow:hidden;
-}
 
-#translator {
-  transition: margin-left .5s;
-}
-h4{
-	font-family: Mukta;
-	font-size: 1.1em;
-	color: white;
-}
-h5{
-	font-family: Mukta;
-	font-size: 1.1em;
-	color: black;
-}
-.sidebar{
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 78px;
-  background: #fff;
-  padding: 6px 14px;
-  z-index: 99;
-  transition: all 0.5s ease;
-}
-.sidebar.open{
-  width: 250px;
-}
-.sidebar .logo-details{
-  height: 60px;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.sidebar .logo-details .icon{
-  opacity: 0;
-  transition: all 0.5s ease;
-}
-.sidebar .logo-details .logo_name{
-  color: #202124;
-  font-size: 45px;
-  font-weight: 600;
-  opacity: 0;
-  transition: all 0.5s ease;
-}
-.sidebar.open .logo-details .icon,
-.sidebar.open .logo-details .logo_name{
-  opacity: 1;
-}
-.sidebar .logo-details #btn{
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  transition: all 0.4s ease;
-  font-size: 23px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-.sidebar.open .logo-details #btn{
-  text-align: right;
-}
-.sidebar i{
-  color: #202124;
-  height: 60px;
-  min-width: 50px;
-  font-size: 28px;
-  text-align: center;
-  line-height: 60px;
-}
-.sidebar .nav-list{
-  margin-top: 20px;
-  height: 100%;
-}
-.sidebar li{
-  position: relative;
-  margin: 8px 0;
-  list-style: none;
-}
-.sidebar li .tooltip{
-  position: absolute;
-  top: -20px;
-  left: calc(100% + 15px);
-  z-index: 3;
-  background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 400;
-  opacity: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: 0s;
-}
-.sidebar li:hover .tooltip{
-  opacity: 1;
-  pointer-events: auto;
-  transition: all 0.4s ease;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.sidebar.open li .tooltip{
-  display: none;
-}
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+	*{
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	  font-family: "Poppins" , sans-serif;
+	}
+	#main {
+	  transition: margin-left .5s;
+	  padding-right:2%;
+	  float:left;
+	  display:block;
+	  overflow:hidden;
+	}
+
+	#translator {
+	  transition: margin-left .5s;
+	}
+	h4{
+		font-family: Mukta;
+		font-size: 1.1em;
+		color: white;
+	}
+	h5{
+		font-family: Mukta;
+		font-size: 1.1em;
+		color: black;
+	}
+	.sidebar{
+	  position: fixed;
+	  left: 0;
+	  top: 0;
+	  height: 100%;
+	  width: 78px;
+	  background: #fff;
+	  padding: 6px 14px;
+	  z-index: 99;
+	  transition: all 0.5s ease;
+	}
+	.sidebar.open{
+	  width: 250px;
+	}
+	.sidebar .logo-details{
+	  height: 60px;
+	  display: flex;
+	  align-items: center;
+	  position: relative;
+	}
+	.sidebar .logo-details .icon{
+	  opacity: 0;
+	  transition: all 0.5s ease;
+	}
+	.sidebar .logo-details .logo_name{
+	  color: #202124;
+	  font-size: 45px;
+	  font-weight: 600;
+	  opacity: 0;
+	  transition: all 0.5s ease;
+	}
+	.sidebar.open .logo-details .icon,
+	.sidebar.open .logo-details .logo_name{
+	  opacity: 1;
+	}
+	.sidebar .logo-details #btn{
+	  position: absolute;
+	  top: 50%;
+	  right: 0;
+	  transform: translateY(-50%);
+	  font-size: 22px;
+	  transition: all 0.4s ease;
+	  font-size: 23px;
+	  text-align: center;
+	  cursor: pointer;
+	  transition: all 0.5s ease;
+	}
+	.sidebar.open .logo-details #btn{
+	  text-align: right;
+	}
+	.sidebar i{
+	  color: #202124;
+	  height: 60px;
+	  min-width: 50px;
+	  font-size: 28px;
+	  text-align: center;
+	  line-height: 60px;
+	}
+	.sidebar .nav-list{
+	  margin-top: 20px;
+	  height: 100%;
+	}
+	.sidebar li{
+	  position: relative;
+	  margin: 8px 0;
+	  list-style: none;
+	}
+	.sidebar li .tooltip{
+	  position: absolute;
+	  top: -20px;
+	  left: calc(100% + 15px);
+	  z-index: 3;
+	  background: #fff;
+	  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	  padding: 6px 12px;
+	  border-radius: 4px;
+	  font-size: 15px;
+	  font-weight: 400;
+	  opacity: 0;
+	  white-space: nowrap;
+	  pointer-events: none;
+	  transition: 0s;
+	}
+	.sidebar li:hover .tooltip{
+	  opacity: 1;
+	  pointer-events: auto;
+	  transition: all 0.4s ease;
+	  top: 50%;
+	  transform: translateY(-50%);
+	}
+	.sidebar.open li .tooltip{
+	  display: none;
+	}
 
 
-.sidebar li a{
-  display: flex;
-  height: 100%;
-  width: 100%;
-  border-radius: 12px;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.4s ease;
-  background: #fff;
-}
-.sidebar li a:hover{
-  background: #202124;
-}
-.sidebar li a .links_name{
-  color: #202124;
-  font-size: 15px;
-  font-weight: 400;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s;
-}
-.sidebar.open li a .links_name{
-  opacity: 1;
-  pointer-events: auto;
-}
-.sidebar li a:hover .links_name,
-.sidebar li a:hover i{
-  transition: all 0.5s ease;
-  color: #fff;
-}
-.sidebar li i{
-  height: 50px;
-  line-height: 50px;
-  font-size: 18px;
-  border-radius: 12px;
-}
-.sidebar li.profile{
-  position: fixed;
-  height: 60px;
-  width: 78px;
-  left: 0;
-  bottom: -8px;
-  padding: 10px 14px;
-  background: #1d1b31;
-  transition: all 0.5s ease;
-  overflow: hidden;
-}
-.sidebar.open li.profile{
-  width: 250px;
-}
-.sidebar li .profile-details{
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-.sidebar li img{
-  height: 45px;
-  width: 45px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 10px;
-}
-.sidebar li.profile .name,
-.sidebar li.profile .job{
-  font-size: 15px;
-  font-weight: 400;
-  color: #fff;
-  white-space: nowrap;
-}
-.sidebar li.profile .job{
-  font-size: 12px;
-}
-.sidebar .profile #log_out{
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: #1d1b31;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 0px;
-  transition: all 0.5s ease;
-}
-.sidebar.open .profile #log_out{
-  width: 50px;
-  background: none;
-}
-.home-section{
-  position: relative;
-  background: #202124;
-  min-height: 100vh;
-  top: 0;
-  left: 78px;
-  width: calc(100% - 78px);
-  transition: all 0.5s ease;
-  z-index: 2;
-}
-.sidebar.open ~ .home-section{
-  left: 250px;
-  width: calc(100% - 250px);
-}
+	.sidebar li a{
+	  display: flex;
+	  height: 100%;
+	  width: 100%;
+	  border-radius: 12px;
+	  align-items: center;
+	  text-decoration: none;
+	  transition: all 0.4s ease;
+	  background: #fff;
+	}
+	.sidebar li a:hover{
+	  background: #202124;
+	}
+	.sidebar li a .links_name{
+	  color: #202124;
+	  font-size: 15px;
+	  font-weight: 400;
+	  white-space: nowrap;
+	  opacity: 0;
+	  pointer-events: none;
+	  transition: 0.4s;
+	}
+	.sidebar.open li a .links_name{
+	  opacity: 1;
+	  pointer-events: auto;
+	}
+	.sidebar li a:hover .links_name,
+	.sidebar li a:hover i{
+	  transition: all 0.5s ease;
+	  color: #fff;
+	}
+	.sidebar li i{
+	  height: 50px;
+	  line-height: 50px;
+	  font-size: 18px;
+	  border-radius: 12px;
+	}
+	.sidebar li.profile{
+	  position: fixed;
+	  height: 60px;
+	  width: 78px;
+	  left: 0;
+	  bottom: -8px;
+	  padding: 10px 14px;
+	  background: #1d1b31;
+	  transition: all 0.5s ease;
+	  overflow: hidden;
+	}
+	.sidebar.open li.profile{
+	  width: 250px;
+	}
+	.sidebar li .profile-details{
+	  display: flex;
+	  align-items: center;
+	  flex-wrap: nowrap;
+	}
+	.sidebar li img{
+	  height: 45px;
+	  width: 45px;
+	  object-fit: cover;
+	  border-radius: 6px;
+	  margin-right: 10px;
+	}
+	.sidebar li.profile .name,
+	.sidebar li.profile .job{
+	  font-size: 15px;
+	  font-weight: 400;
+	  color: #fff;
+	  white-space: nowrap;
+	}
+	.sidebar li.profile .job{
+	  font-size: 12px;
+	}
+	.sidebar .profile #log_out{
+	  position: absolute;
+	  top: 50%;
+	  right: 0;
+	  transform: translateY(-50%);
+	  background: #1d1b31;
+	  width: 100%;
+	  height: 60px;
+	  line-height: 60px;
+	  border-radius: 0px;
+	  transition: all 0.5s ease;
+	}
+	.sidebar.open .profile #log_out{
+	  width: 50px;
+	  background: none;
+	}
+	.home-section{
+	  position: relative;
+	  background: #202124;
+	  min-height: 100vh;
+	  top: 0;
+	  left: 78px;
+	  width: calc(100% - 78px);
+	  transition: all 0.5s ease;
+	  z-index: 2;
+	}
+	.sidebar.open ~ .home-section{
+	  left: 250px;
+	  width: calc(100% - 250px);
+	}
 
-@media (max-width: 420px) {
-  .sidebar li .tooltip{
-    display: none;
-  }
-}
+	@media (max-width: 420px) {
+	  .sidebar li .tooltip{
+		display: none;
+	  }
+	}
 
-table{caption-side:bottom;border-collapse:collapse}
+
+
+	table{caption-side:bottom;border-collapse:collapse}
 .table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .table{--bs-table-color:var(--bs-body-color);--bs-table-bg:transparent;--bs-table-border-color:var(--bs-border-color);--bs-table-accent-bg:transparent;--bs-table-striped-color:var(--bs-body-color);--bs-table-striped-bg:rgba(0, 0, 0, 0.05);--bs-table-active-color:var(--bs-body-color);--bs-table-active-bg:rgba(0, 0, 0, 0.1);--bs-table-hover-color:var(--bs-body-color);--bs-table-hover-bg:rgba(0, 0, 0, 0.075);width:100%;margin-bottom:1rem;color:var(--bs-table-color);vertical-align:top;border-color:var(--bs-table-border-color)}.table>:not(caption)>*>*{padding:.5rem .5rem;background-color:var(--bs-table-bg);border-bottom-width:1px;box-shadow:inset 0 0 0 9999px var(--bs-table-accent-bg)}.table>tbody{vertical-align:inherit}.table>thead{vertical-align:bottom}.table-group-divider{border-top:2px solid currentcolor}.caption-top{caption-side:top}.table-sm>:not(caption)>*>*{padding:.25rem .25rem}.table-bordered>:not(caption)>*{border-width:1px 0}.table-bordered>:not(caption)>*>*{border-width:0 1px}.table-borderless>:not(caption)>*>*{border-bottom-width:0}.table-borderless>:not(:first-child){border-top-width:0}.table-striped>tbody>tr:nth-of-type(odd)>*{--bs-table-accent-bg:var(--bs-table-striped-bg);color:var(--bs-table-striped-color)}.table-striped-columns>:not(caption)>tr>:nth-child(2n){--bs-table-accent-bg:var(--bs-table-striped-bg);color:var(--bs-table-striped-color)}.table-active{--bs-table-accent-bg:var(--bs-table-active-bg);color:var(--bs-table-active-color)}.table-hover>tbody>tr:hover>*{--bs-table-accent-bg:var(--bs-table-hover-bg);color:var(--bs-table-hover-color)}.table-primary{--bs-table-color:#000;--bs-table-bg:#cfe2ff;--bs-table-border-color:#bacbe6;--bs-table-striped-bg:#c5d7f2;--bs-table-striped-color:#000;--bs-table-active-bg:#bacbe6;--bs-table-active-color:#000;--bs-table-hover-bg:#bfd1ec;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-secondary{--bs-table-color:#000;--bs-table-bg:#e2e3e5;--bs-table-border-color:#cbccce;--bs-table-striped-bg:#d7d8da;--bs-table-striped-color:#000;--bs-table-active-bg:#cbccce;--bs-table-active-color:#000;--bs-table-hover-bg:#d1d2d4;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-success{--bs-table-color:#000;--bs-table-bg:#d1e7dd;--bs-table-border-color:#bcd0c7;--bs-table-striped-bg:#c7dbd2;--bs-table-striped-color:#000;--bs-table-active-bg:#bcd0c7;--bs-table-active-color:#000;--bs-table-hover-bg:#c1d6cc;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-info{--bs-table-color:#000;--bs-table-bg:#cff4fc;--bs-table-border-color:#badce3;--bs-table-striped-bg:#c5e8ef;--bs-table-striped-color:#000;--bs-table-active-bg:#badce3;--bs-table-active-color:#000;--bs-table-hover-bg:#bfe2e9;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-warning{--bs-table-color:#000;--bs-table-bg:#fff3cd;--bs-table-border-color:#e6dbb9;--bs-table-striped-bg:#f2e7c3;--bs-table-striped-color:#000;--bs-table-active-bg:#e6dbb9;--bs-table-active-color:#000;--bs-table-hover-bg:#ece1be;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-danger{--bs-table-color:#000;--bs-table-bg:#f8d7da;--bs-table-border-color:#dfc2c4;--bs-table-striped-bg:#eccccf;--bs-table-striped-color:#000;--bs-table-active-bg:#dfc2c4;--bs-table-active-color:#000;--bs-table-hover-bg:#e5c7ca;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-light{--bs-table-color:#000;--bs-table-bg:#f8f9fa;--bs-table-border-color:#dfe0e1;--bs-table-striped-bg:#ecedee;--bs-table-striped-color:#000;--bs-table-active-bg:#dfe0e1;--bs-table-active-color:#000;--bs-table-hover-bg:#e5e6e7;--bs-table-hover-color:#000;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-dark{--bs-table-color:#fff;--bs-table-bg:#212529;--bs-table-border-color:#373b3e;--bs-table-striped-bg:#2c3034;--bs-table-striped-color:#fff;--bs-table-active-bg:#373b3e;--bs-table-active-color:#fff;--bs-table-hover-bg:#323539;--bs-table-hover-color:#fff;color:var(--bs-table-color);border-color:var(--bs-table-border-color)}.table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}@media (max-width:575.98px){.table-responsive-sm{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width:767.98px){.table-responsive-md{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width:991.98px){.table-responsive-lg{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width:1199.98px){.table-responsive-xl{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width:1399.98px){.table-responsive-xxl{overflow-x:auto;-webkit-overflow-scrolling:touch}}
 
