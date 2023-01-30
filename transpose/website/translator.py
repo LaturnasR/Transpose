@@ -57,7 +57,7 @@ operator = {
     },
     '2REVERSE':{
         'less_than': ['subtract from', 'less than', 'fewer than'],
-        'more_than': ['more than', 'greater than', 'add to'],
+        'more_than': ['more than', 'greater than'],
     },
     'EQUALITY':{
         '=': ['equal', 'yield'], 
