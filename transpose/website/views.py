@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
-from .translator import translate, prettier
+from .translator import translation
+from .translator import prettier
 import random
 
 example_list = [
@@ -16,34 +17,48 @@ def index():
 	example_sent = example_list[random.randint(0, len(example_list) - 1)]
 	return render_template('home.html', translation="", example_sent = example_sent, last_input = example_sent)
 
-@views.route('/Home')
-def home():
+@views.route('/Translate')
+def translate():
 	example_sent = example_list[random.randint(0, len(example_list) - 1)]
-	return render_template('home.html', translation="", example_sent = example_sent, last_input = example_sent)
+	return render_template('translate.html', translation="", example_sent = example_sent, last_input = example_sent)
 
 @views.route('/Learn')
 def learn():
 	return render_template('learn.html')
 
-@views.route('/The_Team')
-def how_to_use():
-	return render_template('the_team.html')
+@views.route('/Practice')
+def practice():
+	return render_template('practice.html')
+    
+@views.route('/What_is_Transpose')
+def what_is_transpose():
+	return render_template('what_is_transpose.html')
+    
+@views.route('/Why_Transpose')
+def why_transpose():
+	return render_template('why_transpose.html')
 
-@views.route('/About_Transpose')
-def about_us():
-	return render_template('about_transpose.html')
+@views.route('/How_Does_It_Work')
+def how_does_it_work():
+	return render_template('how_does_it_work.html')
+    
+@views.route('/How_To_Use_It')
+def how_to_use_it():
+	return render_template('how_to_use_it.html')
+
+@views.route('/The_Team')
+def the_team():
+	return render_template('the_team.html')
 
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():
 	sentence = request.form.get('sentence')
-	lis = translate(sentence)
-	print(lis)
-	if lis == None:
-		lis = "No Translation: Input Unrecognized"
-	elif type(lis) is list:
-		temp = "<h5><b>Output:</b></h5>"
-		if len(lis) > 1:
-		    temp += "<h5>Ambiguous Sentence</h5>"
-		temp += "<br>".join([prettier(i) for i in lis])
-		lis = temp
+	lis = translation(sentence)
+	try: 
+		lis = "<h5><b>Output:</b><br><br>" + (prettier(lis))
+	except:
+		if type(lis) is list and all(lis):
+			temp = "<h5><b>Output:</b> <br><br> Ambiguous Sentence</h5>"
+			temp += "<br>".join([prettier(i) for i in lis])
+			lis = temp
 	return lis
