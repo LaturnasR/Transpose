@@ -1,0 +1,92 @@
+<div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name" style="font-family: Bayon; color: #202124; align: center;">TRANSPOSE</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="\" id = "index">
+          <i class="fa-solid fa-repeat"></i>
+          <span class="links_name">Translate</span>
+        </a>
+         <span class="tooltip">Translate</span>
+      </li>
+      <li>
+       <a href="learn" id = "learn">
+         <i class="fa-solid fa-book"></i>
+         <span class="links_name">Learn</span>
+       </a>
+       <span class="tooltip">Learn</span>
+     </li>
+     <li>
+       <a href="practice" id = "practice">
+         <i class="fa-solid fa-pencil"></i>
+         <span class="links_name">Practice</span>
+       </a>
+       <span class="tooltip">Practice</span>
+     </li>
+   <hr>
+     <li>
+       <a href="what_is_transpose" id = "what_is_transpose">
+         <i class="fa-solid fa-circle-info"></i>
+         <span class="links_name">What is Transpose</span>
+       </a>
+       <span class="tooltip">What is Transpose</span>
+     </li>
+     <li>
+       <a href="why_transpose" id = "why_transpose">
+         <i class="fa-solid fa-lightbulb"></i>
+         <span class="links_name">Why Transpose</span>
+       </a>
+       <span class="tooltip">Why Transpose</span>
+     </li>
+     <li>
+       <a href="how_does_it_work" id = "how_does_it_work">
+         <i class="fa-solid fa-gears"></i>
+         <span class="links_name">How Does It Work</span>
+       </a>
+       <span class="tooltip">How Does It Work</span>
+     </li>
+     <li>
+       <a href="how_to_use_it" id = "how_to_use_it">
+         <i class="fa-solid fa-circle-question"></i>
+         <span class="links_name">How To Use It</span>
+       </a>
+       <span class="tooltip">How To Use It</span>
+     </li>
+   <hr>
+     <li>
+       <a href="the_team" id = "the_team">
+         <i class="fa-solid fa-people-group"></i>
+         <span class="links_name">The Team</span>
+       </a>
+       <span class="tooltip">The Team</span>
+     </li>
+    </ul>
+  </div>
+
+  
+    <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
