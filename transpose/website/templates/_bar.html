@@ -1,9 +1,12 @@
+<link rel="stylesheet" href="/static/css/navbar.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 <div class="sidebar">
-    <div class="logo-details">
-        <div class="logo_name" style="font-family: Bayon; color: #202124; align: center;">TRANSPOSE</div>
-        <i class='bx bx-menu' id="btn" ></i>
+    <div class="logo-details" >
+        <div class="logo_name" style="font-family: Bayon; color: #202124;">TRANSPOSE</div>
+        <i class='bx bx-menu' id="btn" onclick="openNav()" ></i>
     </div>
-    <ul class="nav-list">
+    <div class="nav-list">
       <li>
         <a href="\" id = "index">
           <i class="fa-solid fa-repeat"></i>
@@ -41,13 +44,6 @@
        <span class="tooltip">Why Transpose</span>
      </li>
      <li>
-       <a href="how_does_it_work" id = "how_does_it_work">
-         <i class="fa-solid fa-gears"></i>
-         <span class="links_name">How Does It Work</span>
-       </a>
-       <span class="tooltip">How Does It Work</span>
-     </li>
-     <li>
        <a href="how_to_use_it" id = "how_to_use_it">
          <i class="fa-solid fa-circle-question"></i>
          <span class="links_name">How To Use It</span>
@@ -62,26 +58,22 @@
        </a>
        <span class="tooltip">The Team</span>
      </li>
-    </ul>
+    </div>
   </div>
 
   
     <script>
   let sidebar = document.querySelector(".sidebar");
   let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
 
   closeBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("open");
     menuBtnChange();//calling the function(optional)
   });
 
-  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-    sidebar.classList.toggle("open");
-    menuBtnChange(); //calling the function(optional)
-  });
 
-  // following are the code to change sidebar button(optional)
+
+
   function menuBtnChange() {
    if(sidebar.classList.contains("open")){
      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
@@ -89,4 +81,32 @@
      closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
    }
   }
+
+  if (mediaQuery.matches) {
+  document.getElementById("bar-placeholder").style.visibility = "hidden";
+  }
+
+  function openNav() {
+    const homeMargin = document.getElementById("home-section");
+    
+    const mediaQuery = window.matchMedia('(max-width: 720px)')
+    if (mediaQuery.matches) {
+      if (homeMargin.style.marginLeft == "20%"){
+        homeMargin.style.marginLeft = "0%";
+      
+      }
+    }
+
+    else{
+      if (homeMargin.style.marginLeft == "10%"){
+      homeMargin.style.marginLeft = "0%";
+      
+      }
+      else if(homeMargin.style.marginLeft = "0%"){
+      homeMargin.style.marginLeft = "10%";
+      }
+    }
+  }
+
+
   </script>

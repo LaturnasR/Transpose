@@ -1,0 +1,160 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+  <head>
+	<title> Transpose | English Sentence to Math Expression Translator </title>
+	<!-- Design imports -->
+	<div id="imports">	
+	</div>
+  </head>
+
+ <body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name" style="font-family: Bayon; color: #202124; align: center;">TRANSPOSE</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="Translate" id = "Translate">
+          <i class="fa-solid fa-repeat"></i>
+          <span class="links_name">Translate</span>
+        </a>
+         <span class="tooltip">Translate</span>
+      </li>
+      <li>
+       <a href="Learn" id = "Learn">
+         <i class="fa-solid fa-book"></i>
+         <span class="links_name">Learn</span>
+       </a>
+       <span class="tooltip">Learn</span>
+     </li>
+     <li>
+       <a href="Practice" id = "Practice">
+         <i class="fa-solid fa-pencil"></i>
+         <span class="links_name">Practice</span>
+       </a>
+       <span class="tooltip">Practice</span>
+     </li>
+	 <hr>
+     <li>
+       <a href="What_is_Transpose" id = "What_is_Transpose">
+         <i class="fa-solid fa-circle-info"></i>
+         <span class="links_name">What is Transpose</span>
+       </a>
+       <span class="tooltip">What is Transpose</span>
+     </li>
+     <li>
+       <a href="Why_Transpose" id = "Why_Transpose">
+         <i class="fa-solid fa-lightbulb"></i>
+         <span class="links_name">Why Transpose</span>
+       </a>
+       <span class="tooltip">Why Transpose</span>
+     </li>
+     <li>
+       <a href="How_Does_It_Work" id = "How_Does_It_Work">
+         <i class="fa-solid fa-gears"></i>
+         <span class="links_name">How Does It Work</span>
+       </a>
+       <span class="tooltip">How Does It Work</span>
+     </li>
+     <li>
+       <a href="How_To_Use_It" id = "How_To_Use_It">
+         <i class="fa-solid fa-circle-question"></i>
+         <span class="links_name">How To Use It</span>
+       </a>
+       <span class="tooltip">How To Use It</span>
+     </li>
+	 <hr>
+     <li>
+       <a href="The_Team" id = "The_Team">
+         <i class="fa-solid fa-people-group"></i>
+         <span class="links_name">The Team</span>
+       </a>
+       <span class="tooltip">The Team</span>
+     </li>
+    </ul>
+  </div>
+  <section class="home-section">
+		<div id = "translator" class="container">
+      <main>
+        <div class="py-5 text-center" style="height:20em;">
+		<img style="width:16em; height:12em;" src="/images/Logo.png">
+          <p style="font-family: Bayon; color: #FFFFFF; font-size: 4em; margin-top:-20px; margin-bottom:-20px">TRANSPOSE</p>
+          <p class="lead" style="font-family: Montserrat; color: #FFFFFF; font-size: 1.15em;">English Sentence to Math Expression</p>
+        </div>
+
+        <div>
+          <form method="POST" id="sentence_form" class="justify-content-center text-muted text-center text-small" onsubmit="white()" >
+            <p style="color: #808080"><br><br><br>Example: {{ example_sent }}</p>
+            <div class="input-group mb-3" style="width: 70%; margin: auto";>
+                <input type="text"  for="sentence" name="sentence"id="sentence" class="form-control" placeholder="{{last_input}}">
+                <button class="btn btn-outline-primary">
+                    Enter
+                </button>
+            </div>
+          </form>
+		  
+        </div>
+			
+        <div id="output" class="output"
+		style="width: 70%; margin: auto; color: black; background-color: #202124; border-radius: 10px; padding: 0.5em; text-align: center;">
+		</div>
+      </main>
+    </div
+
+  </section>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+</body>
+
+	
+    <script>
+      $SCRIPT_ROOT = {{ request.script_root|tojson }};
+    </script>
+
+    <script 
+      src="https://code.jquery.com/jquery-3.6.1.min.js" 
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript">
+      $(document).on('submit','#sentence_form',function(e){
+        e.preventDefault();
+        $.ajax({
+          type:'POST',
+          url: $SCRIPT_ROOT + '/_submit_sentence',
+          data:{
+            sentence:$("#sentence").val()
+          },
+          success:function(response){
+            $("#output").html(response)
+          }
+        })
+      });
+    </script>
+</html>

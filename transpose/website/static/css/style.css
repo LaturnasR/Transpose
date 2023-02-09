@@ -1,0 +1,58 @@
+.accordion-flush .accordion-item .accordion-button, .accordion-flush .accordion-item .accordion-button.collapsed{
+    border-radius: 10px;
+}
+.title_custom{
+    font-family: Bayon;
+    color: #FFFFFF;
+    font-size: 40px;
+}
+section.home{
+    transition: margin-left 0.5s;
+}
+.main_custom{
+    width: 85%;
+    color: black;
+    background-color: #202124;
+    border-radius: 10px;
+    margin-left: 10%;
+    padding:0.5em;
+    text-align: left;
+}
+.card{
+    max-width:30%;
+    margin: 1em;
+} 
+.card-title{
+    font-family: Bayon;
+    font-size: 2em;
+}
+.etc_info{
+    margin-left: 2%;
+    margin-right: 2%;
+    color:#FFFFFF
+}
+
+.dark_color{
+    color:#202124;
+}
+
+.light_color{
+    color:#FFFFFF;
+}
+
+
+.table{
+    overflow-wrap: anywhere;
+    vertical-align: middle;
+}
+
+@media (max-width: 720px) {
+    #bar-placeholder{
+      display: none;
+    }
+    .main_custom{
+        width:100%;
+        margin-left: 0%;
+    }
+}
+

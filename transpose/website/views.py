@@ -52,6 +52,10 @@ def the_team():
 def _bar():
 	return render_template('_bar.html')
 
+@views.route('/_bar2',)
+def _bar2():
+	return render_template('_bar2.html')
+
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():
 	sentence = request.form.get('sentence')
