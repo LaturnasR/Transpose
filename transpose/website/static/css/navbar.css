@@ -5,6 +5,9 @@
 	  box-sizing: border-box;
 	  font-family: "Poppins" , sans-serif;
 	}
+#btn:hover {
+  cursor:pointer;
+ }
 #nav-list{
     display:none;
 }
@@ -17,28 +20,35 @@
     background: #fff;
     padding: 6px 14px;
     z-index: 99;
-    transition: all 0.5s ease;
   }
+
+  .sidebar2{
+    height: 3em;
+  }
+
+  .sidebar2 .logo-details{
+    align-items: center;
+  }
+  
   
   .sidebar.open{
     width: 250px;
   }
+
   .sidebar .logo-details{
-    height: 60px;
+    height: 3em;
     display: flex;
     align-items: center;
     position: relative;
   }
   .sidebar .logo-details .icon{
     opacity: 0;
-    transition: all 0.5s ease;
   }
   .sidebar .logo-details .logo_name{
     color: #202124;
     font-size: 45px;
     font-weight: 600;
     opacity: 0;
-    transition: all 0.5s ease;
   }
   .sidebar2 .logo-details .logo_name{
     color: #202124;
@@ -58,11 +68,8 @@
     right: 0;
     transform: translateY(-50%);
     font-size: 22px;
-    transition: all 0.4s ease;
-    font-size: 23px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.5s ease;
   }
   .sidebar.open .logo-details #btn{
     text-align: right;
@@ -202,7 +209,6 @@
     background: none;
   }
   #home-section{
-    position: relative;
     background: #202124;
     min-height: 100vh;
     top: 0;

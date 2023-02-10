@@ -18,6 +18,16 @@ section.home{
     padding:0.5em;
     text-align: left;
 }
+.action{
+    width:10%;
+    min-width: 5.5em;
+    text-align-last: center;
+}
+.answer{
+    height:25px;
+    padding-top:1px;
+    min-width: 5.5em;
+}
 .card{
     max-width:30%;
     margin: 1em;
@@ -39,6 +49,7 @@ section.home{
 .light_color{
     color:#FFFFFF;
 }
+
 
 
 .table{
