@@ -1,7 +1,7 @@
-<div class="sidebar2">
+<div class="sidebar2 fixed-top bg-white">
     <div class="logo-details" style="display: flex">
       <div class="logo_name">TRANSPOSE</div>
-      <div class='bx bx-menu' id="btn" onclick="openNav2()" style="font-size: 2em; position:absolute; right: 10px; padding-top: 5px;" ></div>
+      <div class='bx bx-menu' id="btn" onclick="openNav2()" style="font-size: 2em; position:absolute; right: 10px;" ></div>
   </div>
   <div id="nav-list" class="nav-list">
     <li>
@@ -40,20 +40,6 @@
      </a>
      <span class="tooltip">Why Transpose</span>
    </li>
-   <li>
-     <a href="how_does_it_work" id = "how_does_it_work">
-       <i class="fa-solid fa-gears"></i>
-       <span class="links_name">How Does It Work</span>
-     </a>
-     <span class="tooltip">How Does It Work</span>
-   </li>
-   <li>
-     <a href="how_to_use_it" id = "how_to_use_it">
-       <i class="fa-solid fa-circle-question"></i>
-       <span class="links_name">How To Use It</span>
-     </a>
-     <span class="tooltip">How To Use It</span>
-   </li>
  <hr>
    <li>
      <a href="the_team" id = "the_team">
@@ -66,6 +52,8 @@
   </div>
 
 <script>
+
+
   function openNav2() {
     const barclass = document.getElementById('bar2-placeholder');
     if(barclass.className == "sidebar open"){

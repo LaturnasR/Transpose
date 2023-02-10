@@ -36,7 +36,7 @@
           </form>
         </div>
 			
-        <div id="output" class="output" style="width: 70%; margin: auto; color: black; background-color: #202124; border-radius: 10px; padding: 0.5em; text-align: center;">
+        <div id="output" class="output" style="width: 70%; margin: auto; color: black; border-radius: 10px; padding: 0.5em; text-align: center;">
         </div>
       </main>
     </div>
@@ -51,6 +51,12 @@
     src="https://code.jquery.com/jquery-3.6.1.min.js" 
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
     crossorigin="anonymous">
+  </script>
+
+  <script>
+    $("#sentence_form").submit(function(){
+      $("#output").css("background", "white");
+    });
   </script>
 
   <!-- custom js, needs jQuery on top -->
