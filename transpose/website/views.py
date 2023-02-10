@@ -62,10 +62,10 @@ def submit_sentence():
 	print(sentence)
 	lis = tl(sentence)
 	try: 
-		lis = "<p style = 'color: white'>Output:<br>" + (prettier(lis))
+		lis = "Output:<br>" + (prettier(lis))
 	except:
 		if type(lis) is list and all(lis):
-			temp = "<p style = 'color: white'><b>Output:</b><br> Ambiguous Sentence</p>"
+			temp = "Output (Ambiguous Sentence):<br>"
 			temp += "<br>".join([prettier(i) for i in lis])
 			lis = temp
 	return lis
