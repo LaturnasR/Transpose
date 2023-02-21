@@ -61,11 +61,11 @@ def submit_sentence():
 	sentence = request.form.get('sentence')
 	print(sentence)
 	lis = tl(sentence)
-	try: 
-		lis = "Output:<br>" + (prettier(lis))
-	except:
-		if type(lis) is list and all(lis):
-			temp = "Output (Ambiguous Sentence):<br>"
-			temp += "<br>".join([prettier(i) for i in lis])
-			lis = temp
+	if type(lis) is list and all(lis):
+		temp = "<p><b>Output:</b>"
+		if len(lis) > 1:
+			temp += "<br/>Ambiguous Sentence"
+		temp += "</p>"
+		temp += "<br/>".join([prettier(i) for i in lis])
+		lis = temp
 	return lis
