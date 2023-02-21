@@ -13,16 +13,20 @@ example_list = [
 views = Blueprint('views', __name__)
 @views.route('/')
 def index():
-	example_sent = example_list[random.randint(0, len(example_list) - 1)]
-	return render_template('index.html', translation="", example_sent = example_sent, last_input = example_sent)
+	return render_template('index.html')
     
-@views.route('/translate') #only here for compatibility, should be deprecated later
+@views.route('/translate')
 def translate():
-	return redirect("/")
+	example_sent = example_list[random.randint(0, len(example_list) - 1)]
+	return render_template('translate.html', translation="", example_sent = example_sent, last_input = example_sent)
 
 @views.route('/learn')
 def learn():
 	return render_template('learn.html')
+
+@views.route('/layout')
+def layout():
+	return render_template('layout.html')
 
 @views.route('/practice')
 def practice():
@@ -58,14 +62,14 @@ def _bar2():
 
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():
-	sentence = request.form.get('sentence')
-	print(sentence)
-	lis = tl(sentence)
-	if type(lis) is list and all(lis):
-		temp = "<p><b>Output:</b>"
-		if len(lis) > 1:
-			temp += "<br/>Ambiguous Sentence"
-		temp += "</p>"
-		temp += "<br/>".join([prettier(i) for i in lis])
-		lis = temp
-	return lis
+    sentence = request.form.get('sentence')
+    print(sentence)
+    lis = tl(sentence)
+    if type(lis) is list and all(lis):
+        temp = "<p><b>Output:</b>"
+        if len(lis) > 1:
+            temp += "<br/>Ambiguous Sentence"
+        temp += "</p>"
+        temp += "<br/>".join([prettier(i) for i in lis])
+        lis = temp
+    return lis
