@@ -89,7 +89,7 @@ operator['2REVERSE']['more_than'] += [str(i + " to") for i in operator['EXACT'][
 keyword = [word for i in operator.keys() for j in operator[i].keys() for word in operator[i][j]]
 keyword = list(set(keyword+[j for i in operator.keys() for j in operator[i].keys()]))
 keyword.sort(key=len, reverse=True)
-stopword = ["an", "by", "the", "of", "from", "certain", 'as', 'another', 'when', "with"]
+stopword = ["an", "by", "the", "of", "from", "certain", 'as', 'another', 'when', "with", "root"]
     #filter LEADING keywords out
 leading_keyword = set([word for i in operator["LEADING"].keys() for word in operator["LEADING"][i]])
 modified_keyword = list(set(keyword) - leading_keyword)
@@ -529,7 +529,7 @@ def translate(sentence):
 
     sentence_list = _conversion(sentence)
     if sentence_list is None:
-        return None
+        return "No Translation: Input Unrecognized"
     
     sentence_list = _postprocessing(sentence_list)
 
