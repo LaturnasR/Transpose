@@ -1,79 +1,60 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<html>
-  <head>
-	<title> Transpose | English Sentence to Math Expression Translator </title>
-	<!-- Design imports -->
-	<div id="imports">	
-	</div>
-  </head>
-  
- <body>
-  <div id="bar-placeholder">
-  </div>
-  <div id="bar2-placeholder" class="sidebar2">
-  </div>
-  <section id="home-section">
-    <div class="container-fluid">
-		<br>
-		<div class="main_custom">
-	  <h2 class="title_custom"><i class="fa-sharp fa-solid fa-people-group" style="font-size: 0.85em"></i>&ensp;THE TEAM</h2>
+{% extends "layout.html" %}
+{% block content %}
+<div id="bar2-placeholder" class="sidebar2"></div>
+<section id="home-section">
+  <div class="container-fluid">
+  <br>
+  <h2 class="title_custom"><i class="fa-sharp fa-solid fa-people-group" style="font-size: 0.85em"></i>&ensp;THE TEAM</h2>
 <div style="display: inline-flex">
-  <div class="card">
-    <img class="card-img-top" src="/images/JMDB.png" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-title" align = "center">DE BORJA, JOHN MICHAEL</p>
-    </div>
-    <div class="card-footer">
-	<div style="clear: both">
-    <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">ALGORITHM</p>
-    <h3 style="float: right"><a href="https://www.facebook.com/iamjmdb" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
-	</a> <a href="https://www.linkedin.com/in/john-michael-de-borja-a99b8b248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
-	</div>
-    </div>
+<div class="card">
+  <img class="card-img-top" src="/images/JMDB.png" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-title" align = "center">DE BORJA, JOHN MICHAEL</p>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="/images/RL.png" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-title" align = "center">LATURNAS, REDEL</p>
-    </div>
-    <div class="card-footer">
-	  <div style="clear: both">
-    <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">DESIGN</p>
-    <h3 style="float: right"><a href="https://www.facebook.com/redel135/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
-	</a> <a href="https://www.linkedin.com/in/redel-laturnas-05bb11248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
-	</div>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="/images/IT.png" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-title" align = "center">TRESVALLES, IRISH</p>
-    </div>
-    <div class="card-footer">
-	  <div style="clear: both">
-    <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">CONTENT</p>
-    <h3 style="float: right"><a href="https://www.facebook.com/eyerish2001" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
-	</a> <a href="https://www.linkedin.com/in/irish-tresvalles-329204241/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
-	</div>
-    </div>
+  <div class="card-footer">
+<div style="clear: both">
+  <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">ALGORITHM</p>
+  <h3 style="float: right"><a href="https://www.facebook.com/iamjmdb" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
+</a> <a href="https://www.linkedin.com/in/john-michael-de-borja-a99b8b248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
+</div>
   </div>
 </div>
-  </section>
-    
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+<div class="card">
+  <img class="card-img-top" src="/images/RL.png" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-title" align = "center">LATURNAS, REDEL</p>
+  </div>
+  <div class="card-footer">
+  <div style="clear: both">
+  <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">DESIGN</p>
+  <h3 style="float: right"><a href="https://www.facebook.com/redel135/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
+</a> <a href="https://www.linkedin.com/in/redel-laturnas-05bb11248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
+</div>
+  </div>
+</div>
+<div class="card">
+  <img class="card-img-top" src="/images/IT.png" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-title" align = "center">TRESVALLES, IRISH</p>
+  </div>
+  <div class="card-footer">
+  <div style="clear: both">
+  <p style="float: left; font-family: Montserrat; font-size: 1.2em; margin-top: 2%">CONTENT</p>
+  <h3 style="float: right"><a href="https://www.facebook.com/eyerish2001" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook">
+</a> <a href="https://www.linkedin.com/in/irish-tresvalles-329204241/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a></h3>
+</div>
+  </div>
+</div>
+</div>
+</section>
 
-  <!-- jQuery -->
-  <script 
-    src="https://code.jquery.com/jquery-3.6.1.min.js" 
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous">
-  </script>
+<!-- jQuery -->
+<script 
+  src="https://code.jquery.com/jquery-3.6.1.min.js" 
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
 
-  <!-- custom js, needs jQuery on top -->
-  <script src="static/js/bar_loader.js"></script>
-  
-  </body>
-</html>
+<!-- custom js, needs jQuery on top -->
+<script src="static/js/bar_loader.js"></script>
+{% endblock %}

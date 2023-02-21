@@ -1,5 +1,45 @@
+#home-section{
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    margin-left: 0%;
+  }
 .accordion-flush .accordion-item .accordion-button, .accordion-flush .accordion-item .accordion-button.collapsed{
     border-radius: 10px;
+}
+.banner_custom{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(15, 47, 44, 1)),url("../../images/Banner.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.feature_section{
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+}
+.feature_element{
+    width: 50vw
+}
+.banner_button{
+    height: fit-content;
+    width: 8em;
+    align-self: end;
+    display: inline-table;
+}  
+.btn-primary{
+    --bs-btn-bg: none;
+    --bs-btn-border-color: #fff;
+}
+.btn-outline-light {
+    --bs-btn-color: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-color: #f8f9fa;
+    --bs-btn-hover-bg: #343A40;
+    --bs-btn-active-color: #343A40;
+}
+.carousel-item{
+    text-align: -webkit-center;
 }
 .title_custom{
     font-family: Bayon;
@@ -8,15 +48,6 @@
 }
 section.home{
     transition: margin-left 0.5s;
-}
-.main_custom{
-    width: 85%;
-    color: black;
-    background-color: #202124;
-    border-radius: 10px;
-    margin-left: 10%;
-    padding:0.5em;
-    text-align: left;
 }
 .action{
     width:10%;
@@ -50,20 +81,36 @@ section.home{
     color:#FFFFFF;
 }
 
-
-
-.table{
-    overflow-wrap: anywhere;
-    vertical-align: middle;
+.nav-link{
+    color:white;
+    background-color: white;
 }
 
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color:white;
+    background-color: #136a8a;
+}
+
+/* Mobile */
 @media (max-width: 720px) {
-    #bar-placeholder{
+    #sidebar-pc{
       display: none;
     }
     .main_custom{
         width:100%;
         margin-left: 0%;
     }
+    .banner_button{
+        align-self: center;
+    }
+    .feature_section{
+        display: block;
+        max-height: 100vh;
+        max-width: 100vh;
+    }
+    .feature_element{
+        min-width: 100vw;
+        max-height: 50vh;
+        display: block;
+    }
 }
-

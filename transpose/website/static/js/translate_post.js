@@ -1,3 +1,4 @@
+console.log("fsafs");
 $(document).on('submit','#sentence_form',function(e){
 	e.preventDefault();
 	$.ajax({

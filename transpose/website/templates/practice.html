@@ -1,391 +1,294 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+{% block content %}
+<div id="bar2-placeholder" class="sidebar2"></div>
+<section id="home-section">
+  <div class="container my-2 py-2 bg-dark bg-opacity-50 fs-5 rounded">
+  <br>
+  <h2 class="title_custom"><i class="fa-solid fa-pencil" style="font-size: 0.85em"></i>&ensp;Practice</h2>
+  <br>
+  <p align="justify" class="etc_info">&emsp;&emsp;Listed below are different variations of sample problems. Try to translate these
+  problems into expressions by yourself before seeing the answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.</p>
+  <br>
 
-<html>
-  <head>
-	<title> Transpose | English Sentence to Math Expression Translator </title>
-	<!-- Design imports -->
-	<div id="imports">	
-	</div>
-  </head>
-  
- <body>
-  <div id="bar-placeholder">
-  </div>
-  <div id="bar2-placeholder" class="sidebar2">
-  </div>
-  <section id="home-section">
-      <div class="container-fluid">
-	    <br>
-       <div class="main_custom">
-		<h2 class="title_custom"><i class="fa-solid fa-pencil" style="font-size: 0.85em"></i>&ensp;Practice</h2>
-		<br>
-		<p align="justify" class="etc_info">&emsp;&emsp;Listed below are different variations of sample problems. Try to translate these
-		problems into expressions by yourself before seeing the answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.</p>
-		<br>
-
-    <div class="accordion accordion-flush" id="accordionFlushExample" style = "margin-left: 2%;">
-      <div class="accordion-item" style="border-radius: 12px;">
-        <h2 class="accordion-header" id="flush-headingOne">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            <b>Addition (+)</b>
-          </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" >
-          <div class="accordion-body" style="background-color:#FFFFFF; border-radius: 10px; " >
-		<div class="table-responsive" >
-	<table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-  <thead>
-    <tr>
-      <th class="dark_color" style="width:45%;" scope="col" >Problem</th>
-      <th class="dark_color" style="width:45%;" scope="col">Answer</th>
-	  <th class="dark_color action" scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="dark_color"  scope="row">4 more than 11</td>
-	  <td id="addans1" class="dark_color"  scope="row"></td>
-      <td style="text-align: center"><button id="addbut1" class="btn btn-outline-primary answer" onclick="revealaddans1()">Show</button></td>
-    </tr>
-    <tr>
-      <td class="dark_color" scope="row">3 plus the sum of 9 and x</td>
-      <td id="addans2" class="dark_color"></td>
-	  <td style="text-align: center"><button id="addbut2" class="btn btn-outline-primary answer" onclick="revealaddans2()">Show</button></td>
-    </tr>
-    <tr>
-      <td class="dark_color" scope="row">A number added to 16</td>
-      <td id="addans3" class="dark_color"></td>
-	  <td style="text-align: center"><button id="addbut3" class="btn btn-outline-primary answer" onclick="revealaddans3()">Show</button></td>
-    </tr>
-	<tr>
-      <td class="dark_color" scope="row">Total of 17 and 5x</td>
-      <td id="addans4" class="dark_color"></td>
-	  <td style="text-align: center"><button id="addbut4" class="btn btn-outline-primary answer" onclick="revealaddans4()">Show</button></td>
-    </tr>
-	<tr>
-      <td class="dark_color" scope="row">The sum of 6 and x increased by 2</td>
-      <td id="addans5" class="dark_color"></td>
-	  <td style="text-align: center"><button id="addbut5" class="btn btn-outline-primary answer" onclick="revealaddans5()">Show</button></td>
-    </tr>
-  </tbody>
-</table>
-		</div>
-          </div>
-        </div>
-      </div>
-      <hr class="dark_color">
-
-
-      <div class="accordion-item" style="border-radius: 12px;">
-        <h2 class="accordion-header" id="flush-headingTwo" >
-          <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            <b>Subtraction (−)</b>
-          </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-              <thead>
-                <tr>
-                  <th style="width:45%;" scope="col">Problem</th>
-                  <th style="width:45%;" scope="col">Answer</th>
-                <th class="action" scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">12 less than 19</td>
-                <td id="subans1" scope="row"></td>
-                  <td><button id="subbut1" class="btn btn-outline-primary" onclick="revealsubans1()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">3 minus the difference of 2 and 4</td>
-                  <td id="subans2"></td>
-                <td><button id="subbut2" class="btn btn-outline-primary" onclick="revealsubans2()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">13 subtracted by 6</td>
-                  <td id="subans3"></td>
-                <td><button id="subbut3" class="btn btn-outline-primary" onclick="revealsubans3()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">13 subtracted from 6</td>
-                  <td id="subans4"></td>
-                <td><button id="subbut4" class="btn btn-outline-primary" onclick="revealsubans4()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">The difference of 5x and y decreased by 8</td>
-                  <td id="subans5"></td>
-                <td><button id="subbut5" class="btn btn-outline-primary" onclick="revealsubans5()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              </tbody>
-            </table>
-                </div>
-          </div>
-        </div>
-      </div>
-      <hr class="darkmode">
-
-      <div class="accordion-item" style="border-radius: 12px;">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            <b>Multiplication (×)</b>
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-              <thead>
-                <tr>
-                  <th style="width:45%;" scope="col">Problem</th>
-                  <th style="width:45%;" scope="col">Answer</th>
-                <th class="action" scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">4 multiplied by 7</td>
-                <td id="mulans1" scope="row"></td>
-                  <td><button id="mulbut1" class="btn btn-outline-primary" onclick="revealmulans1()" style="height:25px; padding-top:1px; ">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">2 times the product of 4 and 4</td>
-                  <td id="mulans2"></td>
-                <td><button id="mulbut2" class="btn btn-outline-primary" onclick="revealmulans2()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">Twice a number</td>
-                  <td id="mulans3"></td>
-                <td><button id="mulbut3" class="btn btn-outline-primary" onclick="revealmulans3()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">Thrice 5x</td>
-                  <td id="addans4"></td>
-                <td><button id="mulbut4" class="btn btn-outline-primary" onclick="revealmulans4()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">The product of 6 and a number</td>
-                  <td id="mulans5"></td>
-                <td><button id="mulbut5" class="btn btn-outline-primary" onclick="revealmulans5()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              </tbody>
-            </table>
-                </div>
-                <hr>
-                
-          </div>
-        </div>
-      </div>
-      <hr>
-
-      <div class="accordion-item" style="border-radius: 12px;">
-        <h2 class="accordion-header" id="flush-headingFour">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-            <b>Division (÷)</b>
-          </button>
-        </h2>
-        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-              <thead>
-                <tr>
-                  <th style="width:45%;" scope="col">Problem</th>
-                  <th style="width:45%;" scope="col">Answer</th>
-                <th class="action" scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">2 divided by x</td>
-                <td id="divans1" scope="row style = "color: #FFFFFF;"td>
-                  <td><button id="divbut1" class="btn btn-outline-primary" onclick="revealdivans1()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">The quotient of x and 14 divided by 3</td>
-                  <td id="addans2"></td>
-                <td><button id="addbut2" class="btn btn-outline-primary" onclick="revealdivans2()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">The ratio of 6 and 18</td>
-                  <td id="divans3"></td>
-                <td><button id="divbut3" class="btn btn-outline-primary" onclick="revealdivans3()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">One-third of a number</td>
-                  <td id="divans4"></td>
-                <td><button id="divbut4" class="btn btn-outline-primary" onclick="revealdivans4()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">One-half of a number divided by 9</td>
-                  <td id="divans5"></td>
-                <td><button id="divbut5" class="btn btn-outline-primary" onclick="revealdivans5()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              </tbody>
-            </table>
-                </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-
-      <div class="accordion-item" style="border-radius: 12px;">
-        <h2 class="accordion-header" id="flush-headingFive">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-            <b>Multiple operators (+ − × ÷ )</b>
-          </button>
-        </h2>
-        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive">
-          <div class="accordion-body">
-            <div class="table-responsive">
-              <table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-              <thead>
-                <tr>
-                  <th style="width:45%;" scope="col">Problem</th>
-                  <th style="width:45%;" scope="col">Answer</th>
-                <th class="action" scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">4 more than 11</td>
-                <td id="addans1" scope="row"></td>
-                  <td><button id="addbut1" class="btn btn-outline-primary" onclick="revealaddans1()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">3 plus the sum of 9 and x</td>
-                  <td id="addans2""></td>
-                <td><button id="addbut2" class="btn btn-outline-primary" onclick="revealaddans2()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-                <tr>
-                  <td scope="row">A number added to 16</td>
-                  <td id="addans3"></td>
-                <td><button id="addbut3" class="btn btn-outline-primary" onclick="revealaddans3()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">Total of 17 and 5x</td>
-                  <td id="addans4"></td>
-                <td><button id="addbut4" class="btn btn-outline-primary" onclick="revealaddans4()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              <tr>
-                  <td scope="row">The sum of 6 and x increased by 2</td>
-                  <td id="addans5"></td>
-                <td><button id="addbut5" class="btn btn-outline-primary" onclick="revealaddans5()" style="height:25px; padding-top:1px;">Show</button></td>
-                </tr>
-              </tbody>
-            </table>
-                </div>
-          </div>
-        </div>
-      </div>
-
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-addition-tab" data-bs-toggle="tab" data-bs-target="#nav-addition" type="button" role="tab" aria-controls="nav-addition" aria-selected="true">Addition +</button>
+      <button class="nav-link" id="nav-subtraction-tab" data-bs-toggle="tab" data-bs-target="#nav-subtraction" type="button" role="tab" aria-controls="nav-subtraction" aria-selected="false">Subtraction −</button>
+      <button class="nav-link" id="nav-multiplication-tab" data-bs-toggle="tab" data-bs-target="#nav-multiplication" type="button" role="tab" aria-controls="nav-multiplication" aria-selected="false">Multiplication ×</button>
+      <button class="nav-link" id="nav-division-tab" data-bs-toggle="tab" data-bs-target="#nav-division" type="button" role="tab" aria-controls="nav-division-tab" aria-selected="false">Division ÷</button>
 
     </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-addition" role="tabpanel" aria-labelledby="nav-addition-tab">
+      <br>
+      <div class="table-responsive" >
+        <table class="table table-striped bg-light rounded" style = "padding-left: 2%; padding-right: 2%;">
+        <thead>
+          <tr>
+            <th class="dark_color" style="width:45%;" scope="col" >Problem</th>
+            <th class="dark_color" style="width:45%;" scope="col">Answer</th>
+          <th class="dark_color action" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dark_color"  scope="row">4 more than 11</td>
+          <td id="addans1" class="dark_color"  scope="row"></td>
+            <td style="text-align: center"><button id="addbut1" class="btn btn-outline-primary answer" onclick="revealaddans1()">Show</button></td>
+          </tr>
+          <tr>
+            <td class="dark_color" scope="row">3 plus the sum of 9 and x</td>
+            <td id="addans2" class="dark_color"></td>
+          <td style="text-align: center"><button id="addbut2" class="btn btn-outline-primary answer" onclick="revealaddans2()">Show</button></td>
+          </tr>
+          <tr>
+            <td class="dark_color" scope="row">A number added to 16</td>
+            <td id="addans3" class="dark_color"></td>
+          <td style="text-align: center"><button id="addbut3" class="btn btn-outline-primary answer" onclick="revealaddans3()">Show</button></td>
+          </tr>
+        <tr>
+            <td class="dark_color" scope="row">Total of 17 and 5x</td>
+            <td id="addans4" class="dark_color"></td>
+          <td style="text-align: center"><button id="addbut4" class="btn btn-outline-primary answer" onclick="revealaddans4()">Show</button></td>
+          </tr>
+        <tr>
+            <td class="dark_color" scope="row">The sum of 6 and x increased by 2</td>
+            <td id="addans5" class="dark_color"></td>
+          <td style="text-align: center"><button id="addbut5" class="btn btn-outline-primary answer" onclick="revealaddans5()">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+    </div>
 
-  </section>
+    <div class="tab-pane fade" id="nav-subtraction" role="tabpanel" aria-labelledby="nav-subtraction-tab">
+      <br>
+      <div class="table-responsive">
+        <table class="table table-striped bg-light rounded" style = "padding-left: 2%; padding-right: 2%;">
+        <thead>
+          <tr>
+            <th style="width:45%;" scope="col">Problem</th>
+            <th style="width:45%;" scope="col">Answer</th>
+          <th class="action" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">12 less than 19</td>
+          <td id="subans1" scope="row"></td>
+            <td><button id="subbut1" class="btn btn-outline-primary" onclick="revealsubans1()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">3 minus the difference of 2 and 4</td>
+            <td id="subans2"></td>
+          <td><button id="subbut2" class="btn btn-outline-primary" onclick="revealsubans2()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">13 subtracted by 6</td>
+            <td id="subans3"></td>
+          <td><button id="subbut3" class="btn btn-outline-primary" onclick="revealsubans3()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">13 subtracted from 6</td>
+            <td id="subans4"></td>
+          <td><button id="subbut4" class="btn btn-outline-primary" onclick="revealsubans4()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">The difference of 5x and y decreased by 8</td>
+            <td id="subans5"></td>
+          <td><button id="subbut5" class="btn btn-outline-primary" onclick="revealsubans5()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+    </div>
 
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+    <div class="tab-pane fade" id="nav-multiplication" role="tabpanel" aria-labelledby="nav-multiplication-tab">
+      <br>
+      <div class="table-responsive">
+        <table class="table table-striped bg-light rounded" style = "padding-left: 2%; padding-right: 2%;">
+        <thead>
+          <tr>
+            <th style="width:45%;" scope="col">Problem</th>
+            <th style="width:45%;" scope="col">Answer</th>
+          <th class="action" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">4 multiplied by 7</td>
+          <td id="mulans1" scope="row"></td>
+            <td><button id="mulbut1" class="btn btn-outline-primary" onclick="revealmulans1()" style="height:25px; padding-top:1px; ">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">2 times the product of 4 and 4</td>
+            <td id="mulans2"></td>
+          <td><button id="mulbut2" class="btn btn-outline-primary" onclick="revealmulans2()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">Twice a number</td>
+            <td id="mulans3"></td>
+          <td><button id="mulbut3" class="btn btn-outline-primary" onclick="revealmulans3()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">Thrice 5x</td>
+            <td id="addans4"></td>
+          <td><button id="mulbut4" class="btn btn-outline-primary" onclick="revealmulans4()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">The product of 6 and a number</td>
+            <td id="mulans5"></td>
+          <td><button id="mulbut5" class="btn btn-outline-primary" onclick="revealmulans5()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+    </div>
 
-  <!-- jQuery -->
-  <script 
-    src="https://code.jquery.com/jquery-3.6.1.min.js" 
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous">
-  </script>
+    <div class="tab-pane fade" id="nav-division" role="tabpanel" aria-labelledby="nav-division-tab">
+      <br>
+      <div class="table-responsive">
+        <table class="table table-striped bg-light rounded" style = "padding-left: 2%; padding-right: 2%;">
+        <thead>
+          <tr>
+            <th style="width:45%;" scope="col">Problem</th>
+            <th style="width:45%;" scope="col">Answer</th>
+          <th class="action" scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">2 divided by x</td>
+          <td id="divans1" scope="row style = "color: #FFFFFF;"td>
+            <td><button id="divbut1" class="btn btn-outline-primary" onclick="revealdivans1()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">The quotient of x and 14 divided by 3</td>
+            <td id="addans2"></td>
+          <td><button id="addbut2" class="btn btn-outline-primary" onclick="revealdivans2()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+          <tr>
+            <td scope="row">The ratio of 6 and 18</td>
+            <td id="divans3"></td>
+          <td><button id="divbut3" class="btn btn-outline-primary" onclick="revealdivans3()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">One-third of a number</td>
+            <td id="divans4"></td>
+          <td><button id="divbut4" class="btn btn-outline-primary" onclick="revealdivans4()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        <tr>
+            <td scope="row">One-half of a number divided by 9</td>
+            <td id="divans5"></td>
+          <td><button id="divbut5" class="btn btn-outline-primary" onclick="revealdivans5()" style="height:25px; padding-top:1px;">Show</button></td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+    </div>
+  </div>
 
-  <!-- custom js, needs jQuery on top -->
-  <script src="static/js/bar_loader.js"></script>
-  
-  <script>
-	function revealaddans1() {
-  var x = document.getElementById("addbut1");
-  var y = document.getElementById("addans1");
-  
-  if (document.getElementById("addbut1").innerHTML == "Show"){
-	document.getElementById("addbut1").innerHTML = "Hide";
-	} else {
-		document.getElementById("addbut1").innerHTML = "Show";
-	}
-	
+
+  </div>
+
+</section>
+
+
+<!-- jQuery -->
+<script 
+  src="https://code.jquery.com/jquery-3.6.1.min.js" 
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
+
+<!-- custom js, needs jQuery on top -->
+<script src="static/js/bar_loader.js"></script>
+
+<script>
+function revealaddans1() {
+var x = document.getElementById("addbut1");
+var y = document.getElementById("addans1");
+
+if (document.getElementById("addbut1").innerHTML == "Show"){
+document.getElementById("addbut1").innerHTML = "Hide";
+} else {
+  document.getElementById("addbut1").innerHTML = "Show";
+}
+
 if (document.getElementById("addans1").innerHTML == ""){
-	document.getElementById("addans1").innerHTML = "11 + 4";
-	} else {
-		document.getElementById("addans1").innerHTML = "";
-	}
+document.getElementById("addans1").innerHTML = "11 + 4";
+} else {
+  document.getElementById("addans1").innerHTML = "";
+}
 }
 
 function revealaddans2() {
-  var x = document.getElementById("addbut2");
-  var y = document.getElementById("addans2");
-  
-  if (document.getElementById("addbut2").innerHTML == "Show"){
-	document.getElementById("addbut2").innerHTML = "Hide";
-	} else {
-		document.getElementById("addbut2").innerHTML = "Show";
-	}
-	
+var x = document.getElementById("addbut2");
+var y = document.getElementById("addans2");
+
+if (document.getElementById("addbut2").innerHTML == "Show"){
+document.getElementById("addbut2").innerHTML = "Hide";
+} else {
+  document.getElementById("addbut2").innerHTML = "Show";
+}
+
 if (document.getElementById("addans2").innerHTML == ""){
-	document.getElementById("addans2").innerHTML = "3 + (9 + x)";
-	} else {
-		document.getElementById("addans2").innerHTML = "";
-	}
+document.getElementById("addans2").innerHTML = "3 + (9 + x)";
+} else {
+  document.getElementById("addans2").innerHTML = "";
+}
 }
 
 function revealaddans3() {
-  var x = document.getElementById("addbut3");
-  var y = document.getElementById("addans3");
-  
-  if (document.getElementById("addbut3").innerHTML == "Show"){
-	document.getElementById("addbut3").innerHTML = "Hide";
-	} else {
-		document.getElementById("addbut3").innerHTML = "Show";
-	}
-	
+var x = document.getElementById("addbut3");
+var y = document.getElementById("addans3");
+
+if (document.getElementById("addbut3").innerHTML == "Show"){
+document.getElementById("addbut3").innerHTML = "Hide";
+} else {
+  document.getElementById("addbut3").innerHTML = "Show";
+}
+
 if (document.getElementById("addans3").innerHTML == ""){
-	document.getElementById("addans3").innerHTML = "16 + x";
-	} else {
-		document.getElementById("addans3").innerHTML = "";
-	}
+document.getElementById("addans3").innerHTML = "16 + x";
+} else {
+  document.getElementById("addans3").innerHTML = "";
+}
 }
 
 function revealaddans4() {
-  var x = document.getElementById("addbut4");
-  var y = document.getElementById("addans4");
-  
-  if (document.getElementById("addbut4").innerHTML == "Show"){
-	document.getElementById("addbut4").innerHTML = "Hide";
-	} else {
-		document.getElementById("addbut4").innerHTML = "Show";
-	}
-	
+var x = document.getElementById("addbut4");
+var y = document.getElementById("addans4");
+
+if (document.getElementById("addbut4").innerHTML == "Show"){
+document.getElementById("addbut4").innerHTML = "Hide";
+} else {
+  document.getElementById("addbut4").innerHTML = "Show";
+}
+
 if (document.getElementById("addans4").innerHTML == ""){
-	document.getElementById("addans4").innerHTML = "17 + 5x";
-	} else {
-		document.getElementById("addans4").innerHTML = "";
-	}
+document.getElementById("addans4").innerHTML = "17 + 5x";
+} else {
+  document.getElementById("addans4").innerHTML = "";
+}
 }
 
 function revealaddans5() {
-  var x = document.getElementById("addbut5");
-  var y = document.getElementById("addans5");
-  
-  if (document.getElementById("addbut5").innerHTML == "Show"){
-	document.getElementById("addbut5").innerHTML = "Hide";
-	} else {
-		document.getElementById("addbut5").innerHTML = "Show";
-	}
-	
-if (document.getElementById("addans5").innerHTML == ""){
-	document.getElementById("addans5").innerHTML = "(6 + x) + 2";
-	} else {
-		document.getElementById("addans5").innerHTML = "";
-	}
-}
-  </script>
+var x = document.getElementById("addbut5");
+var y = document.getElementById("addans5");
 
-  </body>
-</html>
+if (document.getElementById("addbut5").innerHTML == "Show"){
+document.getElementById("addbut5").innerHTML = "Hide";
+} else {
+  document.getElementById("addbut5").innerHTML = "Show";
+}
+
+if (document.getElementById("addans5").innerHTML == ""){
+document.getElementById("addans5").innerHTML = "(6 + x) + 2";
+} else {
+  document.getElementById("addans5").innerHTML = "";
+}
+}
+</script>
+{% endblock %}

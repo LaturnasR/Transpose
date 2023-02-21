@@ -139,7 +139,6 @@
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: 0.4s;
   }
   .sidebar.open li a .links_name{
     opacity: 1;
@@ -208,15 +207,7 @@
     width: 50px;
     background: none;
   }
-  #home-section{
-    background: #202124;
-    min-height: 100vh;
-    top: 0;
-    width: 100%;
-    transition: all 0.5s ease;
-    z-index: 2;
-    margin-left: 0%;
-  }
+
   .sidebar.open ~ .home-section{
     left: 250px;
     width: calc(100% - 250px);
@@ -242,6 +233,9 @@
   @media (min-width: 720px) {
     #bar2-placeholder{
         display:none;
+    }
+    #home-section{
+      padding-left: 4.9em;
     }
   }
 

@@ -1,69 +1,85 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
+{% block content %}
+<section id="bar-placeholder"></section>
+<div id="bar2-placeholder" class="sidebar2"></div>
 
-<html>
-  <head>
-	<title> Transpose | English Sentence to Math Expression Translator </title>
-	<script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
-	<!-- Design imports -->
-	<div id="imports">	
-	</div>
-  </head>
 
- <body>
-	<div id="bar-placeholder"></div>
 
-  <div id="bar2-placeholder" class="sidebar2"></div>
-  
-  <section id="home-section">
-		<div id = "translator" class="container-fluid">
-      <main>
-        <div class="py-5 text-center" style="height:20em;">
-        	<img style="width:16em; height:12em;" src="images/Logo.png">
-          <h1 style="font-family: Bayon; color: #FFFFFF; font-size: 4em;">TRANSPOSE</h1>
-          <h5 style="font-family: Montserrat; color: #FFFFFF;">English Sentence to Math Expression</h5>
-        </div>
-
-        <div>
-          <form method="POST" id="sentence_form" class="justify-content-center text-muted text-center text-small">
-            <p style="color: #808080"><br><br><br>Example: {{ example_sent }}</p>
-            <div class="input-group mb-3" style="width: 70%; margin: auto";>
-                <input type="text"  for="sentence" name="sentence"id="sentence" class="form-control" placeholder="{{last_input}}">
-                <button class="btn btn-outline-primary">
-                    Enter
-                </button>
+<section id="home-section">
+  <header class="banner_custom py-3">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="title_custom" style="font-size: 5em; ">TRANSPOSE</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">A supplemental tool in learning a specific topic namely: "Translating English phrases to mathematical expressions". The tool does exactly what the topic says, it translates english phrases inputted by the user, then outputs its mathematical expression equivalent.</p>
+                </div>
             </div>
-          </form>
+            <div class="col-sm d-flex flex-column gap-3 justify-content-xl-center">
+                <a class="banner_button btn btn-outline-light btn-lg px-2 --bs-bg-opacity: .50;" href="#learn_feature"></i>Learn</a>
+                <a class="banner_button btn btn-outline-light btn-lg px-2 --bs-bg-opacity: .50;" href="#practice_feature"></i>Practice</a>
+            </div>
         </div>
-			
-        <div id="output" class="output" style="width: 70%; margin: auto; color: black; border-radius: 10px; padding: 0.5em; text-align: center;">
-        </div>
-      </main>
     </div>
+</header>
+<!-- Learn section-->
+        <section id="learn_feature">
+                <div class="feature_section align-items-center">
+                    <div class="feature_element d-flex"><img class="card-img-top" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <div class="feature_element px-5 py-5 text-white text-center">
+                        <h1 class="fw-bolder">Learn the topic</h1>
+                        <p class="lead">Lorem ipsum sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <div>
+                            <a class="btn btn-outline-dark" type="button" href="learn">
+                                Get started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    
+<!-- Practice section-->
+<section id="practice_feature">
+    <div class="feature_section align-items-center">
+        <div class="feature_element d-flex"><img class="card-img-top" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+        <div class="feature_element px-5 py-5 text-white text-center">
+            <h1 class="fw-bolder">Practice translating</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+            <div>
+                <a class="btn btn-outline-dark flex-shrink-0" type="button" href="practice">
+                    Get started
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-  </section>
+        
 
-  <!-- font awesome -->
-	<script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+</section> 
 
-	<!-- jQuery -->
-  <script 
-    src="https://code.jquery.com/jquery-3.6.1.min.js" 
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous">
-  </script>
 
-  <script>
-    $("#sentence_form").submit(function(){
-      $("#output").css("background", "white");
-    });
-  </script>
 
-  <!-- custom js, needs jQuery on top -->
-  <script src="static/js/bar_loader.js"></script>
-  <script>
-  	$SCRIPT_ROOT = {{ request.script_root|tojson }};
-	</script>
-  <script src="static/js/translate_post.js"></script>
+
+<!-- jQuery -->
+<script 
+  src="https://code.jquery.com/jquery-3.6.1.min.js" 
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
+
+<script>
+  $("#sentence_form").submit(function(){
+    $("#output").css("background", "white");
+  });
+</script>
+
+<!-- custom js, needs jQuery on top -->
+<script src="static/js/bar_loader.js"></script>
+<script>
+  $SCRIPT_ROOT = {{ request.script_root|tojson }};
+</script>
+<script src="static/js/translate_post.js"></script>
 </body>
 </html>
+{% endblock %}

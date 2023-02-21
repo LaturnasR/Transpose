@@ -1,104 +1,83 @@
-<!doctype html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<html>
-  <head>
-	<title> Transpose | English Sentence to Math Expression Translator </title>
-	<!-- Design imports -->
-	<div id="imports">	
-	</div>
-  </head>
+{% extends "layout.html" %}
+{% block content %}
+<div id="bar2-placeholder" class="sidebar2"></div>
+<section id="home-section">
+  <div class="container my-2 py-2 bg-dark bg-opacity-50 fs-5 rounded"">
+  <br>
+  <h2 class="title_custom"><i class="fa-solid fa-book" style="font-size: 0.85em"></i>&ensp;Learn</h2>
+  <br>
+  <p align="justify" class="etc_info">&emsp;&emsp;Worded Mathematical Problems follow the order of operations the way 
+  they are written, unless stated that one operation precedes the other. A simple step-by-step guide to follow would be:</p>
+  <br>
+  <p align="justify" class="etc_info">1. Read the problem</p>
+  <p align="justify" class="etc_info">2. Highlight the question (example, “The sum of ... “, “The quotient of ...”)</p>
+  <p align="justify" class="etc_info">3. Identify and take note of the keywords and givens (e.g, “Twice the difference of 12 and 7 )</p>
+  <p align="justify" class="etc_info">4. Solve the problem using the details sorted out in steps 2 and 3.</p>
+  <br>
+  <br>
+  <p align="justify" class="etc_info">&emsp;&emsp;Certain words symbolize operations. For example, the addition operation can be 
+  symbolized by the phrases "the sum of ..." , "the total of .. ", "combined", or "the tally of ..." , indicating the grand total of numbers combined.
+  On the other hand, words like "difference" or "less than" indicate that the operation to be done is subtraction. Multiplication can be represented 
+  by the words "product", "times" and by using modified number words like "once", "twice" and "thrice" to indicate the number of times a variable 
+  would be multiplied. (e.g twice the sum of 3 and 5 = 2 * ( 3 + 5 )  ). Division can be identified by using the words "quotient",  "remainder of ", 
+  and  "divided by"  .</p>
+  <br>
+  <p align="left" class="etc_info">&emsp;Here are some of the commonly used words that indicates an expression:</p>
   
- <body>
-  <div id="bar-placeholder">
-  </div>
-
-  <div id="bar2-placeholder" class="sidebar2">
-  </div>
-
-  <section id="home-section">
-    <div class="container-fluid">
-	    <br>
-       <div class="main_custom">
-		<h2 class="title_custom"><i class="fa-solid fa-book" style="font-size: 0.85em"></i>&ensp;Learn</h2>
-		<br>
-		<p align="justify" class="etc_info">&emsp;&emsp;Worded Mathematical Problems follow the order of operations the way 
-		they are written, unless stated that one operation precedes the other. A simple step-by-step guide to follow would be:</p>
-		<br>
-		<p align="justify" class="etc_info">1. Read the problem</p>
-		<p align="justify" class="etc_info">2. Highlight the question (example, “The sum of ... “, “The quotient of ...”)</p>
-		<p align="justify" class="etc_info">3. Identify and take note of the keywords and givens (e.g, “Twice the difference of 12 and 7 )</p>
-		<p align="justify" class="etc_info">4. Solve the problem using the details sorted out in steps 2 and 3.</p>
-		<br>
-		<br>
-		<p align="justify" class="etc_info">&emsp;&emsp;Certain words symbolize operations. For example, the addition operation can be 
-		symbolized by the phrases "the sum of ..." , "the total of .. ", "combined", or "the tally of ..." , indicating the grand total of numbers combined.
-		On the other hand, words like "difference" or "less than" indicate that the operation to be done is subtraction. Multiplication can be represented 
-		by the words "product", "times" and by using modified number words like "once", "twice" and "thrice" to indicate the number of times a variable 
-		would be multiplied. (e.g twice the sum of 3 and 5 = 2 * ( 3 + 5 )  ). Division can be identified by using the words "quotient",  "remainder of ", 
-		and  "divided by"  .</p>
-		<br>
-		<p align="left" class="etc_info">&emsp;Here are some of the commonly used words that indicates an expression:</p>
-		
-	<div class="table-responsive" style = "margin-left: 2%;">
-	<table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
-  <thead>
-    <tr>
-      <th scope="col" style = "color: #FFFFFF;">Addition</th>
-      <th scope="col" style = "color: #FFFFFF;">Subtraction</th>
-      <th scope="col" style = "color: #FFFFFF;">Multiplication</th>
-      <th scope="col" style = "color: #FFFFFF;">Division</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row" style = "color: #FFFFFF;">added to</td>
-      <td style = "color: #FFFFFF;">decreased by</td>
-      <td style = "color: #FFFFFF;">multiplied by</td>
-      <td style = "color: #FFFFFF;">divided by</td>
-    </tr>
-    <tr>
-      <td scope="row" style = "color: #FFFFFF;">increased by</td>
-      <td style = "color: #FFFFFF;">less than</td>
-      <td style = "color: #FFFFFF;">the product of</td>
-      <td style = "color: #FFFFFF;">the quotient of</td>
-    </tr>
-    <tr>
-      <td scope="row" style = "color: #FFFFFF;">more than</td>
-      <td style = "color: #FFFFFF;">minus</td>
-      <td style = "color: #FFFFFF;">times</td>
-      <td style = "color: #FFFFFF;">ratio of</td>
-    </tr>
-	<tr>
-      <td scope="row" style = "color: #FFFFFF;">plus</td>
-      <td style = "color: #FFFFFF;">subtracted from</td>
-      <td style = "color: #FFFFFF;">twice</td>
-      <td style = "color: #FFFFFF;"></td>
-    </tr>
-	<tr>
-      <td scope="row" style = "color: #FFFFFF;">the sum of</td>
-      <td style = "color: #FFFFFF;">the difference of</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
+<div class="table-responsive" style = "margin-left: 2%;">
+<table class="table table-striped" style = "padding-left: 2%; padding-right: 2%;">
+<thead>
+  <tr>
+    <th scope="col" style = "color: #FFFFFF;">Addition</th>
+    <th scope="col" style = "color: #FFFFFF;">Subtraction</th>
+    <th scope="col" style = "color: #FFFFFF;">Multiplication</th>
+    <th scope="col" style = "color: #FFFFFF;">Division</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td scope="row" style = "color: #FFFFFF;">added to</td>
+    <td style = "color: #FFFFFF;">decreased by</td>
+    <td style = "color: #FFFFFF;">multiplied by</td>
+    <td style = "color: #FFFFFF;">divided by</td>
+  </tr>
+  <tr>
+    <td scope="row" style = "color: #FFFFFF;">increased by</td>
+    <td style = "color: #FFFFFF;">less than</td>
+    <td style = "color: #FFFFFF;">the product of</td>
+    <td style = "color: #FFFFFF;">the quotient of</td>
+  </tr>
+  <tr>
+    <td scope="row" style = "color: #FFFFFF;">more than</td>
+    <td style = "color: #FFFFFF;">minus</td>
+    <td style = "color: #FFFFFF;">times</td>
+    <td style = "color: #FFFFFF;">ratio of</td>
+  </tr>
+<tr>
+    <td scope="row" style = "color: #FFFFFF;">plus</td>
+    <td style = "color: #FFFFFF;">subtracted from</td>
+    <td style = "color: #FFFFFF;">twice</td>
+    <td style = "color: #FFFFFF;"></td>
+  </tr>
+<tr>
+    <td scope="row" style = "color: #FFFFFF;">the sum of</td>
+    <td style = "color: #FFFFFF;">the difference of</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
 </table>
-		</div>
+  </div>
 
-  </section>
-  
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+</section>
 
-  <!-- jQuery -->
-  <script 
-    src="https://code.jquery.com/jquery-3.6.1.min.js" 
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous">
-  </script>
+<!-- jQuery -->
+<script 
+  src="https://code.jquery.com/jquery-3.6.1.min.js" 
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
 
-  <!-- custom js, needs jQuery on top -->
-  <script src="static/js/bar_loader.js"></script>
-  
-  </body>
-</html>
+<!-- custom js, needs jQuery on top -->
+<script src="static/js/bar_loader.js"></script>
+{% endblock %}
