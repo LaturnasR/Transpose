@@ -1,5 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
+
+
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="myModalLabel"class="modal-title">Simple Reminder from the Devs!</h5>
+            </div>
+            <div class="modal-body">
+                <p>
+                  This translation tool is intended to assist the learnings of our user in the subject of "Translating English Phrases and Sentences to Mathematical Phrases and Sentences". More here na better notes tas maganda wording
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="bar2-placeholder" class="sidebar2"></div>
 <section id="home-section">
   <div id = "translator" class="container-fluid">
