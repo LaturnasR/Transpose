@@ -14,19 +14,21 @@
     height: 100vh;
 }
 .feature_section{
-    min-height: 100vh;
+    height: 100vh;
     max-width: 100vw;
     display: flex;
+    background: linear-gradient(rgba(7, 42, 54, 0.5), rgb(15, 47, 44, 0.5))
 }
 .feature_element{
-    width: 50vw
+    width: 50vw;
 }
 .banner_button{
     height: fit-content;
-    width: 8em;
-    align-self: end;
+    width: 10em;
+    align-self: center;
     display: inline-table;
-}  
+} 
+
 .btn-primary{
     --bs-btn-bg: none;
     --bs-btn-border-color: #fff;
@@ -70,7 +72,8 @@ section.home{
 .etc_info{
     margin-left: 2%;
     margin-right: 2%;
-    color:#FFFFFF
+    color:#FFFFFF;
+    word-spacing: -2px;
 }
 
 .dark_color{
@@ -99,6 +102,10 @@ section.home{
     .main_custom{
         width:100%;
         margin-left: 0%;
+    }
+    .getstarted{
+        display:flex!important;
+        flex-direction: column!important;
     }
     .banner_button{
         align-self: center;
