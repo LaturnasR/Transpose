@@ -213,7 +213,7 @@
     width: calc(100% - 250px);
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1080px) {
     #bar2-placeholder{
       text-align-last: center;
     }
@@ -235,6 +235,7 @@
         display:none;
     }
     #home-section{
+      width: 80%;
       padding-left: 4.9em;
     }
   }

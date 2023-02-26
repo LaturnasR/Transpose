@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 
-
 <script>
     $(document).ready(function(){
         $("#myModal").modal('show');
     });
 </script>
+
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -51,7 +51,6 @@
   </div>
   </section>
 <script>
-  console.log("dada");
   $("#sentence_form").submit(function(){
     $("#output").css("background", "white");
   });
