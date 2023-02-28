@@ -3,7 +3,7 @@
     width: 100%;
     z-index: 2;
     margin-left: 0%;
-    padding: 2em 2em 0 7em;
+    padding: 5em 2em 0 7em;
   }
 #bar2-placeholder{
     display:none;
@@ -12,7 +12,7 @@
     border-radius: 10px;
 }
 .banner_custom{
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(15, 47, 44, 1)),url("../../images/Banner.png");
+    background: linear-gradient(45deg, rgba(75, 192, 200, 0.9), rgba(199, 121, 208, 0.5)),url("../../images/Banner.png");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -21,7 +21,6 @@
     height: 100vh;
     max-width: 100vw;
     display: flex;
-    background: linear-gradient(rgba(7, 42, 54, 0.5), rgb(15, 47, 44, 0.5))
 }
 .feature_element{
     width: 50vw;
@@ -53,9 +52,6 @@
     text-align: center;
 }
 
-.nav-link:focus, .nav-link:hover {
-    color: white
-}
 .carousel-item{
     text-align: -webkit-center;
 }

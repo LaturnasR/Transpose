@@ -1,7 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+<div id="correct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 id="myModalLabel"class="modal-title text-success">Correct!<i class='bx bxs-check-square my-2'></i></i></h5>
+          </div>
+          <div class="modal-body">
+              <p>
+                Solution
+              </p>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<div id="incorrect" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
@@ -17,7 +33,22 @@
   </div>
 </div>
 
-<div id="bar2-placeholder" class="sidebar2"></div>
+<div id="solution" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 id="myModalLabel"class="modal-title">Question Number</h5>
+          </div>
+          <div class="modal-body">
+              <p>
+                Solution
+              </p>
+
+          </div>
+      </div>
+  </div>
+</div>
+
 <section id="home-section">
   <h2 class="title_custom"><i class="fa-solid fa-pencil" style="font-size: 0.85em"></i>&ensp;Practice</h2>
   <br>
@@ -33,75 +64,21 @@
         <option value="division">Division</option>
       </select>
 
+  
+
   <div id="DivContent">
     <div class="div_content" id="addition">
       <br>
-      <div class="table-responsive" >
-        <table class="table table-bordered bg-light border-secondary align-middle rounded fs-6" style = "padding-left: 2%; padding-right: 2%;">
+      <div class="table-responsive " >
+        <table class="table table-striped bg-light border-secondary align-middle rounded fs-6">
           <thead>
             <tr>
-              <th style="width:30%;" scope="col" >Problem</th>
+              <th px-3 style="width:30%;" scope="col" >Problem</th>
               <th style="width:30%; text-align: center;" scope="col">Answer</th>
               <th class="action" scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td  scope="row">4 more than 11</td>
-              <td scope="row">
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="add-ans-1" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="add-btn-1" class="btn btn-outline-primary answer" onclick="checkAddAns1()" >Check answer</button></td>
-            </tr>
-          <tr>
-            <td scope="row">3 plus the sum of 9 and x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="add-ans-2" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="add-btn-2" class="btn btn-outline-primary answer" onclick="checkAddAns2()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">A number added to 16</td>
-            <td >
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="add-ans-3" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="add-btn-3" class="btn btn-outline-primary answer" onclick="checkAddAns3()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">Total of 17 and 5x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="add-ans-4" class="form-label">
-                </div>
-              </form>
-            </td>
-            <td style="text-align: center"><button id="add-btn-4" class="btn btn-outline-primary answer" onclick="checkAddAns4()" >Check answer</button></td>
-          </tr>
-          <tr>
-              <td scope="row">The sum of 6 and x increased by 2</td>
-              <td>
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="add-ans-5" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="add-btn-5" class="btn btn-outline-primary answer" onclick="checkAddAns5()" >Check answer</button></td>
-            </tr>
-          </tbody>
+          <tbody id="addProblems"> </tbody>
         </table>
       </div>
     </div>
@@ -117,63 +94,7 @@
               <th class="action" scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td  scope="row">4 more than 11</td>
-              <td scope="row">
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="sub-ans-1" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="sub-btn-1" class="btn btn-outline-primary answer" onclick="checkAddAns1()" >Check answer</button></td>
-            </tr>
-          <tr>
-            <td scope="row">3 plus the sum of 9 and x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="sub-ans-2" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="sub-btn-2" class="btn btn-outline-primary answer" onclick="checkAddAns2()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">A number added to 16</td>
-            <td >
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="sub-ans-3" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="sub-btn-3" class="btn btn-outline-primary answer" onclick="checkAddAns3()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">Total of 17 and 5x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="sub-ans-4" class="form-label">
-                </div>
-              </form>
-            </td>
-            <td style="text-align: center"><button id="sub-btn-4" class="btn btn-outline-primary answer" onclick="checkAddAns4()" >Check answer</button></td>
-          </tr>
-          <tr>
-              <td scope="row">The sum of 6 and x increased by 2</td>
-              <td>
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="sub-ans-5" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="sub-btn-5" class="btn btn-outline-primary answer" onclick="checkAddAns5()" >Check answer</button></td>
-            </tr>
-          </tbody>
+          <tbody id="subProblems"> </tbody>
         </table>
       </div>
     </div>
@@ -189,63 +110,7 @@
               <th class="action" scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td  scope="row">4 more than 11</td>
-              <td scope="row">
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="mul-ans-1" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="mul-btn-1" class="btn btn-outline-primary answer" onclick="checkAddAns1()" >Check answer</button></td>
-            </tr>
-          <tr>
-            <td scope="row">3 plus the sum of 9 and x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="mul-ans-2" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="mul-btn-2" class="btn btn-outline-primary answer" onclick="checkAddAns2()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">A number added to 16</td>
-            <td >
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="mul-ans-3" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="mul-btn-3" class="btn btn-outline-primary answer" onclick="checkAddAns3()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">Total of 17 and 5x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="mul-ans-4" class="form-label">
-                </div>
-              </form>
-            </td>
-            <td style="text-align: center"><button id="mul-btn-4" class="btn btn-outline-primary answer" onclick="checkAddAns4()" >Check answer</button></td>
-          </tr>
-          <tr>
-              <td scope="row">The sum of 6 and x increased by 2</td>
-              <td>
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="mul-ans-5" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="mul-btn-5" class="btn btn-outline-primary answer" onclick="checkAddAns5()" >Check answer</button></td>
-            </tr>
-          </tbody>
+          <tbody id="mulProblems"> </tbody>
         </table>
       </div>
     </div>
@@ -261,63 +126,7 @@
               <th class="action" scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td  scope="row">4 more than 11</td>
-              <td scope="row">
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="div-ans-1" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="div-btn-1" class="btn btn-outline-primary answer" onclick="checkAddAns1()" >Check answer</button></td>
-            </tr>
-          <tr>
-            <td scope="row">3 plus the sum of 9 and x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="div-ans-2" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="div-btn-2" class="btn btn-outline-primary answer" onclick="checkAddAns2()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">A number added to 16</td>
-            <td >
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="div-ans-3" class="form-label">
-                </div>
-              </form>
-            </td>
-          <td style="text-align: center"><button id="div-btn-3" class="btn btn-outline-primary answer" onclick="checkAddAns3()" >Check answer</button></td>
-          </tr>
-          <tr>
-            <td scope="row">Total of 17 and 5x</td>
-            <td>
-              <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                <div class="input-group justify-content-center";>
-                    <input type="text" id="div-ans-4" class="form-label">
-                </div>
-              </form>
-            </td>
-            <td style="text-align: center"><button id="div-btn-4" class="btn btn-outline-primary answer" onclick="checkAddAns4()" >Check answer</button></td>
-          </tr>
-          <tr>
-              <td scope="row">The sum of 6 and x increased by 2</td>
-              <td>
-                <form class="justify-content-center text-muted text-center text-small" onkeydown="return event.key != 'Enter';">
-                  <div class="input-group justify-content-center";>
-                    <input type="text" id="div-ans-5" class="form-label">
-                  </div>
-                </form>
-              </td>
-              <td style="text-align: center"><button id="div-btn-5" class="btn btn-outline-primary answer" onclick="checkAddAns5()" >Check answer</button></td>
-            </tr>
-          </tbody>
+          <tbody id="divProblems"> </tbody>
         </table>
       </div>
     </div>
@@ -336,135 +145,127 @@
 <script src="static/js/bar_loader.js"></script>
 
 <script>
-function checkAddAns1() {
-  if (document.getElementById("add-ans-1").value == ""){
+
+
+function checkAddAns(problemNumber) {
+  if ($("#add-ans-"+problemNumber).val() == ""){
     alert("Please type in your answer first.");
   }
   else{
-    if (document.getElementById("add-btn-1").innerHTML == "Check answer"){
-      if (document.getElementById("add-ans-1").value.replace(/\s/g,'') == "11+4"){
-        alert("Great job! Your answer is correct.");
+    if ($("#add-btn-"+problemNumber).html() == "Check Answer"){
+      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[0] || addProblems[problemNumber].ans[1] || addProblems[problemNumber].ans[2]){
+        $(document).ready(function(){
+          $("#correct").modal('show');
+      });
       }
       else{
-        alert("That is not the correct answer. See the solution to know how this problem is solved.");
+        $(document).ready(function(){
+          $("#incorrect").modal('show');
+      });;
       }
-      document.getElementById("add-btn-1").innerHTML = "Show solution";
-      document.getElementById("add-ans-1").style.color='gray';
-      document.getElementById("add-ans-1").readOnly=true;
+      $("#add-btn-"+problemNumber).html("Show Solution");
+      $("#add-ans-"+problemNumber).css('color', 'gray');
+      $("#add-ans-"+problemNumber).attr("disabled", "");
     }
     else{
       $(document).ready(function(){
-          $("#myModal").modal('show');
+          $("#solution").modal('show');
       });
     }
   }
 }
 
-function checkAddAns2() {
-  if (document.getElementById("add-ans-2").value == ""){
+function checkSubAns(problemNumber) {
+  if ($("#sub-ans-"+problemNumber).val() == ""){
     alert("Please type in your answer first.");
   }
   else{
-    if (document.getElementById("add-btn-2").innerHTML == "Check answer"){
-      if (document.getElementById("add-ans-2").value.replace(/\s/g,'') == "3+9+x" || "3+(9+x)"){
-        alert("Great job! Your answer is correct.");
+    if ($("#sub-btn-"+problemNumber).html() == "Check Answer"){
+      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[0] || subProblems[problemNumber].ans[1] || subProblems[problemNumber].ans[2]){
+        $(document).ready(function(){
+          $("#correct").modal('show');
+      });
       }
       else{
-        alert("That is not the correct answer. See the solution to know how this problem is solved.");
+        $(document).ready(function(){
+          $("#incorrect").modal('show');
+      });;
       }
-      document.getElementById("add-btn-2").innerHTML = "Show solution";
-      document.getElementById("add-ans-2").style.color='gray';
-      document.getElementById("add-ans-2").readOnly=true;
+      $("#sub-btn-"+problemNumber).html("Show Solution");
+      $("#sub-ans-"+problemNumber).css('color', 'gray');
+      $("#sub-ans-"+problemNumber).attr("disabled", "");
     }
     else{
       $(document).ready(function(){
-          $("#myModal").modal('show');
+        $("#solution").modal('show');
       });
     }
   }
 }
 
-function checkAddAns3() {
-  if (document.getElementById("add-ans-3").value == ""){
+function checkMulAns(problemNumber) {
+  if ($("#mul-ans-"+problemNumber).val() == ""){
     alert("Please type in your answer first.");
   }
   else{
-    if (document.getElementById("add-btn-3").innerHTML == "Check answer"){
-      if (document.getElementById("add-ans-3").value.replace(/\s/g,'') == "16+x"){
-        alert("Great job! Your answer is correct.");
+    if ($("#mul-btn-"+problemNumber).html() == "Check Answer"){
+      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[0] || mulProblems[problemNumber].ans[1] || mulProblems[problemNumber].ans[2]){
+        $(document).ready(function(){
+          $("#correct").modal('show');
+      });
       }
       else{
-        alert("That is not the correct answer. See the solution to know how this problem is solved.");
+        $(document).ready(function(){
+          $("#incorrect").modal('show');
+      });
       }
-      document.getElementById("add-btn-3").innerHTML = "Show solution";
-      document.getElementById("add-ans-3").style.color='gray';
-      document.getElementById("add-ans-3").readOnly=true;
+      $("#mul-btn-"+problemNumber).html("Show Solution");
+      $("#mul-ans-"+problemNumber).css('color', 'gray');
+      $("#mul-ans-"+problemNumber).attr("disabled", "");
     }
     else{
       $(document).ready(function(){
-          $("#myModal").modal('show');
+        $("#solution").modal('show');
       });
     }
   }
 }
 
-function checkAddAns4() {
-  if (document.getElementById("add-ans-4").value == ""){
+function checkDivAns(problemNumber) {
+  if ($("#div-ans-"+problemNumber).val() == ""){
     alert("Please type in your answer first.");
   }
   else{
-    if (document.getElementById("add-btn-4").innerHTML == "Check answer"){
-      if (document.getElementById("add-ans-4").value.replace(/\s/g,'') == "17+5x" || "5x+17"){
-        alert("Great job! Your answer is correct.");
+    if ($("#div-btn-"+problemNumber).html() == "Check Answer"){
+      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[0] || divProblems[problemNumber].ans[1] || divProblems[problemNumber].ans[2]){
+        $(document).ready(function(){
+          $("#correct").modal('show');
+      });
       }
       else{
-        alert("That is not the correct answer. See the solution to know how this problem is solved.");
+        $(document).ready(function(){
+          $("#incorrect").modal('show');
+      });
       }
-      document.getElementById("add-btn-4").innerHTML = "Show solution";
-      document.getElementById("add-ans-4").style.color='gray';
-      document.getElementById("add-ans-4").readOnly=true;
+      $("#div-btn-"+problemNumber).html("Show Solution");
+      $("#div-ans-"+problemNumber).css('color', 'gray');
+      $("#div-ans-"+problemNumber).attr("disabled", "");
     }
     else{
       $(document).ready(function(){
-          $("#myModal").modal('show');
+        $("#solution").modal('show');
       });
     }
   }
 }
 
-function checkAddAns5() {
-  if (document.getElementById("add-ans-5").value == ""){
-    alert("Please type in your answer first.");
-  }
-  else{
-    if (document.getElementById("add-btn-5").innerHTML == "Check answer"){
-      if (document.getElementById("add-ans-5").value.replace(/\s/g,'') == "6+x+2" || "(6+x)+2"){
-        alert("Great job! Your answer is correct.");
-      }
-      else{
-        alert("That is not the correct answer. See the solution to know how this problem is solved.");
-      }
-      document.getElementById("add-btn-5").innerHTML = "Show solution";
-      document.getElementById("add-ans-5").style.color='gray';
-      document.getElementById("add-ans-5").readOnly=true;
-    }
-    else{
-      $(document).ready(function(){
-          $("#myModal").modal('show');
-      });
-    }
-  }
-}
+
 
 $(document).ready(function(){
-  
-
   //hides dropdown content
   $(".div_content").hide();
-  
   //unhides first option content
   $("#DivContent:first").show();
-  
   //listen to dropdown for change
   $("#select").change(function(){
     //rehide content on change
@@ -472,8 +273,146 @@ $(document).ready(function(){
     //unhides current item
     $('#'+$(this).val()).show();
   });
-  
 });
 
+
+let addProblems = {
+  '0':{
+    'given': '4 more than 11',
+    'ans': ['11+4'],
+  },
+  '1':{
+    'given': '3 plus the sum of 9 and x',
+    'ans': ['3+9+x', '3+(9+x)'],
+  },
+  '2':{
+    'given': 'A number added to 16',
+    'ans': ['16+x']
+  },
+  '3':{
+    'given': 'Total of 17 and 5x',
+    'ans': ['17+5x', '5x+17'],
+  },
+  '4':{
+    'given': 'The sum of 6 and x increased by 2',
+    'ans': ['6+x+2', '(6+x)+2'],
+  }
+}
+
+let subProblems = {
+  '0':{
+    'given': '12 less than 19	',
+    'ans': ['19-12'],
+  },
+  '1':{
+    'given': '3 minus the difference of 2 and 4',
+    'ans': ['3-2-4', '3-(2-4)'],
+  },
+  '2':{
+    'given': '13 subtracted by 6',
+    'ans': ['13-6'],
+  },
+  '3':{
+    'given': '13 subtracted from 6',
+    'ans': ['6-13'],
+  },
+  '4':{
+    'given': 'The difference of 5x and y decreased by 8',
+    'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
+  }
+}
+
+let mulProblems = {
+  '0':{
+    'given': '4 multiplied by 7',
+    'ans': ['4*7'],
+  },
+  '1':{
+    'given': '2 times the product of 4 and 4',
+    'ans': ['2*4*4', '2*(4*4)'],
+  },
+  '2':{
+    'given': 'Twice a number',
+    'ans': ['2x', '2*x'],
+  },
+  '3':{
+    'given': 'Thrice 5x',
+    'ans': ['3*5x'],
+  },
+  '4':{
+    'given': 'The product of 6 and a number',
+    'ans': ['6*x', '6x'],
+  }
+}
+
+let divProblems = {
+  '0':{
+    'given': '2 divided by x	',
+    'ans': ['2/x'],
+  },
+  '1':{
+    'given': 'The quotient of x and 14 divided by 3',
+    'ans': ['x/4/3', '(x/14)/3', 'x/(14/3)'],
+  },
+  '2':{
+    'given': 'The ratio of 6 and 18',
+    'ans': ['6/18'],
+  },
+  '3':{
+    'given': 'One-third of a number',
+    'ans': ['1/3x', '(1/3)*x'],
+  },
+  '4':{
+    'given': 'One-half of a number divided by 9',
+    'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
+  }
+}
+
+
+addHTML = "";
+subHTML = "";
+mulHTML = "";
+divHTML = "";
+problemCount = (Object.keys(addProblems).length) - 1
+
+for (let i = 0; i <= problemCount; i++){
+  addHTML += `<tr>`;
+  addHTML += `<td scope="row">`+addProblems[i].given+`</td>`;
+  addHTML += `<td scope="row"><input type="text" id="add-ans-`+i+`" class="form-label"></td>`;
+  addHTML += `<td class="text-center"><button id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check Answer</button></td>`;
+  addHTML += `</tr>`;
+}
+
+for (let i = 0; i <= problemCount; i++){
+  subHTML += `<tr>`;
+  subHTML += `<td scope="row">`+subProblems[i].given+`</td>`;
+  subHTML += `<td scope="row"><input type="text" id="sub-ans-`+i+`" class="form-label"></td>`;
+  subHTML += `<td class="text-center"><button id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check Answer</button></td>`;
+  subHTML += `</tr>`;
+}
+
+for (let i = 0; i <= problemCount; i++){
+  mulHTML += `<tr>`;
+  mulHTML += `<td scope="row">`+mulProblems[i].given+`</td>`;
+  mulHTML += `<td scope="row"><input type="text" id="mul-ans-`+i+`" class="form-label"></td>`;
+  mulHTML += `<td class="text-center"><button id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check Answer</button></td>`;
+  mulHTML += `</tr>`;
+}
+
+for (let i = 0; i <= problemCount; i++){
+  divHTML += `<tr>`;
+  divHTML += `<td scope="row">`+divProblems[i].given+`</td>`;
+  divHTML += `<td scope="row"><input type="text" id="div-ans-`+i+`" class="form-label"></td>`;
+  divHTML += `<td class="text-center"><button id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check Answer</button></td>`;
+  divHTML += `</tr>`;
+}
+
+$("#addProblems").html(addHTML);
+$("#subProblems").html(subHTML);
+$("#mulProblems").html(mulHTML);
+$("#divProblems").html(divHTML);
+
+
 </script>
+
 {% endblock %}
