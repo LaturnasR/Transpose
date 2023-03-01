@@ -5,7 +5,7 @@
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title text-success">Correct!<i class='bx bxs-check-square my-2'></i></i></h5>
+              <h5 id="myModalLabel"class="modal-title text-success">You got the correct answer! <i class="fa-solid fa-circle-check"></i></h5>
           </div>
           <div class="modal-body">
               <p>
@@ -21,7 +21,7 @@
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title">Question Number</h5>
+              <h5 id="myModalLabel"class="modal-title text-danger">Your answer is incorrect! <i class="fa-solid fa-circle-xmark"></i></h5>
           </div>
           <div class="modal-body">
               <p>
@@ -50,88 +50,109 @@
 </div>
 
 <section id="home-section">
-  <h2 class="title_custom"><i class="fa-solid fa-pencil" style="font-size: 0.85em"></i>&ensp;Practice</h2>
-  <br>
-  <p align="justify" class="etc_info">Listed in each selection are different variations of sample problems. Try to translate these
-  problems into their equivalent expressions and see if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.</p>
-  <br>
+  <section id="practice-section" class="page-section section-bg rounded pb-2">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Practice</h2>
+        <p>Listed in each selection are different variations of sample problems. Try to translate these
+          problems into their equivalent expressions and see if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.</p>
+      </div>
+      
 
-      <select class="form-select"  id="select">
-        <option selected id="set" disabled>Select problem set...</option>
-        <option value="addition">Addition</option>
-        <option value="subtraction">Subtraction</option>
-        <option value="multiplication">Multiplication</option>
-        <option value="division">Division</option>
-      </select>
+      <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist" style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill" data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition" aria-selected="true">Addiction <i class="fa-solid fa-plus"></i></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold mx-2" id="pills-subtraction-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-subtraction" type="button" role="tab" aria-controls="pills-subtraction" aria-selected="false">Subtraction <i class="fa-solid fa-minus"></i></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold mx-2" id="pills-multiplication-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-multiplication" type="button" role="tab" aria-controls="pills-multiplication" aria-selected="false">Multiplication <i class="fa-solid fa-xmark"></i></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold mx-2" id="pills-division-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-division" type="button" role="tab" aria-controls="pills-division" aria-selected="false">Division <i class="fa-solid fa-divide"></i></button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <!-- Addition problems -->
+        <div class="tab-pane fade show active" id="pills-addition" role="tabpanel" aria-labelledby="pills-addition-tab" tabindex="0">
+          <div class="div_content" id="addition">
+            <br>
+            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
+              <table class="table table-borderless border-secondary fs-6">
+                <thead>
+                  <tr>
+                    <th style="width:20%;" scope="col" >Problem</th>
+                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
+                    <th class="action" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="addProblems"> </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Subtraction problems -->
+        <div class="tab-pane fade" id="pills-subtraction" role="tabpanel" aria-labelledby="pills-subtraction-tab" tabindex="0">
+          <div class="div_content" id="subtraction">
+            <br>
+            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
+              <table class="table table-borderless border-secondary fs-6">
+                <thead>
+                  <tr>
+                    <th style="width:20%;" scope="col" >Problem</th>
+                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
+                    <th class="action" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="subProblems"> </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Multiplication problems -->
+        <div class="tab-pane fade" id="pills-multiplication" role="tabpanel" aria-labelledby="pills-multiplication-tab" tabindex="0">
+          <div class="div_content" id="multiplication">
+            <br>
+            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
+              <table class="table table-borderless border-secondary fs-6">
+                <thead>
+                  <tr>
+                    <th style="width:20%;" scope="col" >Problem</th>
+                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
+                    <th class="action" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="mulProblems"> </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Division problems -->
+        <div class="tab-pane fade" id="pills-division" role="tabpanel" aria-labelledby="pills-division-tab" tabindex="0">
+          <div class="div_content" id="division">
+            <br>
+            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
+              <table class="table table-borderless border-secondary fs-6">
+                <thead>
+                  <tr>
+                    <th style="width:20%;" scope="col" >Problem</th>
+                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
+                    <th class="action" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="divProblems"> </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</section><!-- End Learn Section -->
 
   
-
-  <div id="DivContent">
-    <div class="div_content" id="addition">
-      <br>
-      <div class="table-responsive " >
-        <table class="table table-striped bg-light border-secondary align-middle rounded fs-6">
-          <thead>
-            <tr>
-              <th px-3 style="width:30%;" scope="col" >Problem</th>
-              <th style="width:30%; text-align: center;" scope="col">Answer</th>
-              <th class="action" scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="addProblems"> </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="div_content" id="subtraction">
-      <br>
-      <div class="table-responsive" >
-        <table class="table table-bordered bg-light border-secondary align-middle rounded fs-6" style = "padding-left: 2%; padding-right: 2%;">
-          <thead>
-            <tr>
-              <th style="width:30%;" scope="col" >Problem</th>
-              <th style="width:30%; text-align: center;" scope="col">Answer</th>
-              <th class="action" scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="subProblems"> </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="div_content" id="multiplication">
-      <br>
-      <div class="table-responsive" >
-        <table class="table table-bordered bg-light border-secondary align-middle rounded fs-6" style = "padding-left: 2%; padding-right: 2%;">
-          <thead>
-            <tr>
-              <th style="width:30%;" scope="col" >Problem</th>
-              <th style="width:30%; text-align: center;" scope="col">Answer</th>
-              <th class="action" scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="mulProblems"> </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="div_content" id="division">
-      <br>
-      <div class="table-responsive" >
-        <table class="table table-bordered bg-light border-secondary align-middle rounded fs-6" style = "padding-left: 2%; padding-right: 2%;">
-          <thead>
-            <tr>
-              <th style="width:30%;" scope="col" >Problem</th>
-              <th style="width:30%; text-align: center;" scope="col">Answer</th>
-              <th class="action" scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody id="divProblems"> </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- jQuery -->
@@ -260,22 +281,6 @@ function checkDivAns(problemNumber) {
 }
 
 
-
-$(document).ready(function(){
-  //hides dropdown content
-  $(".div_content").hide();
-  //unhides first option content
-  $("#DivContent:first").show();
-  //listen to dropdown for change
-  $("#select").change(function(){
-    //rehide content on change
-    $('.div_content').hide();
-    //unhides current item
-    $('#'+$(this).val()).show();
-  });
-});
-
-
 let addProblems = {
   '0':{
     'given': '4 more than 11',
@@ -379,7 +384,7 @@ for (let i = 0; i <= problemCount; i++){
   addHTML += `<tr>`;
   addHTML += `<td scope="row">`+addProblems[i].given+`</td>`;
   addHTML += `<td scope="row"><input type="text" id="add-ans-`+i+`" class="form-label"></td>`;
-  addHTML += `<td class="text-center"><button id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check Answer</button></td>`;
+  addHTML += `<td class="text-center"><a id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check Answer</a></td>`;
   addHTML += `</tr>`;
 }
 
@@ -387,7 +392,7 @@ for (let i = 0; i <= problemCount; i++){
   subHTML += `<tr>`;
   subHTML += `<td scope="row">`+subProblems[i].given+`</td>`;
   subHTML += `<td scope="row"><input type="text" id="sub-ans-`+i+`" class="form-label"></td>`;
-  subHTML += `<td class="text-center"><button id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check Answer</button></td>`;
+  subHTML += `<td class="text-center"><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check Answer</a></td>`;
   subHTML += `</tr>`;
 }
 
@@ -395,7 +400,7 @@ for (let i = 0; i <= problemCount; i++){
   mulHTML += `<tr>`;
   mulHTML += `<td scope="row">`+mulProblems[i].given+`</td>`;
   mulHTML += `<td scope="row"><input type="text" id="mul-ans-`+i+`" class="form-label"></td>`;
-  mulHTML += `<td class="text-center"><button id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check Answer</button></td>`;
+  mulHTML += `<td class="text-center"><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check Answer</a></td>`;
   mulHTML += `</tr>`;
 }
 
@@ -403,7 +408,7 @@ for (let i = 0; i <= problemCount; i++){
   divHTML += `<tr>`;
   divHTML += `<td scope="row">`+divProblems[i].given+`</td>`;
   divHTML += `<td scope="row"><input type="text" id="div-ans-`+i+`" class="form-label"></td>`;
-  divHTML += `<td class="text-center"><button id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check Answer</button></td>`;
+  divHTML += `<td class="text-center"><a id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check Answer</a></td>`;
   divHTML += `</tr>`;
 }
 
