@@ -180,7 +180,9 @@ function checkAddAns(problemNumber) {
   }
   else{
     if ($("#add-btn-"+problemNumber).html() == "Check"){
-      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (addProblems[problemNumber].ans[0] || addProblems[problemNumber].ans[1] || addProblems[problemNumber].ans[2])){
+      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[0] || 
+          $("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[1] ||
+          $("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[2]){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -209,7 +211,9 @@ function checkSubAns(problemNumber) {
   }
   else{
     if ($("#sub-btn-"+problemNumber).html() == "Check"){
-      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (subProblems[problemNumber].ans[0] || subProblems[problemNumber].ans[1] || subProblems[problemNumber].ans[2])){
+      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[0] || 
+          $("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[1] ||
+          $("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[2]){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -238,7 +242,9 @@ function checkMulAns(problemNumber) {
   }
   else{
     if ($("#mul-btn-"+problemNumber).html() == "Check"){
-      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (mulProblems[problemNumber].ans[0] || mulProblems[problemNumber].ans[1] || mulProblems[problemNumber].ans[2])){
+      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[0] || 
+          $("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[1] ||
+          $("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[2]){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -267,7 +273,9 @@ function checkDivAns(problemNumber) {
   }
   else{
     if ($("#div-btn-"+problemNumber).html() == "Check"){
-      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (divProblems[problemNumber].ans[0] || divProblems[problemNumber].ans[1] || divProblems[problemNumber].ans[2])){
+      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[0] || 
+          $("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[1] ||
+          $("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[2]){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -483,6 +491,7 @@ document.getElementById("div-ans-"+i).addEventListener("keypress", function(even
   }
 });
 }
+
 
 </script>
 
