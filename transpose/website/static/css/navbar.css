@@ -7,13 +7,19 @@
 	}
 
 .nav_name{
-  color: #7CA6F8;
+  color: #64b3f4;
   font-family: Bayon;
   font-size: 2em;
   margin-left:10px;
+  text-decoration: none;
+  padding-bottom: 2px;
 }
+
+.nav_name:hover {
+	color: #004b80;
+  }
 
 /* Custom Bootstrap */
 .nav-link:focus, .nav-link:hover {
-  color: #7CA6F8;
+  color: #64b3f4;
 }

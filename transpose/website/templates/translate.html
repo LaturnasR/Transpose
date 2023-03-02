@@ -11,7 +11,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="myModalLabel"class="modal-title">Simple Reminder from the Devs!</h5>
+                <h5 id="myModalLabel"class="modal-title">Instructions</h5>
             </div>
             <div class="modal-body">
                 <p>
@@ -57,6 +57,13 @@ body{
   background: linear-gradient(45deg, #FEAC5E, #C779D0, #4BC0C8)
 }
 </style>
+
+<script>
+  $("#translate").removeAttr("href");
+  $("#translate").css("color", "#64b3f4");
+  $("#translate").addClass("fw-semibold");
+</script>
+
 <script>
   $("#sentence_form").submit(function(){
     $("#output").css("background", "white");

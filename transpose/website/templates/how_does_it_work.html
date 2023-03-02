@@ -1,0 +1,161 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+  <head>
+	<title> Transpose | English Sentence to Math Expression Translator </title>
+	<!-- Design imports -->
+	<div id="imports">	
+	</div>
+  </head>
+
+ <body>
+  <div id="bar-placeholder">
+  </div>
+  <div id="bar2-placeholder">
+</div>
+  <section id="home-section">
+	<div class="container-fluid">
+	<br>
+		<main>
+      <div class="main_custom">>
+		<h2 class="title_custom"><i class="fa-solid fa-gears" style="font-size: 0.85em"></i>&ensp;How Does It Work</h2>
+		<br>
+		<p align="justify" class="etc_info">&emsp;&emsp;There are two algorithms in play: Pre-processing and Conversion.
+		The Pre-processing algorithm denoises and simplies the input. While the Conversion algorithm converts the preprocessed input into a translation output.</p>
+		<br>
+		<p align="justify" class="etc_info">To understand the algorithms better, let's take a look at this example:</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;"><mark>Three diminished by the sum of a number and four</mark></p>
+		<br>
+		<hr>
+		<p style="font-family: Mukta; color: #FFFFFF; font-size: 1.8em;"><b>Pre-Processing</b></p>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Tokenization and POS Tagging</b></p>
+		<p align="justify" class="etc_info">Through Preprocessing's tokenization and parts of speech (POS) tagging, each word will be categorized.</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFB6C1">diminished <span style="font-family: Mukta; font-size: 0.5em;"><b>VERB</b></span></span>
+		<span style="background-color: #C4A484">by <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">the <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #C4A484">of <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">a <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Lemmatization</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Words will then be lemmatized (reduced into their root word).</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFD580">diminish <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #C4A484">by <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">the <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #C4A484">of <span style="font-family: Mukta; font-size: 0.5em;"><b>ADP</b></span></span>
+		<span style="background-color: #90EE90">a <span style="font-family: Mukta; font-size: 0.5em;"><b>DET</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Filtering stop words</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Then, stop words (words that bear no significant meaning) are removed.</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFD580">diminish <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Standardization</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Last step for Preprocessing, keywords are standardized into its basic concept.</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">Three <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">four <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<hr>
+		<p style="font-family: Mukta; color: #FFFFFF; font-size: 1.8em;"><b>Conversion</b></p>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Number Conversion</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Words that indicate numbers will be converted into their integer counterparts.</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">3 <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">number <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">4 <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Variables</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Unknown words (words not defined in our algorithm), become variables.</p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<span style="background-color: #FFCCCB">3 <span style="font-family: Mukta; font-size: 0.5em;"><b>NUM</b></span></span>
+		<span style="background-color: #FFFFE0">minus <span style="font-family: Mukta; font-size: 0.5em;"><b>ADJ</b></span></span>
+		<span style="background-color: #ADD8E6">sum <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #ADD8E6">x <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span>
+		<span style="background-color: #CF9FFF">and <span style="font-family: Mukta; font-size: 0.5em;"><b>CONJ</b></span></span>
+		<span style="background-color: #FFCCCB">4 <span style="font-family: Mukta; font-size: 0.5em;"><b>NOUN</b></span></span></p>
+		</div>
+		</div>
+		<br>
+		<div class="card" style = "margin-left: 2%; margin-right: 2%;">
+		<div class="card-body">
+		<p class="card-title" align="left"><b>Interpretation</b></p>
+		<p align="justify" style = "margin-left: 2%; margin-right: 2%;">Using a defined context-free grammar and imposing a parse tree. The algorithm
+		 is able to identify and interpret the sentence structure of the given input. See sample interpretation below:</p>
+		<p align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>['3',&emsp;'minus',&emsp;('x',&emsp;'sum',&emsp;'4')&emsp;]</mark></span>
+		<p align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>3&emsp;minus&emsp;(x&emsp;sum&emsp;4)</mark></span>
+		<p align="center" style = "margin-left: 2%; margin-right: 2%; font-family: Montserrat; font-size: 1.2em;">
+		<br>
+		<span style="background-color: #FFCCCB"><mark>3&emsp;-&emsp;(x&emsp;+&emsp;4)</mark></span>
+		</div>
+		</div>
+</div>
+  </section>
+
+  <!-- font awesome -->
+	<script src="https://kit.fontawesome.com/956ed01ee8.js" crossorigin="anonymous"></script>
+
+	<!-- jQuery -->
+  <script 
+    src="https://code.jquery.com/jquery-3.6.1.min.js" 
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous">
+  </script>
+
+  <!-- custom js, needs jQuery on top -->
+  <script src="static/js/bar_loader.js"></script>
+  
+  </body>
+</html>

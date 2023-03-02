@@ -10,7 +10,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch text-center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="col-xl-3 col-md-6 d-flex align-items-stretch text-center" data-aos="zoom-in" data-aos-delay="100" onclick="location.href='#read';" style="cursor: pointer;">
           <div class="icon-box">
             <div class="icon"><i class="fa-brands fa-readme"></i></i></i></div>
             <div class="section-subtitle"><h4 href="">Read</h4></div>
@@ -18,7 +18,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 text-center" data-aos="zoom-in" data-aos-delay="200">
+        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 text-center" data-aos="zoom-in" data-aos-delay="200" onclick="location.href='#identify';" style="cursor: pointer;">
           <div class="icon-box">
             <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></i></i></div>
             <div class="section-subtitle"><h4 href="">Identify</h4></div>
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in" data-aos-delay="300">
+        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in" data-aos-delay="300" onclick="location.href='#analyze';" style="cursor: pointer;">
           <div class="icon-box">
             <div class="icon"><i class="fa-solid fa-gear"></i></i></i></i></div>
             <div class="section-subtitle"><h4 href="">Analyze</h4></div>
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in" data-aos-delay="400">
+        <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 text-center" data-aos="zoom-in" data-aos-delay="400" onclick="location.href='#translate_';" style="cursor: pointer;">
           <div class="icon-box">
             <div class="icon"><i class="fa-solid fa-retweet"></i></i></div>
             <div class="section-subtitle"><h4 href="">Translate</h4></div>
@@ -44,6 +44,61 @@
       </div>
     </div>
   </section><!-- End Learn Section -->
+
+  <div id="read"></div>
+  <section class="learn-step section-bg rounded mt-3">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Read</h2>
+        <p>...</p>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="identify"></div>
+  <section class="learn-step section-bg rounded mt-3">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Identify</h2>
+        <p>...</p>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="analyze"></div>
+  <section class="learn-step section-bg rounded mt-3">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Analyze</h2>
+        <p>...</p>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="translate_"></div>
+  <section class="learn-step section-bg rounded mt-3">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Translate</h2>
+        <p>...</p>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </section>
 
 
   <!-- <p align="justify" class="etc_info">Worded Mathematical Problems follow the order of operations the way 
@@ -112,6 +167,12 @@
 </section>
 
 <!-- jQuery -->
+<script>
+  $("#learn").removeAttr("href");
+  $("#learn").css("color", "#64b3f4");
+  $("#learn").addClass("fw-semibold");
+</script>
+
 <script 
   src="https://code.jquery.com/jquery-3.6.1.min.js" 
   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="

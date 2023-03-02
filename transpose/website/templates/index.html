@@ -9,9 +9,9 @@
         <div class="gx-5">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <h1 class="title_custom">TRANSPOSE</h1>
-                    <p class="lead text-light mb-4">Transpose is an educational web app intended to supplement the learning of students regarding translations of English phrases to their mathematical symbol equivalents.</p>
-                    <a class="banner_button btn btn-lg bg-primary btn-outline-light btn-lg px-2;" href="#features"></i>Get started</a>
+                    <h1 class="title_custom mb-4">TRANSPOSE</h1>
+                    <p class="lead text-light mb-5">Transpose is an educational web app intended to supplement the learning of students regarding translations of English phrases to their mathematical symbol equivalents.</p>
+                    <a class="banner_button btn btn-lg btn-outline-light btn-lg px-2;" href="#features"></i>Get started</a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     <a class="btn btn-outline-light text-white mx-2 my-3" style="background-color: #64b3f4;" href="learn">
                         Start learning
                     </a>
-                    <a class="btn bg-secondary btn-outline-light mx-2 my-3" data-bs-target="#carouselExampleControls" data-bs-slide="next" href="#practice_feature">
+                    <a class="btn bg-secondary text-white btn-outline-light mx-2 my-3" data-bs-target="#carouselExampleControls" data-bs-slide="next" href="#practice_feature">
                         Practice >
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                 <h1 class="fw-bolder">Practice translating</h1>
                 <p class="lead">Tackle sample questions to help you master translation and become familiar with special cases.</p>
                 <div>
-                  <a class="btn bg-secondary btn-outline-light mx-2 my-3" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <a class="btn bg-secondary text-white btn-outline-light mx-2 my-3" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     < Learn
                   </a>
                   <a class="btn btn-outline-light text-white mx-2 my-3" style="background-color: #64b3f4;" href="practice">
@@ -59,24 +59,13 @@
   </div>
 
 
-<!-- Learn section-->
-        <section id="learn_feature">
-                
-        </section>
-    
-<!-- Practice section-->
-<section id="practice_feature">
-
-</section>
-
-        
-
-</section> 
-
-
-
-
 <!-- jQuery -->
+<script>
+  $("#home").removeAttr("href");
+  $("#home").css("color", "#64b3f4");
+  $("#home").addClass("fw-semibold");
+</script>
+
 <script 
   src="https://code.jquery.com/jquery-3.6.1.min.js" 
   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -95,6 +84,4 @@
   $SCRIPT_ROOT = {{ request.script_root|tojson }};
 </script>
 <script src="static/js/translate_post.js"></script>
-</body>
-</html>
 {% endblock %}

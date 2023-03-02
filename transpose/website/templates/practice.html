@@ -9,7 +9,7 @@
           </div>
           <div class="modal-body">
               <p>
-                Solution
+                ...
               </p>
 
           </div>
@@ -24,8 +24,8 @@
               <h5 id="myModalLabel"class="modal-title text-danger">Your answer is incorrect! <i class="fa-solid fa-circle-xmark"></i></h5>
           </div>
           <div class="modal-body">
-              <p>
-                Solution
+              <p id="correct_answer">
+                
               </p>
 
           </div>
@@ -156,6 +156,12 @@
 
 
 <!-- jQuery -->
+<script>
+  $("#practice").removeAttr("href");
+  $("#practice").css("color", "#64b3f4");
+  $("#practice").addClass("fw-semibold");
+</script>
+
 <script 
   src="https://code.jquery.com/jquery-3.6.1.min.js" 
   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -174,7 +180,7 @@ function checkAddAns(problemNumber) {
   }
   else{
     if ($("#add-btn-"+problemNumber).html() == "Check Answer"){
-      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[0] || addProblems[problemNumber].ans[1] || addProblems[problemNumber].ans[2]){
+      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (addProblems[problemNumber].ans[0] || addProblems[problemNumber].ans[1] || addProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -182,6 +188,7 @@ function checkAddAns(problemNumber) {
       else{
         $(document).ready(function(){
           $("#incorrect").modal('show');
+          $("#correct_answer").html("The correct answer is: " +addProblems[problemNumber].display_ans[0]);
       });;
       }
       $("#add-btn-"+problemNumber).html("Show Solution");
@@ -202,7 +209,7 @@ function checkSubAns(problemNumber) {
   }
   else{
     if ($("#sub-btn-"+problemNumber).html() == "Check Answer"){
-      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[0] || subProblems[problemNumber].ans[1] || subProblems[problemNumber].ans[2]){
+      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (subProblems[problemNumber].ans[0] || subProblems[problemNumber].ans[1] || subProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -210,6 +217,7 @@ function checkSubAns(problemNumber) {
       else{
         $(document).ready(function(){
           $("#incorrect").modal('show');
+          $("#correct_answer").html("The correct answer is: " +subProblems[problemNumber].display_ans[0]);
       });;
       }
       $("#sub-btn-"+problemNumber).html("Show Solution");
@@ -230,7 +238,7 @@ function checkMulAns(problemNumber) {
   }
   else{
     if ($("#mul-btn-"+problemNumber).html() == "Check Answer"){
-      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[0] || mulProblems[problemNumber].ans[1] || mulProblems[problemNumber].ans[2]){
+      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (mulProblems[problemNumber].ans[0] || mulProblems[problemNumber].ans[1] || mulProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -238,6 +246,7 @@ function checkMulAns(problemNumber) {
       else{
         $(document).ready(function(){
           $("#incorrect").modal('show');
+          $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
       });
       }
       $("#mul-btn-"+problemNumber).html("Show Solution");
@@ -258,7 +267,7 @@ function checkDivAns(problemNumber) {
   }
   else{
     if ($("#div-btn-"+problemNumber).html() == "Check Answer"){
-      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[0] || divProblems[problemNumber].ans[1] || divProblems[problemNumber].ans[2]){
+      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (divProblems[problemNumber].ans[0] || divProblems[problemNumber].ans[1] || divProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -266,6 +275,7 @@ function checkDivAns(problemNumber) {
       else{
         $(document).ready(function(){
           $("#incorrect").modal('show');
+          $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
       });
       }
       $("#div-btn-"+problemNumber).html("Show Solution");
@@ -285,22 +295,27 @@ let addProblems = {
   '0':{
     'given': '4 more than 11',
     'ans': ['11+4'],
+    'display_ans': ['11 + 4']
   },
   '1':{
     'given': '3 plus the sum of 9 and x',
     'ans': ['3+9+x', '3+(9+x)'],
+    'display_ans': ['3 + (9 + x)']
   },
   '2':{
     'given': 'A number added to 16',
-    'ans': ['16+x']
+    'ans': ['16+x'],
+    'display_ans': ['16 + x']
   },
   '3':{
     'given': 'Total of 17 and 5x',
     'ans': ['17+5x', '5x+17'],
+    'display_ans': ['17 + 5x']
   },
   '4':{
     'given': 'The sum of 6 and x increased by 2',
     'ans': ['6+x+2', '(6+x)+2'],
+    'display_ans': ['(6 + x) + 2']
   }
 }
 
@@ -308,22 +323,27 @@ let subProblems = {
   '0':{
     'given': '12 less than 19	',
     'ans': ['19-12'],
+    'display_ans': ['19 -12']
   },
   '1':{
     'given': '3 minus the difference of 2 and 4',
     'ans': ['3-2-4', '3-(2-4)'],
+    'display_ans': ['3 - (2 - 4)']
   },
   '2':{
     'given': '13 subtracted by 6',
     'ans': ['13-6'],
+    'display_ans': ['13 - 6']
   },
   '3':{
     'given': '13 subtracted from 6',
     'ans': ['6-13'],
+    'display_ans': ['6 - 13']
   },
   '4':{
     'given': 'The difference of 5x and y decreased by 8',
     'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
+    'display_ans': ['(5x - y) - 8']
   }
 }
 
@@ -331,22 +351,27 @@ let mulProblems = {
   '0':{
     'given': '4 multiplied by 7',
     'ans': ['4*7'],
+    'display_ans': ['4 * 7']
   },
   '1':{
     'given': '2 times the product of 4 and 4',
     'ans': ['2*4*4', '2*(4*4)'],
+    'display_ans': ['2 * (4 * 4)']
   },
   '2':{
     'given': 'Twice a number',
     'ans': ['2x', '2*x'],
+    'display_ans': ['2 * x']
   },
   '3':{
     'given': 'Thrice 5x',
     'ans': ['3*5x'],
+    'display_ans': ['3 * 5x']
   },
   '4':{
     'given': 'The product of 6 and a number',
     'ans': ['6*x', '6x'],
+    'display_ans': ['6 * x']
   }
 }
 
@@ -354,22 +379,27 @@ let divProblems = {
   '0':{
     'given': '2 divided by x	',
     'ans': ['2/x'],
+    'display_ans': ['2 / x']
   },
   '1':{
     'given': 'The quotient of x and 14 divided by 3',
     'ans': ['x/4/3', '(x/14)/3', 'x/(14/3)'],
+    'display_ans': ['(x / 14) / 3']
   },
   '2':{
     'given': 'The ratio of 6 and 18',
     'ans': ['6/18'],
+    'display_ans': ['6 / 18']
   },
   '3':{
     'given': 'One-third of a number',
     'ans': ['1/3x', '(1/3)*x'],
+    'display_ans': ['1/3x']
   },
   '4':{
     'given': 'One-half of a number divided by 9',
     'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
+    'display_ans': ['(1/2x) / 9']
   }
 }
 
@@ -417,6 +447,42 @@ $("#subProblems").html(subHTML);
 $("#mulProblems").html(mulHTML);
 $("#divProblems").html(divHTML);
 
+// Input enter = Check Answer
+for (let i = 0; i <= problemCount; i++){
+document.getElementById("add-ans-"+i).addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("add-btn-"+i).click();
+  }
+});
+}
+
+for (let i = 0; i <= problemCount; i++){
+document.getElementById("sub-ans-"+i).addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("sub-btn-"+i).click();
+  }
+});
+}
+
+for (let i = 0; i <= problemCount; i++){
+document.getElementById("mul-ans-"+i).addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("mul-btn-"+i).click();
+  }
+});
+}
+
+for (let i = 0; i <= problemCount; i++){
+document.getElementById("div-ans-"+i).addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("div-btn-"+i).click();
+  }
+});
+}
 
 </script>
 
