@@ -61,7 +61,7 @@
 
       <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist" style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill" data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition" aria-selected="true">Addiction <i class="fa-solid fa-plus"></i></button>
+          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill" data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition" aria-selected="true">Addition <i class="fa-solid fa-plus"></i></button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link fw-semibold mx-2" id="pills-subtraction-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-subtraction" type="button" role="tab" aria-controls="pills-subtraction" aria-selected="false">Subtraction <i class="fa-solid fa-minus"></i></button>
@@ -179,7 +179,7 @@ function checkAddAns(problemNumber) {
     alert("Please type in your answer first.");
   }
   else{
-    if ($("#add-btn-"+problemNumber).html() == "Check Answer"){
+    if ($("#add-btn-"+problemNumber).html() == "Check"){
       if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (addProblems[problemNumber].ans[0] || addProblems[problemNumber].ans[1] || addProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
@@ -191,7 +191,7 @@ function checkAddAns(problemNumber) {
           $("#correct_answer").html("The correct answer is: " +addProblems[problemNumber].display_ans[0]);
       });;
       }
-      $("#add-btn-"+problemNumber).html("Show Solution");
+      $("#add-btn-"+problemNumber).html("Solution");
       $("#add-ans-"+problemNumber).css('color', 'gray');
       $("#add-ans-"+problemNumber).attr("disabled", "");
     }
@@ -208,7 +208,7 @@ function checkSubAns(problemNumber) {
     alert("Please type in your answer first.");
   }
   else{
-    if ($("#sub-btn-"+problemNumber).html() == "Check Answer"){
+    if ($("#sub-btn-"+problemNumber).html() == "Check"){
       if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (subProblems[problemNumber].ans[0] || subProblems[problemNumber].ans[1] || subProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
@@ -220,7 +220,7 @@ function checkSubAns(problemNumber) {
           $("#correct_answer").html("The correct answer is: " +subProblems[problemNumber].display_ans[0]);
       });;
       }
-      $("#sub-btn-"+problemNumber).html("Show Solution");
+      $("#sub-btn-"+problemNumber).html("Solution");
       $("#sub-ans-"+problemNumber).css('color', 'gray');
       $("#sub-ans-"+problemNumber).attr("disabled", "");
     }
@@ -237,7 +237,7 @@ function checkMulAns(problemNumber) {
     alert("Please type in your answer first.");
   }
   else{
-    if ($("#mul-btn-"+problemNumber).html() == "Check Answer"){
+    if ($("#mul-btn-"+problemNumber).html() == "Check"){
       if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (mulProblems[problemNumber].ans[0] || mulProblems[problemNumber].ans[1] || mulProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
@@ -249,7 +249,7 @@ function checkMulAns(problemNumber) {
           $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
       });
       }
-      $("#mul-btn-"+problemNumber).html("Show Solution");
+      $("#mul-btn-"+problemNumber).html("Solution");
       $("#mul-ans-"+problemNumber).css('color', 'gray');
       $("#mul-ans-"+problemNumber).attr("disabled", "");
     }
@@ -266,7 +266,7 @@ function checkDivAns(problemNumber) {
     alert("Please type in your answer first.");
   }
   else{
-    if ($("#div-btn-"+problemNumber).html() == "Check Answer"){
+    if ($("#div-btn-"+problemNumber).html() == "Check"){
       if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == (divProblems[problemNumber].ans[0] || divProblems[problemNumber].ans[1] || divProblems[problemNumber].ans[2])){
         $(document).ready(function(){
           $("#correct").modal('show');
@@ -278,7 +278,7 @@ function checkDivAns(problemNumber) {
           $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
       });
       }
-      $("#div-btn-"+problemNumber).html("Show Solution");
+      $("#div-btn-"+problemNumber).html("Solution");
       $("#div-ans-"+problemNumber).css('color', 'gray');
       $("#div-ans-"+problemNumber).attr("disabled", "");
     }
@@ -414,7 +414,7 @@ for (let i = 0; i <= problemCount; i++){
   addHTML += `<tr>`;
   addHTML += `<td scope="row">`+addProblems[i].given+`</td>`;
   addHTML += `<td scope="row"><input type="text" id="add-ans-`+i+`" class="form-label"></td>`;
-  addHTML += `<td class="text-center"><a id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check Answer</a></td>`;
+  addHTML += `<td class="text-center"><a id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check</a></td>`;
   addHTML += `</tr>`;
 }
 
@@ -422,7 +422,7 @@ for (let i = 0; i <= problemCount; i++){
   subHTML += `<tr>`;
   subHTML += `<td scope="row">`+subProblems[i].given+`</td>`;
   subHTML += `<td scope="row"><input type="text" id="sub-ans-`+i+`" class="form-label"></td>`;
-  subHTML += `<td class="text-center"><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check Answer</a></td>`;
+  subHTML += `<td class="text-center"><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check</a></td>`;
   subHTML += `</tr>`;
 }
 
@@ -430,7 +430,7 @@ for (let i = 0; i <= problemCount; i++){
   mulHTML += `<tr>`;
   mulHTML += `<td scope="row">`+mulProblems[i].given+`</td>`;
   mulHTML += `<td scope="row"><input type="text" id="mul-ans-`+i+`" class="form-label"></td>`;
-  mulHTML += `<td class="text-center"><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check Answer</a></td>`;
+  mulHTML += `<td class="text-center"><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check</a></td>`;
   mulHTML += `</tr>`;
 }
 
@@ -438,7 +438,7 @@ for (let i = 0; i <= problemCount; i++){
   divHTML += `<tr>`;
   divHTML += `<td scope="row">`+divProblems[i].given+`</td>`;
   divHTML += `<td scope="row"><input type="text" id="div-ans-`+i+`" class="form-label"></td>`;
-  divHTML += `<td class="text-center"><a id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check Answer</a></td>`;
+  divHTML += `<td class="text-center"><a id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check</a></td>`;
   divHTML += `</tr>`;
 }
 
@@ -447,7 +447,7 @@ $("#subProblems").html(subHTML);
 $("#mulProblems").html(mulHTML);
 $("#divProblems").html(divHTML);
 
-// Input enter = Check Answer
+// Input enter = Check
 for (let i = 0; i <= problemCount; i++){
 document.getElementById("add-ans-"+i).addEventListener("keypress", function(event) {
   if (event.key === "Enter") {

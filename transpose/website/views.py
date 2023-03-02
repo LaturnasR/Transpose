@@ -32,33 +32,9 @@ def layout():
 def practice():
 	return render_template('practice.html')
     
-@views.route('/what_is_transpose')
-def what_is_transpose():
-	return render_template('what_is_transpose.html')
-    
-@views.route('/why_transpose')
-def why_transpose():
-	return render_template('why_transpose.html')
-
-@views.route('/how_does_it_work')
-def how_does_it_work():
-	return render_template('how_does_it_work.html')
-    
-@views.route('/how_to_use_it')
-def how_to_use_it():
-	return render_template('how_to_use_it.html')
-
 @views.route('/the_team')
 def the_team():
 	return render_template('the_team.html')
-
-@views.route('/_bar',)
-def _bar():
-	return render_template('_bar.html')
-
-@views.route('/_bar2',)
-def _bar2():
-	return render_template('_bar2.html')
 
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():
