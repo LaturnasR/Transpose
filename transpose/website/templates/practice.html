@@ -5,14 +5,11 @@
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title text-success">You got the correct answer! <i class="fa-solid fa-circle-check"></i></h5>
+              <h5 id="myModalLabel"class="modal-title text-success">You got the correct answer! <i class="fa-regular fa-face-smile"></i></h5>
           </div>
           <div class="modal-body">
-              <p>
-                ...
-              </p>
-
-          </div>
+            <p></p>
+        </div>
       </div>
   </div>
 </div>
@@ -21,13 +18,10 @@
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title text-danger">Your answer is incorrect! <i class="fa-solid fa-circle-xmark"></i></h5>
+              <h5 id="myModalLabel"class="modal-title text-danger">Your answer is incorrect. <i class="fa-regular fa-face-frown"></i></h5>
           </div>
           <div class="modal-body">
-              <p id="correct_answer">
-                
-              </p>
-
+              <p id="correct_answer"></p>
           </div>
       </div>
   </div>
@@ -36,12 +30,9 @@
 <div id="solution" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-          <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title">Question Number</h5>
-          </div>
           <div class="modal-body">
               <p>
-                Solution
+                Solution & Explanation: .....
               </p>
 
           </div>
@@ -54,8 +45,10 @@
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2>Practice</h2>
-        <p>Listed in each selection are different variations of sample problems. Try to translate these
-          problems into their equivalent expressions and see if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.</p>
+        <p>
+        Listed in each selection are different variations of sample problems. Try to translate these 
+        problems into their equivalent expressions and check if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases. 
+        You can refer to the <a href="#table">table</a> below to see the commonly used keywords for each operator.</p>
       </div>
       
 
@@ -150,7 +143,60 @@
 
     </div>
   </section>
-</section><!-- End Learn Section -->
+  <div id="table"></div>
+  <section class="learn-step section-bg rounded mt-3">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <div class="table-responsive">
+          <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">Addition</th>
+              <th scope="col">Subtraction</th>
+              <th scope="col">Multiplication</th>
+              <th scope="col">Division</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">added to</td>
+              <td>decreased by</td>
+              <td>multiplied by</td>
+              <td>divided by</td>
+            </tr>
+            <tr>
+              <td scope="row">increased by</td>
+              <td>less than</td>
+              <td>the product of</td>
+              <td>the quotient of</td>
+            </tr>
+            <tr>
+              <td scope="row">more than</td>
+              <td>minus</td>
+              <td>times</td>
+              <td>ratio of</td>
+            </tr>
+          <tr>
+              <td scope="row">plus</td>
+              <td>subtracted from</td>
+              <td>twice</td>
+              <td></td>
+            </tr>
+          <tr>
+              <td scope="row">the sum of</td>
+              <td>the difference of</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          </table>
+            </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+
 
   
 
@@ -173,16 +219,144 @@
 
 <script>
 
+let problems = {
+'add':[
+    {
+      'given': 'The sum of 6 and x increased by 2',
+      'ans': ['6+x+2', '(6+x)+2'],
+      'display_ans': ['(6 + x) + 2']
+    },
 
-function checkAddAns(problemNumber) {
-  if ($("#add-ans-"+problemNumber).val() == ""){
+    {
+      'given': '3 plus the sum of 9 and x',
+      'ans': ['3+9+x', '3+(9+x)'],
+      'display_ans': ['3 + (9 + x)']
+    },
+
+    {
+      'given': 'A number added to 16',
+      'ans': ['16+x'],
+      'display_ans': ['16 + x'],
+    },
+
+    {
+      'given': 'Total of 17 and 5x',
+      'ans': ['17+5x', '5x+17'],
+      'display_ans': ['17 + 5x'],
+    },
+
+    {
+      'given': 'The sum of 6 and x increased by 2',
+      'ans': ['6+x+2', '(6+x)+2'],
+      'display_ans': ['(6 + x) + 2'],
+    },
+  ],
+  'sub':[
+    {
+      'given': '12 less than 19	',
+      'ans': ['19-12'],
+      'display_ans': ['19 -12'],
+    },
+
+    {
+      'given': '3 minus the difference of 2 and 4',
+      'ans': ['3-2-4', '3-(2-4)'],
+      'display_ans': ['3 - (2 - 4)'],
+    },
+
+    {
+      'given': '13 subtracted by 6',
+      'ans': ['13-6'],
+      'display_ans': ['13 - 6'],
+    },
+
+    {
+      'given': '13 subtracted from 6',
+      'ans': ['6-13'],
+      'display_ans': ['6 - 13'],
+    },
+
+    {
+      'given': 'The difference of 5x and y decreased by 8',
+      'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
+      'display_ans': ['(5x - y) - 8'],
+    },
+  ],
+  'mul':[
+    {
+      'given': '4 multiplied by 7',
+      'ans': ['4*7', '(4)(7)', '(4)7', '4(7)'],
+      'display_ans': ['4 * 7'],
+    },
+      
+    {
+      'given': '2 times the product of 4 and 4',
+      'ans': ['2*4*4', '2*(4*4)', '2(4*4)'],
+      'display_ans': ['2 * (4 * 4)'],
+    },
+
+    {
+      'given': 'Twice a number',
+      'ans': ['2x', '2*x', '2(x)'],
+      'display_ans': ['2 * x'],
+    },
+
+    {
+      'given': 'Thrice 5x',
+      'ans': ['3*5x', '3*(5x)', '3(5*x)', '3(5x)', '3(5(x))'],
+      'display_ans': ['3 * 5x'],
+    },
+
+    {
+      'given': 'The product of 6 and a number',
+      'ans': ['6*x', '6x', '6(x)'],
+      'display_ans': ['6 * x'],
+    },
+  ],
+
+  'div':[
+    {
+      'given': '2 divided by x	',
+      'ans': ['2/x'],
+      'display_ans': ['2 / x'],
+    },
+
+    {
+      'given': 'The quotient of x and 14 divided by 3',
+      'ans': ['x/4/3', '(x/14)/3', 'x/(14/3)'],
+      'display_ans': ['(x / 14) / 3'],
+    },
+
+    {
+      'given': 'The ratio of 6 and 18',
+      'ans': ['6/18'],
+      'display_ans': ['6 / 18'],
+    },
+
+    {
+      'given': 'One-third of a number',
+      'ans': ['1/3x', '(1/3)*x'],
+      'display_ans': ['1/3x'],
+    },
+
+    {
+      'given': 'One-half of a number divided by 9',
+      'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
+      'display_ans': ['(1/2x) / 9'],
+    },
+  ]
+} 
+
+function checkAns(type, problemNumber){ 
+  if ($("#"+type+"-ans-"+problemNumber).val() == ""){
     alert("Please type in your answer first.");
+    console.log(problems[type][0]);
   }
   else{
-    if ($("#add-btn-"+problemNumber).html() == "Check"){
-      if ($("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[0] || 
-          $("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[1] ||
-          $("#add-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == addProblems[problemNumber].ans[2]){
+    if ($("#"+type+"-btn-"+problemNumber).html() == "Check"){
+      if ($("#"+type+"-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][0] || 
+          $("#"+type+"-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][1] ||
+          $("#"+type+"-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][2]){
         $(document).ready(function(){
           $("#correct").modal('show');
       });
@@ -190,12 +364,13 @@ function checkAddAns(problemNumber) {
       else{
         $(document).ready(function(){
           $("#incorrect").modal('show');
-          $("#correct_answer").html("The correct answer is: " +addProblems[problemNumber].display_ans[0]);
-      });;
+          $("#correct_answer").html("The correct answer is: `" +problems[type][problemNumber].display_ans+"`");
+          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });;
       }
-      $("#add-btn-"+problemNumber).html("Solution");
-      $("#add-ans-"+problemNumber).css('color', 'gray');
-      $("#add-ans-"+problemNumber).attr("disabled", "");
+      $("#"+type+"-btn-"+problemNumber).html("Solution");
+      $("#"+type+"-ans-"+problemNumber).css('color', 'gray');
+      $("#"+type+"-ans-"+problemNumber).attr("disabled", "");
     }
     else{
       $(document).ready(function(){
@@ -205,248 +380,40 @@ function checkAddAns(problemNumber) {
   }
 }
 
-function checkSubAns(problemNumber) {
-  if ($("#sub-ans-"+problemNumber).val() == ""){
-    alert("Please type in your answer first.");
-  }
-  else{
-    if ($("#sub-btn-"+problemNumber).html() == "Check"){
-      if ($("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[0] || 
-          $("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[1] ||
-          $("#sub-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == subProblems[problemNumber].ans[2]){
-        $(document).ready(function(){
-          $("#correct").modal('show');
-      });
-      }
-      else{
-        $(document).ready(function(){
-          $("#incorrect").modal('show');
-          $("#correct_answer").html("The correct answer is: " +subProblems[problemNumber].display_ans[0]);
-      });;
-      }
-      $("#sub-btn-"+problemNumber).html("Solution");
-      $("#sub-ans-"+problemNumber).css('color', 'gray');
-      $("#sub-ans-"+problemNumber).attr("disabled", "");
-    }
-    else{
-      $(document).ready(function(){
-        $("#solution").modal('show');
-      });
-    }
-  }
-}
-
-function checkMulAns(problemNumber) {
-  if ($("#mul-ans-"+problemNumber).val() == ""){
-    alert("Please type in your answer first.");
-  }
-  else{
-    if ($("#mul-btn-"+problemNumber).html() == "Check"){
-      if ($("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[0] || 
-          $("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[1] ||
-          $("#mul-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == mulProblems[problemNumber].ans[2]){
-        $(document).ready(function(){
-          $("#correct").modal('show');
-      });
-      }
-      else{
-        $(document).ready(function(){
-          $("#incorrect").modal('show');
-          $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
-      });
-      }
-      $("#mul-btn-"+problemNumber).html("Solution");
-      $("#mul-ans-"+problemNumber).css('color', 'gray');
-      $("#mul-ans-"+problemNumber).attr("disabled", "");
-    }
-    else{
-      $(document).ready(function(){
-        $("#solution").modal('show');
-      });
-    }
-  }
-}
-
-function checkDivAns(problemNumber) {
-  if ($("#div-ans-"+problemNumber).val() == ""){
-    alert("Please type in your answer first.");
-  }
-  else{
-    if ($("#div-btn-"+problemNumber).html() == "Check"){
-      if ($("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[0] || 
-          $("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[1] ||
-          $("#div-ans-"+problemNumber).val().replace(/\s/g,'').replace(/([a-z])/g, "x") == divProblems[problemNumber].ans[2]){
-        $(document).ready(function(){
-          $("#correct").modal('show');
-      });
-      }
-      else{
-        $(document).ready(function(){
-          $("#incorrect").modal('show');
-          $("#correct_answer").html("The correct answer is: " +mulProblems[problemNumber].display_ans[0]);
-      });
-      }
-      $("#div-btn-"+problemNumber).html("Solution");
-      $("#div-ans-"+problemNumber).css('color', 'gray');
-      $("#div-ans-"+problemNumber).attr("disabled", "");
-    }
-    else{
-      $(document).ready(function(){
-        $("#solution").modal('show');
-      });
-    }
-  }
-}
-
-
-let addProblems = {
-  '0':{
-    'given': '4 more than 11',
-    'ans': ['11+4'],
-    'display_ans': ['11 + 4']
-  },
-  '1':{
-    'given': '3 plus the sum of 9 and x',
-    'ans': ['3+9+x', '3+(9+x)'],
-    'display_ans': ['3 + (9 + x)']
-  },
-  '2':{
-    'given': 'A number added to 16',
-    'ans': ['16+x'],
-    'display_ans': ['16 + x']
-  },
-  '3':{
-    'given': 'Total of 17 and 5x',
-    'ans': ['17+5x', '5x+17'],
-    'display_ans': ['17 + 5x']
-  },
-  '4':{
-    'given': 'The sum of 6 and x increased by 2',
-    'ans': ['6+x+2', '(6+x)+2'],
-    'display_ans': ['(6 + x) + 2']
-  }
-}
-
-let subProblems = {
-  '0':{
-    'given': '12 less than 19	',
-    'ans': ['19-12'],
-    'display_ans': ['19 -12']
-  },
-  '1':{
-    'given': '3 minus the difference of 2 and 4',
-    'ans': ['3-2-4', '3-(2-4)'],
-    'display_ans': ['3 - (2 - 4)']
-  },
-  '2':{
-    'given': '13 subtracted by 6',
-    'ans': ['13-6'],
-    'display_ans': ['13 - 6']
-  },
-  '3':{
-    'given': '13 subtracted from 6',
-    'ans': ['6-13'],
-    'display_ans': ['6 - 13']
-  },
-  '4':{
-    'given': 'The difference of 5x and y decreased by 8',
-    'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
-    'display_ans': ['(5x - y) - 8']
-  }
-}
-
-let mulProblems = {
-  '0':{
-    'given': '4 multiplied by 7',
-    'ans': ['4*7'],
-    'display_ans': ['4 * 7']
-  },
-  '1':{
-    'given': '2 times the product of 4 and 4',
-    'ans': ['2*4*4', '2*(4*4)'],
-    'display_ans': ['2 * (4 * 4)']
-  },
-  '2':{
-    'given': 'Twice a number',
-    'ans': ['2x', '2*x'],
-    'display_ans': ['2 * x']
-  },
-  '3':{
-    'given': 'Thrice 5x',
-    'ans': ['3*5x'],
-    'display_ans': ['3 * 5x']
-  },
-  '4':{
-    'given': 'The product of 6 and a number',
-    'ans': ['6*x', '6x'],
-    'display_ans': ['6 * x']
-  }
-}
-
-let divProblems = {
-  '0':{
-    'given': '2 divided by x	',
-    'ans': ['2/x'],
-    'display_ans': ['2 / x']
-  },
-  '1':{
-    'given': 'The quotient of x and 14 divided by 3',
-    'ans': ['x/4/3', '(x/14)/3', 'x/(14/3)'],
-    'display_ans': ['(x / 14) / 3']
-  },
-  '2':{
-    'given': 'The ratio of 6 and 18',
-    'ans': ['6/18'],
-    'display_ans': ['6 / 18']
-  },
-  '3':{
-    'given': 'One-third of a number',
-    'ans': ['1/3x', '(1/3)*x'],
-    'display_ans': ['1/3x']
-  },
-  '4':{
-    'given': 'One-half of a number divided by 9',
-    'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
-    'display_ans': ['(1/2x) / 9']
-  }
-}
-
-
 addHTML = "";
 subHTML = "";
 mulHTML = "";
 divHTML = "";
-problemCount = (Object.keys(addProblems).length) - 1
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
   addHTML += `<tr>`;
-  addHTML += `<td scope="row">`+addProblems[i].given+`</td>`;
+  addHTML += `<td scope="row">`+problems.add[i].given+`</td>`;
   addHTML += `<td scope="row"><input type="text" id="add-ans-`+i+`" class="form-label"></td>`;
-  addHTML += `<td class="text-center"><a id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAddAns(`+i+`)">Check</a></td>`;
+  addHTML += `<td class="text-center"><a id="add-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAns('add', `+i+`)">Check</a></td>`;
   addHTML += `</tr>`;
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
   subHTML += `<tr>`;
-  subHTML += `<td scope="row">`+subProblems[i].given+`</td>`;
+  subHTML += `<td scope="row">`+problems.sub[i].given+`</td>`;
   subHTML += `<td scope="row"><input type="text" id="sub-ans-`+i+`" class="form-label"></td>`;
-  subHTML += `<td class="text-center"><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkSubAns(`+i+`)">Check</a></td>`;
+  subHTML += `<td class="text-center"><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAns('sub', `+i+`)">Check</a></td>`;
   subHTML += `</tr>`;
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
   mulHTML += `<tr>`;
-  mulHTML += `<td scope="row">`+mulProblems[i].given+`</td>`;
+  mulHTML += `<td scope="row">`+problems.mul[i].given+`</td>`;
   mulHTML += `<td scope="row"><input type="text" id="mul-ans-`+i+`" class="form-label"></td>`;
-  mulHTML += `<td class="text-center"><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkMulAns(`+i+`)">Check</a></td>`;
+  mulHTML += `<td class="text-center"><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAns('mul', `+i+`)">Check</a></td>`;
   mulHTML += `</tr>`;
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
   divHTML += `<tr>`;
-  divHTML += `<td scope="row">`+divProblems[i].given+`</td>`;
+  divHTML += `<td scope="row">`+problems.div[i].given+`</td>`;
   divHTML += `<td scope="row"><input type="text" id="div-ans-`+i+`" class="form-label"></td>`;
-  divHTML += `<td class="text-center"><a id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkDivAns(`+i+`)">Check</a></td>`;
+  divHTML += `<td class="text-center"><a id="div-btn-`+i+`" class="btn btn-outline-primary answer" onclick="checkAns('div', `+i+`)">Check</a></td>`;
   divHTML += `</tr>`;
 }
 
@@ -456,7 +423,7 @@ $("#mulProblems").html(mulHTML);
 $("#divProblems").html(divHTML);
 
 // Input enter = Check
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
 document.getElementById("add-ans-"+i).addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -465,7 +432,7 @@ document.getElementById("add-ans-"+i).addEventListener("keypress", function(even
 });
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
 document.getElementById("sub-ans-"+i).addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -474,7 +441,7 @@ document.getElementById("sub-ans-"+i).addEventListener("keypress", function(even
 });
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
 document.getElementById("mul-ans-"+i).addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -483,7 +450,7 @@ document.getElementById("mul-ans-"+i).addEventListener("keypress", function(even
 });
 }
 
-for (let i = 0; i <= problemCount; i++){
+for (let i = 0; i <= 4; i++){
 document.getElementById("div-ans-"+i).addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
