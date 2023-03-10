@@ -46,6 +46,6 @@ def submit_sentence():
         if len(lis) > 1:
             temp += "<br/>Ambiguous Sentence"
         temp += "</p>"
-        temp += "<br/>".join([prettier(i) for i in lis])
+        temp += "<br/> <hr/>".join(["`"+prettier(i)+"`" for i in lis])
         lis = temp
     return lis
