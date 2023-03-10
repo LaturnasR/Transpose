@@ -351,7 +351,9 @@ let problems = {
 
 function checkAns(type, problemNumber){
   var raw_input = MQ(document.getElementById(type+"-ans-"+problemNumber)).latex();
-  input_value = latex_to_js(raw_input)
+  //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird
+  input_value = latex_to_js(raw_input).replace(/\\/g,'')
+  console.log(input_value)
 
   if (input_value == "" && $("#"+type+"-btn-"+problemNumber).html() != "Solution"){
     alert("Please type in your answer first.");
