@@ -40,7 +40,8 @@ REVERSE -> 'more_than' | 'less_than'
 
 operator = {
     '5EQUALITY':{
-        '<': ['be less than or equal to'],   
+        '≤': ['be less than or equal to'],   
+        '≥': ['be more than or equal to'],   
     },
     '4EQUALITY':{
         '≠': ['be not equal to'],
