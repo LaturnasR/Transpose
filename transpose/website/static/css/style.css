@@ -60,9 +60,8 @@ section.home{
     transition: margin-left 0.5s;
 }
 .action{
-    width:10%;
-    min-width: 5.5em;
-    text-align-last: center;
+    text-align-last: end;
+    width: 1vw;
 }
 .answer{
     height:30px;
