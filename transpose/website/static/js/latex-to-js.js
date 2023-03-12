@@ -16,6 +16,9 @@
    License for the specific language governing permissions and limitations under
    the License.
  */
+
+ //modified a bit to fit our project, which needs TeX conversion to plain text
+ // -John Michael De Borja
 var latex_to_js = function(input) {
 
 	var init, fraction, square_root, nth_root, nth_power, sin, cos, tan, sinCosTanFramework, convert_others;
@@ -24,6 +27,7 @@ var latex_to_js = function(input) {
 		var st1 = input;
 		st1 = st1.replace(/\s/g, "");
 		st1 = st1.replace(/\\times/g, "*");
+		st1 = st1.replace(/\\cdot/g, "*");
 		st1 = st1.replace(/\\div/g, "/");
 
 		//pi
@@ -49,7 +53,7 @@ var latex_to_js = function(input) {
 	fraction = function(input) {
 		while (input.search(/\\frac\{(((?![\{\}]).)*)\}\{(((?![\{\}]).)*)\}/) >= 0) {
 			
-			input = input.replace(/\\frac\{(((?![\{\}]).)*)\}\{(((?![\{\}]).)*)\}/g, "($1)/($3)");
+			input = input.replace(/\\frac\{(((?![\{\}]).)*)\}\{(((?![\{\}]).)*)\}/g, "$1/$3");
 		}
 
 		if (input.search(/\\frac/) >= 0) {
