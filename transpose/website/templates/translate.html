@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!-- independent css file -->
+<link rel="stylesheet" href="/static/css/translate_custom.css">
+
+<!-- up here so modal will show as the html is loaded -->
 <script>
     $(document).ready(function(){
         $("#myModal").modal('show');
@@ -23,57 +27,64 @@
     </div>
 </div>
 
-<div id="bar2-placeholder" class="sidebar2"></div>
 <section id="home-section">
   <div id = "translator" class="container-fluid">
     <main>
-      <div class="py-5 text-center" style="height:20em;">
+      <div class="pt-5 text-center">
         <img style="width:276px; height:208px;" src="images/Logo.png">
         <h1 style="font-family: Bayon; color: white; font-size: 65px; text-shadow: 1px 2px #000;" >TRANSPOSE</h1>
         <h5 style="font-family: Montserrat; color: #333; ">English to Math Expression</h5>
       </div>
-      <br>
-      <div>
-        <form method="POST" id="sentence_form" class="justify-content-center text-muted text-center text-small">
-          <p style="color: #333"><br><br><br>Example: {{ example_sent }}</p>
-          <div class="input-group mb-3" style="width: 70%; margin: auto";>
-              <input type="text"  for="sentence" name="sentence"id="sentence" class="form-control" placeholder="{{last_input}}">
-              <button class="btn btn-outline-light">
-                  Enter
-              </button>
+
+      <div class="spacer py-2"></div>
+      <div class="spacer py-2"></div>
+      
+      <div class="bg-light rounded-3 container-sm">
+        <div class="d-flex flex-row justify-content-between">
+          <div class="d-flex flex-column">
+            <div class="d-inline">
+              Examples:
+            </div>
+            <div class="pt-1" id="example" value="{{example_sent}}">{{example_sent}}</div>
           </div>
-        </form>
+          <div class="align-self-center">
+            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+
+            <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto;max-width: 500px;">
+              <!-- For loop flask-->
+              {%for i in example_list%}
+                <li class="phrases dropdown-item user-select-none" value="{{i}}" 
+                style="width: 400px; white-space: normal; cursor: pointer"
+                >
+                  {{i}}
+                </li>
+              {%endfor%}
+            </ul>
+          </div>
+        </div>
       </div>
-    
+
+      <div class="spacer py-2"></div>
+
+      <form method="POST" id="sentence_form" class="input-group mb-3 container-sm w-75">
+        <div class="form-floating">
+          <textarea id="sentence" name="sentence" class="form-control rounded-start-3 border border-dark"
+            type="text" for="sentence" style="resize: none;"placeholder="Leave a comment here"></textarea>
+          <label class="text-secondary" style="width:95%;"for="floatingTextarea">Enter a math phrase/sentence here.</label>
+        </div>
+        <button class="btn btn-outline-light">Enter</button>
+      </form>
       <div id="output" class="output" style="width: 70%; margin: auto; color: black; border-radius: 10px; padding: 0.5em; text-align: center;">
       </div>
     </main>
   </div>
   </section>
 
-<style>
-body{
-  min-height: 100vh; 
-  background: linear-gradient(45deg, #FEAC5E, #C779D0, #4BC0C8)
-}
-</style>
-
-<script>
-  $("#translate").removeAttr("href");
-  $("#translate").css("color", "#64b3f4");
-  $("#translate").addClass("fw-semibold");
-</script>
-
-<script>
-  $("#sentence_form").submit(function(){
-    $("#output").css("background", "white");
-  });
-</script>
+<!-- jquery-textcomplete -->
+<script type="text/javascript" src="static/js/jquery.textcomplete.js"></script>
 
 <!-- custom js, needs jQuery on top -->
-<script src="static/js/bar_loader.js"></script>
-<script>
-  $SCRIPT_ROOT = {{ request.script_root|tojson }};
-</script>
-<script src="static/js/translate_post.js"></script>
+<script type="text/javascript" src="static/js/translate_custom.js"></script>
+
+
 {% endblock %}

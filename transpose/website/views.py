@@ -1,15 +1,18 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, json
 from .translator import translate as tl, prettier
 import random
+import json, os
 
-example_list = [
-    "Product of a number, 5 less than 1, 1 and sum of 4, a number, and seventy seven, times 4",
-    "y added to the product of 2, forty four, eight, and a number.",
-    "2y plus the product of two, 4, eight and twice x",
-    "Three diminished by the sum of two and four",
-    "Quotient of a number and a sum of 4, a number, and 7, times 4"
-]
+#top directory
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
+#looks for the file phrases.json
+#in static/json directory, using the top directory as a prefix
+json_url = os.path.join(SITE_ROOT, "static/json", "phrases.json")
+
+#json is loaded
+data = json.load(open(json_url))
+  
 views = Blueprint('views', __name__)
 @views.route('/')
 def index():
@@ -17,8 +20,8 @@ def index():
     
 @views.route('/translate')
 def translate():
-	example_sent = example_list[random.randint(0, len(example_list) - 1)]
-	return render_template('translate.html', translation="", example_sent = example_sent, last_input = example_sent)
+	example_sent = data[random.randint(0, len(data) - 1)]
+	return render_template('translate.html', example_list=sorted(data, key=str.casefold), example_sent = example_sent)
 
 @views.route('/learn')
 def learn():
