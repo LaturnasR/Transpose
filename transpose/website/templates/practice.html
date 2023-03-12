@@ -37,12 +37,12 @@ var MQ = MathQuill.getInterface(2);
 <div id="solution" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-          <div class="modal-body">
-              <p>
-                Solution & Explanation: .....
-              </p>
-
-          </div>
+        <div class="modal-header">
+          <h5 id="myModalLabel">Solution</h5>
+      </div>
+      <div class="modal-body">
+          <p id="explanation"></p>
+      </div>
       </div>
   </div>
 </div>
@@ -53,11 +53,11 @@ var MQ = MathQuill.getInterface(2);
       <div class="section-title">
         <h2>Practice</h2>
         <p>
-        Listed in each selection are different variations of sample problems. Try to translate these 
-        problems into their equivalent expressions and check if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases. 
+        Listed in each selection are different variations of sample problems. Try to translate these
+        problems into their equivalent expressions and check if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.
         You can refer to the <a href="#table">table</a> below to see the commonly used keywords for each operator.</p>
       </div>
-      
+
 
       <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist" style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
         <li class="nav-item" role="presentation">
@@ -82,7 +82,7 @@ var MQ = MathQuill.getInterface(2);
               <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
-                    <th scope="col" class="text-start">Problem</th>
+                    <th scope="col" class="text-start" style="width:60%">Problem</th>
                     <th scope="col">Answer</th>
                     <th scope="col" class="text-end">Action&emsp;</th>
                   </tr>
@@ -96,13 +96,13 @@ var MQ = MathQuill.getInterface(2);
         <div class="tab-pane fade" id="pills-subtraction" role="tabpanel" aria-labelledby="pills-subtraction-tab" tabindex="0">
           <div class="div_content" id="subtraction">
             <br>
-            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
-              <table class="table table-borderless table-striped border-secondary fs-6">
+            <div class="table-responsive align-middle px-2 rounded" >
+              <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
-                    <th style="width:20%;" scope="col" >Problem</th>
-                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
-                    <th class="action" scope="col">Action</th>
+                    <th scope="col" class="text-start" style="width:60%">Problem</th>
+                    <th scope="col" >Answer</th>
+                    <th scope="col" class="text-end">Action&emsp;</th>
                   </tr>
                 </thead>
                 <tbody id="subProblems"> </tbody>
@@ -114,13 +114,13 @@ var MQ = MathQuill.getInterface(2);
         <div class="tab-pane fade" id="pills-multiplication" role="tabpanel" aria-labelledby="pills-multiplication-tab" tabindex="0">
           <div class="div_content" id="multiplication">
             <br>
-            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
-              <table class="table table-borderless border-secondary fs-6">
+            <div class="table-responsive align-middle px-2 rounded" >
+              <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
-                    <th style="width:20%;" scope="col" >Problem</th>
-                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
-                    <th class="action" scope="col">Action</th>
+                    <th scope="col" class="text-start" style="width:60%">Problem</th>
+                    <th scope="col">Answer</th>
+                    <th scope="col" class="text-end">Action&emsp;</th>
                   </tr>
                 </thead>
                 <tbody id="mulProblems"> </tbody>
@@ -132,13 +132,13 @@ var MQ = MathQuill.getInterface(2);
         <div class="tab-pane fade" id="pills-division" role="tabpanel" aria-labelledby="pills-division-tab" tabindex="0">
           <div class="div_content" id="division">
             <br>
-            <div class="table-responsive section-bg px-3 pb-0 rounded align-middle" >
-              <table class="table table-borderless border-secondary fs-6">
+            <div class="table-responsive align-middle px-2 rounded" >
+              <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
-                    <th style="width:20%;" scope="col" >Problem</th>
-                    <th style="width:20%; text-align: center;" scope="col">Answer</th>
-                    <th class="action" scope="col">Action</th>
+                    <th scope="col" class="text-start" style="width:60%">Problem</th>
+                    <th scope="col">Answer</th>
+                    <th scope="col" class="text-end">Action&emsp;</th>
                   </tr>
                 </thead>
                 <tbody id="divProblems"> </tbody>
@@ -210,8 +210,8 @@ var MQ = MathQuill.getInterface(2);
   $("#practice").addClass("fw-semibold");
 </script>
 
-<script 
-  src="https://code.jquery.com/jquery-3.6.1.min.js" 
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
   crossorigin="anonymous">
 </script>
@@ -226,31 +226,36 @@ let problems = {
     {
       'given': '4 more than 11',
       'ans': ['11+4'],
-      'display_ans': ['11 + 4']
+      'display_ans': ['11 + 4'],
+      'sol': ''
     },
 
     {
       'given': '3 plus the sum of 9 and x',
       'ans': ['3+9+x', '3+(9+x)'],
-      'display_ans': ['3 + (9 + x)']
+      'display_ans': ['3 + (9 + x)'],
+      'sol': ''
     },
 
     {
       'given': 'A number added to 16',
       'ans': ['16+x'],
       'display_ans': ['16 + x'],
+      'sol': ''
     },
 
     {
       'given': 'Total of 17 and 5x',
       'ans': ['17+5x'],
       'display_ans': ['17 + 5x'],
+      'sol': ''
     },
 
     {
       'given': 'The sum of 6 and x increased by 2',
       'ans': ['6+x+2', '(6+x)+2', '6+(x+2)'],
-      'display_ans': ['(6 + x) + 2', '6 + (x + 2)']
+      'display_ans': ['(6 + x) + 2'],
+      'sol': ''
     },
   ],
   'sub':[
@@ -258,30 +263,35 @@ let problems = {
       'given': '12 less than 19	',
       'ans': ['19-12'],
       'display_ans': ['19 -12'],
+      'sol': ''
     },
 
     {
       'given': '3 minus the difference of 2 and 4',
       'ans': ['3-2-4', '3-(2-4)'],
       'display_ans': ['3 - (2 - 4)'],
+      'sol': ''
     },
 
     {
       'given': '13 subtracted by 6',
       'ans': ['13-6'],
       'display_ans': ['13 - 6'],
+      'sol': ''
     },
 
     {
       'given': '13 subtracted from 6',
       'ans': ['6-13'],
       'display_ans': ['6 - 13'],
+      'sol': ''
     },
 
     {
       'given': 'The difference of 5x and y decreased by 8',
       'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
       'display_ans': ['(5x - y) - 8'],
+      'sol': ''
     },
   ],
   'mul':[
@@ -289,30 +299,35 @@ let problems = {
       'given': '4 multiplied by 7',
       'ans': ['4*7', '(4)(7)', '(4)7', '4(7)'],
       'display_ans': ['4 * 7'],
+      'sol': ''
     },
-      
+
     {
       'given': '2 times the product of 4 and 4',
       'ans': ['2*4*4', '2*(4*4)', '2(4*4)'],
       'display_ans': ['2 * (4 * 4)'],
+      'sol': ''
     },
 
     {
       'given': 'Twice a number x',
       'ans': ['2x', '2*x', '2(x)'],
       'display_ans': ['2 * x'],
+      'sol': ''
     },
 
     {
       'given': 'Thrice 5x',
       'ans': ['3*5x', '3*(5x)', '3(5*x)', '3(5x)', '3(5(x))'],
       'display_ans': ['3 * 5x'],
+      'sol': ''
     },
 
     {
       'given': 'The product of 6 and a number',
       'ans': ['6*x', '6x', '6(x)'],
       'display_ans': ['6 * x'],
+      'sol': ''
     },
   ],
 
@@ -321,33 +336,38 @@ let problems = {
       'given': '2 divided by x	',
       'ans': ['2/x'],
       'display_ans': ['2 / x'],
+      'sol': ''
     },
 
     {
       'given': 'The quotient of x and 14 divided by 3',
       'ans': ['x/14/3', '(x/14)/3', 'x/(14/3)'],
       'display_ans': ['(x / 14) / 3'],
+      'sol': ''
     },
 
     {
       'given': 'The ratio of 6 and 18',
       'ans': ['6/18'],
       'display_ans': ['6 / 18'],
+      'sol': ''
     },
 
     {
       'given': 'One-third of a number',
       'ans': ['1/3x', '(1/3)*x'],
       'display_ans': ['1/3x'],
+      'sol': ''
     },
 
     {
       'given': 'One-half of a number divided by 9',
       'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
       'display_ans': ['(1/2x) / 9'],
+      'sol': ''
     },
   ]
-} 
+}
 
 function checkAns(type, problemNumber){
   var raw_input = MQ(document.getElementById(type+"-ans-"+problemNumber)).latex();
@@ -360,7 +380,7 @@ function checkAns(type, problemNumber){
   }
   else{
     if ($("#"+type+"-btn-"+problemNumber).html() == "Check"){
-      if (input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][0] || 
+      if (input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][0] ||
           input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][1] ||
           input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][2]){
         $(document).ready(function(){
@@ -376,12 +396,13 @@ function checkAns(type, problemNumber){
       }
       $("#"+type+"-btn-"+problemNumber).html("Solution");
       $("#"+type+"-ans-"+problemNumber).css('color', 'gray');
-      $("#"+type+"-ans-"+problemNumber).find('span.mq-textarea textarea').prop("disabled", true);
       $("#"+type+"-ans-"+problemNumber).find('span.mq-textarea textarea').prop("readonly", true);
     }
     else{
       $(document).ready(function(){
           $("#solution").modal('show');
+          $("#explanation").html("Explanation here... "+problems[type][problemNumber].sol);
+          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
       });
     }
   }
