@@ -1,8 +1,9 @@
 /* dropdown example picking */
 $("li.phrases").click(function(e){
-  $("#example").html($(this).attr("value"))
   $("#example").attr("value",$(this).attr("value"))
+  console.log($(this).attr("value"))
   $("#sentence").html($(this).attr("value"))
+  $("#sentence").val($(this).attr("value"))
 })
 
 /* form submit */
