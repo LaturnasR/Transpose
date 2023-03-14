@@ -27,14 +27,6 @@ $(document).on('submit','#sentence_form',function(e){
   });
 });
 
-/* textarea autoresize */
-  $("textarea").each(function () {
-    this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-  })
-  .on("input", function () {
-    this.style.height = 0;
-    this.style.height = (this.scrollHeight) + "px";
-  });
 
 /* textarea submit on enter */
 $(document).ready(function() {
@@ -59,10 +51,15 @@ $('textarea').textcomplete([{
       "is not equal to",
       "plus", "add", "increase", "exceed", "more",
       "take away", "subtract", "minus", "decrease", "less", "diminish", "reduce", "lost",
-      "sum of","total of","addition of",
+      "sum of","total of",
       "difference of",
-      "multiplication of", "product of",
-      "quotient of", "ratio of",
+      "product of",
+      "quotient of", "ratio of", 
+      "the sum of","the total of",
+      "the difference of",
+      "the product of",
+      "the quotient of", "the ratio of",
+      "the square root of", 
       "square root of", "twice of", "thrice of"
       ];
 

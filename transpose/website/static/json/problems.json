@@ -1,0 +1,147 @@
+{
+    "add":[
+        {
+          "given": "4 more than 11",
+          "ans": ["11+4"],
+          "display_ans": ["11 + 4"],
+          "sol": ""
+        },
+    
+        {
+          "given": "3 plus the sum of 9 and x",
+          "ans": ["3+9+x", "3+(9+x)"],
+          "display_ans": ["3 + (9 + x)"],
+          "sol": ""
+        },
+    
+        {
+          "given": "A number added to 16",
+          "ans": ["16+x"],
+          "display_ans": ["16 + x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "Total of 17 and 5x",
+          "ans": ["17+5x"],
+          "display_ans": ["17 + 5x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "The sum of 6 and x increased by 2",
+          "ans": ["6+x+2", "(6+x)+2", "6+(x+2)"],
+          "display_ans": ["(6 + x) + 2"],
+          "sol": ""
+        }
+      ],
+      "sub":[
+        {
+          "given": "12 less than 19",
+          "ans": ["19-12"],
+          "display_ans": ["19 -12"],
+          "sol": ""
+        },
+    
+        {
+          "given": "3 minus the difference of 2 and 4",
+          "ans": ["3-2-4", "3-(2-4)"],
+          "display_ans": ["3 - (2 - 4)"],
+          "sol": ""
+        },
+    
+        {
+          "given": "13 subtracted by 6",
+          "ans": ["13-6"],
+          "display_ans": ["13 - 6"],
+          "sol": ""
+        },
+    
+        {
+          "given": "13 subtracted from 6",
+          "ans": ["6-13"],
+          "display_ans": ["6 - 13"],
+          "sol": ""
+        },
+    
+        {
+          "given": "The difference of 5x and y decreased by 8",
+          "ans": ["5x-y-8", "(5x-y)-8", "5x-(y-8)"],
+          "display_ans": ["(5x - y) - 8"],
+          "sol": ""
+        }
+      ],
+      "mul":[
+        {
+          "given": "4 multiplied by 7",
+          "ans": ["4*7", "(4)(7)", "(4)7", "4(7)"],
+          "display_ans": ["4 * 7"],
+          "sol": ""
+        },
+    
+        {
+          "given": "2 times the product of 4 and 4",
+          "ans": ["2*4*4", "2*(4*4)", "2(4*4)"],
+          "display_ans": ["2 * (4 * 4)"],
+          "sol": ""
+        },
+    
+        {
+          "given": "Twice a number x",
+          "ans": ["2x", "2*x", "2(x)"],
+          "display_ans": ["2 * x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "Thrice 5x",
+          "ans": ["3*5x", "3*(5x)", "3(5*x)", "3(5x)", "3(5(x))"],
+          "display_ans": ["3 * 5x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "The product of 6 and a number",
+          "ans": ["6*x", "6x", "6(x)"],
+          "display_ans": ["6 * x"],
+          "sol": ""
+        }
+      ],
+    
+      "div":[
+        {
+          "given": "2 divided by x",
+          "ans": ["2/x"],
+          "display_ans": ["2 / x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "The quotient of x and 14 divided by 3",
+          "ans": ["x/14/3", "(x/14)/3", "x/(14/3)"],
+          "display_ans": ["(x / 14) / 3"],
+          "sol": ""
+        },
+    
+        {
+          "given": "The ratio of 6 and 18",
+          "ans": ["6/18"],
+          "display_ans": ["6 / 18"],
+          "sol": ""
+        },
+    
+        {
+          "given": "One-third of a number",
+          "ans": ["1/3x", "(1/3)*x"],
+          "display_ans": ["1/3x"],
+          "sol": ""
+        },
+    
+        {
+          "given": "One-half of a number divided by 9",
+          "ans": ["1/2x/9", "(1/2x)/9", "((1/2)*x)/9"],
+          "display_ans": ["(1/2x) / 9"],
+          "sol": ""
+        }
+      ]
+    }

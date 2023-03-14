@@ -35,9 +35,9 @@ def layout():
 def practice():
 	return render_template('practice.html')
     
-@views.route('/the_team')
-def the_team():
-	return render_template('the_team.html')
+@views.route('/about_us')
+def about_us():
+	return render_template('about_us.html')
 
 @views.route('/_submit_sentence', methods=['POST'])
 def submit_sentence():

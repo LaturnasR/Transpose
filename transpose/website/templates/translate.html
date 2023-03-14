@@ -3,6 +3,7 @@
 
 <!-- independent css file -->
 <link rel="stylesheet" href="/static/css/translate_custom.css">
+<link rel="stylesheet" href="static/css/modal.css" />
 
 <!-- up here so modal will show as the html is loaded -->
 <script>
@@ -11,20 +12,80 @@
     });
 </script>
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 id="myModalLabel"class="modal-title">Instructions</h5>
-            </div>
-            <div class="modal-body">
-                <p>
-                  Transpose is intended to be a supplemental tool to assist our users in translating English Phrases and Sentences into Mathematical Equations. Please consider going through Learn or Practice mode first to familiarize yourself with the topic. 
-                </p>
 
-            </div>
-        </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header ftco-degree-bg" id="modal-bg">
+      </div>
+      <div class="modal-body">
+        <h3 id="myModalLabel" class="text-black">Instructions</h3>
+        <p id="modal-footer" class="mb-2">
+            Transpose is intended to be a supplemental tool to assist our users in translating English Phrases and Sentences into Mathematical Equations. 
+            Please consider going through Learn or Practice mode first to familiarize yourself with the topic. 
+        </p>
+      </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Table Modal -->
+<div class="modal fade" id="table">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body text-center">
+        <div class="table-responsive">
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">Addition</th>
+                <th scope="col">Subtraction</th>
+                <th scope="col">Multiplication</th>
+                <th scope="col">Division</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">added to</td>
+                <td>decreased by</td>
+                <td>multiplied by</td>
+                <td>divided by</td>
+              </tr>
+              <tr>
+                <td scope="row">increased by</td>
+                <td>less than</td>
+                <td>the product of</td>
+                <td>the quotient of</td>
+              </tr>
+              <tr>
+                <td scope="row">more than</td>
+                <td>minus</td>
+                <td>times</td>
+                <td>ratio of</td>
+              </tr>
+              <tr>
+                <td scope="row">plus</td>
+                <td>subtracted from</td>
+                <td>twice</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td scope="row">the sum of</td>
+                <td>the difference of</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <section id="home-section">
@@ -33,13 +94,12 @@
       <div class="pt-5 text-center">
         <img style="width:276px; height:208px;" src="images/Logo.png">
         <h1 style="font-family: Bayon; color: white; font-size: 65px; text-shadow: 1px 2px #000;" >TRANSPOSE</h1>
-        <h5 style="font-family: Montserrat; color: #333; ">English to Math Expression</h5>
+        <h5 class="text-white" style="font-family: Montserrat; ">English to Math Expression</h5>
       </div>
 
       <div class="spacer py-2"></div>
-      <div class="spacer py-2"></div>
-      
-      <div class="bg-light rounded-3 container-sm">
+
+      <!-- <div class="bg-light rounded-3 container-sm">
         <div class="d-flex flex-row justify-content-between">
           <div class="d-flex flex-column">
             <div class="d-inline">
@@ -49,9 +109,9 @@
           </div>
           <div class="align-self-center">
             <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-
-            <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto;max-width: 500px;">
-              <!-- For loop flask-->
+            <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto;max-width: 500px;"> -->
+              
+              <!-- For loop flask
               {%for i in example_list%}
                 <li class="phrases dropdown-item user-select-none" value="{{i}}" 
                 style="width: 400px; white-space: normal; cursor: pointer"
@@ -62,24 +122,45 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="spacer py-2"></div>
 
-      <form method="POST" id="sentence_form" class="input-group mb-3 container-sm w-75">
-        <div class="form-floating">
-          <textarea id="sentence" name="sentence" class="form-control rounded-start-3 border border-dark"
-            type="text" for="sentence" style="resize: none;"placeholder="Leave a comment here"></textarea>
-          <label class="text-secondary" style="width:95%;"for="floatingTextarea">Enter a math phrase/sentence here.</label>
-        </div>
-        <button class="btn btn-outline-light">Enter</button>
+      <form method="POST" id="sentence_form" class="input-group mb-3 container-sm">
+          <textarea id="sentence" name="sentence" class="form-control rounded-start-3 bg-light border border-light"
+            type="text" for="sentence" placeholder="Enter math phrase: " value="{{example_sent}}" style="height:20px"></textarea>
+        <button class="btn btn-outline-light-custom  bg-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto; max-width: 500px;">
+              <!-- For loop flask-->
+              {%for i in example_list%}
+                <li class="phrases dropdown-item user-select-none" value="{{i}}" 
+                style="width: 400px; white-space: normal; cursor: pointer"
+                >
+                  {{i}}
+                </li>
+              {%endfor%}
+            </ul>
+        <button class="btn btn-outline-light-custom bg-light text-black" style="border-left-color:#000;">Enter</button>
       </form>
-      <div id="output" class="output" style="width: 70%; margin: auto; color: black; border-radius: 10px; padding: 0.5em; text-align: center;">
-      </div>
+      <div id="output" class="output"></div>
     </main>
   </div>
+  <a class="btn text-white btn-lg bg-dark" style="position: fixed; bottom:30px; right:21px;" onClick="showTable();">
+    <i class="fa-solid fa-table"></i>
+  </a>
   </section>
 
+<style>
+  .modal-content .modal-body {
+    margin-top: -220px;
+}
+</style>
+
+<script>
+  function showTable() {
+    $("#table").modal('show');
+  }
+
+</script>
 <!-- jquery-textcomplete -->
 <script type="text/javascript" src="static/js/jquery.textcomplete.js"></script>
 

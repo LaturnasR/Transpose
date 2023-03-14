@@ -1,49 +1,49 @@
 {% extends "layout.html" %}
 {% block content %}
 <!-- loaded here kasi ayaw if sa layout -->
-<link rel="stylesheet" href="static/css/mathquill.css"/>
+<link rel="stylesheet" href="static/css/mathquill.css" />
+<link rel="stylesheet" href="static/css/modal.css" />
 <script src="static/js/mathquill.js"></script>
 <script src="static/js/latex-to-js.js"></script>
 <script>
-var MQ = MathQuill.getInterface(2);
+  var MQ = MathQuill.getInterface(2);
 </script>
 
-<div id="correct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title text-success">You got the correct answer! <i class="fa-regular fa-face-smile"></i></h5>
-          </div>
-          <div class="modal-body">
-            <p></p>
+<!-- Check Answer Modal -->
+<div class="modal fade" id="check-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header ftco-degree-bg" id="modal-bg">
+      </div>
+      <div class="modal-body pt-md-0 text-center">
+        <h2 id="modal-header"></h2>
+        <div class="icon d-flex align-items-center justify-content-center">
+          <img id="modal-image" alt="" class="img-fluid">
         </div>
+        <br>
+        <h4 id="modal-footer" class="mb-2"></h4>
+        <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
       </div>
+    </div>
   </div>
 </div>
 
-<div id="incorrect" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 id="myModalLabel"class="modal-title text-danger">Your answer is incorrect. <i class="fa-regular fa-face-frown"></i></h5>
-          </div>
-          <div class="modal-body">
-              <p id="correct_answer"></p>
-          </div>
+<!-- Explanation Modal -->
+<div class="modal fade" id="explanation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="height: 180px">
       </div>
-  </div>
-</div>
-
-<div id="solution" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="myModalLabel">Solution</h5>
+      <div class="modal-body text-center">
+        <h3 class="text-black" id="explanation-header"></h3>
+        <br>
+        <p id="solution" class="fs-6 mb-2"></p>
+        <p id="solution-answer" class="mb-2"></p>
+        <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>  
       </div>
-      <div class="modal-body">
-          <p id="explanation"></p>
-      </div>
-      </div>
+    </div>
   </div>
 </div>
 
@@ -53,38 +53,52 @@ var MQ = MathQuill.getInterface(2);
       <div class="section-title">
         <h2>Practice</h2>
         <p>
-        Listed in each selection are different variations of sample problems. Try to translate these
-        problems into their equivalent expressions and check if you got the right answer. This will help you familiarize yourself with the 'keywords' and their effect on the sentences or phrases.
-        You can refer to the <a href="#table">table</a> below to see the commonly used keywords for each operator.</p>
+          Listed in each selection are different variations of sample problems. Try to translate these
+          problems into their equivalent expressions and check if you got the right answer. This will help you
+          familiarize yourself with the 'keywords' and their effect on the sentences or phrases.
+        </p>
       </div>
 
-
-      <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist" style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
+      <!-- Operator pills -->
+      <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist"
+        style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill" data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition" aria-selected="true">Addition <i class="fa-solid fa-plus"></i></button>
+          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill"
+            data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition"
+            aria-selected="true">Addition <i class="fa-solid fa-plus"></i></button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-subtraction-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-subtraction" type="button" role="tab" aria-controls="pills-subtraction" aria-selected="false">Subtraction <i class="fa-solid fa-minus"></i></button>
+          <button class="nav-link fw-semibold mx-2" id="pills-subtraction-tab" style="--bs-nav-link-color: #47b2e4"
+            data-bs-toggle="pill" data-bs-target="#pills-subtraction" type="button" role="tab"
+            aria-controls="pills-subtraction" aria-selected="false">Subtraction <i
+              class="fa-solid fa-minus"></i></button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-multiplication-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-multiplication" type="button" role="tab" aria-controls="pills-multiplication" aria-selected="false">Multiplication <i class="fa-solid fa-xmark"></i></button>
+          <button class="nav-link fw-semibold mx-2" id="pills-multiplication-tab" style="--bs-nav-link-color: #47b2e4"
+            data-bs-toggle="pill" data-bs-target="#pills-multiplication" type="button" role="tab"
+            aria-controls="pills-multiplication" aria-selected="false">Multiplication <i
+              class="fa-solid fa-xmark"></i></button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-division-tab" style="--bs-nav-link-color: #47b2e4" data-bs-toggle="pill" data-bs-target="#pills-division" type="button" role="tab" aria-controls="pills-division" aria-selected="false">Division <i class="fa-solid fa-divide"></i></button>
+          <button class="nav-link fw-semibold mx-2" id="pills-division-tab" style="--bs-nav-link-color: #47b2e4"
+            data-bs-toggle="pill" data-bs-target="#pills-division" type="button" role="tab"
+            aria-controls="pills-division" aria-selected="false">Division <i class="fa-solid fa-divide"></i></button>
         </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
+
         <!-- Addition problems -->
-        <div class="tab-pane fade show active" id="pills-addition" role="tabpanel" aria-labelledby="pills-addition-tab" tabindex="0">
+        <div class="tab-pane fade show active" id="pills-addition" role="tabpanel" aria-labelledby="pills-addition-tab"
+          tabindex="0">
           <div class="div_content" id="addition">
             <br>
-            <div class="table-responsive align-middle px-2 rounded" >
+            <div class="table-responsive align-middle px-2 rounded">
               <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
                     <th scope="col" class="text-start" style="width:60%">Problem</th>
                     <th scope="col">Answer</th>
-                    <th scope="col" class="text-end">Action&emsp;</th>
+                    <th scope="col" class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody id="addProblems"> </tbody>
@@ -92,17 +106,19 @@ var MQ = MathQuill.getInterface(2);
             </div>
           </div>
         </div>
+
         <!-- Subtraction problems -->
-        <div class="tab-pane fade" id="pills-subtraction" role="tabpanel" aria-labelledby="pills-subtraction-tab" tabindex="0">
+        <div class="tab-pane fade" id="pills-subtraction" role="tabpanel" aria-labelledby="pills-subtraction-tab"
+          tabindex="0">
           <div class="div_content" id="subtraction">
             <br>
-            <div class="table-responsive align-middle px-2 rounded" >
+            <div class="table-responsive align-middle px-2 rounded">
               <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
                     <th scope="col" class="text-start" style="width:60%">Problem</th>
-                    <th scope="col" >Answer</th>
-                    <th scope="col" class="text-end">Action&emsp;</th>
+                    <th scope="col">Answer</th>
+                    <th scope="col" class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody id="subProblems"> </tbody>
@@ -110,17 +126,19 @@ var MQ = MathQuill.getInterface(2);
             </div>
           </div>
         </div>
+
         <!-- Multiplication problems -->
-        <div class="tab-pane fade" id="pills-multiplication" role="tabpanel" aria-labelledby="pills-multiplication-tab" tabindex="0">
+        <div class="tab-pane fade" id="pills-multiplication" role="tabpanel" aria-labelledby="pills-multiplication-tab"
+          tabindex="0">
           <div class="div_content" id="multiplication">
             <br>
-            <div class="table-responsive align-middle px-2 rounded" >
+            <div class="table-responsive align-middle px-2 rounded">
               <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
                     <th scope="col" class="text-start" style="width:60%">Problem</th>
                     <th scope="col">Answer</th>
-                    <th scope="col" class="text-end">Action&emsp;</th>
+                    <th scope="col" class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody id="mulProblems"> </tbody>
@@ -128,17 +146,19 @@ var MQ = MathQuill.getInterface(2);
             </div>
           </div>
         </div>
+
         <!-- Division problems -->
-        <div class="tab-pane fade" id="pills-division" role="tabpanel" aria-labelledby="pills-division-tab" tabindex="0">
+        <div class="tab-pane fade" id="pills-division" role="tabpanel" aria-labelledby="pills-division-tab"
+          tabindex="0">
           <div class="div_content" id="division">
             <br>
-            <div class="table-responsive align-middle px-2 rounded" >
+            <div class="table-responsive align-middle px-2 rounded">
               <table class="table  rounded fs-6 text-center">
                 <thead>
                   <tr>
                     <th scope="col" class="text-start" style="width:60%">Problem</th>
                     <th scope="col">Answer</th>
-                    <th scope="col" class="text-end">Action&emsp;</th>
+                    <th scope="col" class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody id="divProblems"> </tbody>
@@ -147,346 +167,321 @@ var MQ = MathQuill.getInterface(2);
           </div>
         </div>
       </div>
-
-    </div>
-  </section>
-  <div id="table"></div>
-  <section class="learn-step section-bg rounded mt-3">
-    <div class="container" data-aos="fade-up">
-      <div class="section-title">
-        <div class="table-responsive">
-          <table class="table table-striped text-center">
-          <thead>
-            <tr>
-              <th scope="col">Addition</th>
-              <th scope="col">Subtraction</th>
-              <th scope="col">Multiplication</th>
-              <th scope="col">Division</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td scope="row">added to</td>
-              <td>decreased by</td>
-              <td>multiplied by</td>
-              <td>divided by</td>
-            </tr>
-            <tr>
-              <td scope="row">increased by</td>
-              <td>less than</td>
-              <td>the product of</td>
-              <td>the quotient of</td>
-            </tr>
-            <tr>
-              <td scope="row">more than</td>
-              <td>minus</td>
-              <td>times</td>
-              <td>ratio of</td>
-            </tr>
-          <tr>
-              <td scope="row">plus</td>
-              <td>subtracted from</td>
-              <td>twice</td>
-              <td></td>
-            </tr>
-          <tr>
-              <td scope="row">the sum of</td>
-              <td>the difference of</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-          </table>
-            </div>
-      </div>
     </div>
   </section>
 </section>
 
 <!-- jQuery -->
-<script>
-  $("#practice").removeAttr("href");
-  $("#practice").css("color", "#64b3f4");
-  $("#practice").addClass("fw-semibold");
-</script>
-
-<script
-  src="https://code.jquery.com/jquery-3.6.1.min.js"
-  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-  crossorigin="anonymous">
-</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+  </script>
 
 <!-- custom js, needs jQuery on top -->
 <script src="static/js/bar_loader.js"></script>
 
 <script>
 
-let problems = {
-'add':[
-    {
-      'given': '4 more than 11',
-      'ans': ['11+4'],
-      'display_ans': ['11 + 4'],
-      'sol': ''
-    },
+  let problems = {
+    'add': [
+      {
+        'given': '4 more than 11',
+        'ans': ['11+4'],
+        'display_ans': ['11 + 4'],
+        'sol': `
+        The operator keyword '<b>more than</b>' implies that the first operand '<b>4</b>' will be added to the second operand '<b>11</b>'.
+      `
+      },
 
-    {
-      'given': '3 plus the sum of 9 and x',
-      'ans': ['3+9+x', '3+(9+x)'],
-      'display_ans': ['3 + (9 + x)'],
-      'sol': ''
-    },
+      {
+        'given': '3 plus the sum of 9 and x',
+        'ans': ['3+9+x', '3+(9+x)'],
+        'display_ans': ['3 + (9 + x)'],
+        'sol': `
+        The first operator '<b>plus</b>' has operands '<b>3</b>' and '<b>the sum of 9 and x</b>'. Since the second operand is another operation, 
+        it will be grouped and enclosed by a pair of parentheses.
+      `
+      },
 
-    {
-      'given': 'A number added to 16',
-      'ans': ['16+x'],
-      'display_ans': ['16 + x'],
-      'sol': ''
-    },
+      {
+        'given': 'A number added to 16',
+        'ans': ['16+x'],
+        'display_ans': ['16 + x'],
+        'sol': `
+        The word '<b>number</b>' is used to indicate an unknown value. The keyword 'added to' implies to add the first 
+        operand '16' to the second operand '<b>number</b>' which will be assigned as '<b>x</b>'.
+      `
+      },
 
-    {
-      'given': 'Total of 17 and 5x',
-      'ans': ['17+5x'],
-      'display_ans': ['17 + 5x'],
-      'sol': ''
-    },
+      {
+        'given': 'Total of 17 and 5x',
+        'ans': ['17+5x'],
+        'display_ans': ['17 + 5x'],
+        'sol': `
+        The word '<b>Total of</b>' means to add the two operands together. The order of operands will not matter. 
+      `
+      },
 
-    {
-      'given': 'The sum of 6 and x increased by 2',
-      'ans': ['6+x+2', '(6+x)+2', '6+(x+2)'],
-      'display_ans': ['(6 + x) + 2'],
-      'sol': ''
-    },
-  ],
-  'sub':[
-    {
-      'given': '12 less than 19	',
-      'ans': ['19-12'],
-      'display_ans': ['19 -12'],
-      'sol': ''
-    },
+      {
+        'given': 'The sum of 6 and x increased by 2',
+        'ans': ['6+x+2', '(6+x)+2', '6+(x+2)'],
+        'display_ans': ['(6 + x) + 2', '6 + (x + 2)'],
+        'sol': `
+        This is an ambigous phrase. <br><br>
+        <b>Solution 1:</b><br>
+        The first operator '<b>The sum of</b>' has operands '<b>6</b>' and '<b>x</b>'. 
+        The operation '<b>increased by 2</b>' means to add 2 to the first operand '<b>The sum of 6 and x</b>'<br><br>
+        <b>Solution 2:</b><br>
+        The first operator '<b>The sum of</b>' has operands '<b>6</b>' and '<b>x increased by 2</b>'. 
+        Since the second operand is another operation, it will be grouped and enclosed by a pair of parentheses.<br>
+        `
+      },
+    ],
+    'sub': [
+      {
+        'given': '12 less than 19	',
+        'ans': ['19-12'],
+        'display_ans': ['19 -12'],
+        'sol': ''
+      },
 
-    {
-      'given': '3 minus the difference of 2 and 4',
-      'ans': ['3-2-4', '3-(2-4)'],
-      'display_ans': ['3 - (2 - 4)'],
-      'sol': ''
-    },
+      {
+        'given': '3 minus the difference of 2 and 4',
+        'ans': ['3-2-4', '3-(2-4)'],
+        'display_ans': ['3 - (2 - 4)'],
+        'sol': ''
+      },
 
-    {
-      'given': '13 subtracted by 6',
-      'ans': ['13-6'],
-      'display_ans': ['13 - 6'],
-      'sol': ''
-    },
+      {
+        'given': '13 subtracted by 6',
+        'ans': ['13-6'],
+        'display_ans': ['13 - 6'],
+        'sol': ''
+      },
 
-    {
-      'given': '13 subtracted from 6',
-      'ans': ['6-13'],
-      'display_ans': ['6 - 13'],
-      'sol': ''
-    },
+      {
+        'given': '13 subtracted from 6',
+        'ans': ['6-13'],
+        'display_ans': ['6 - 13'],
+        'sol': ''
+      },
 
-    {
-      'given': 'The difference of 5x and y decreased by 8',
-      'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
-      'display_ans': ['(5x - y) - 8'],
-      'sol': ''
-    },
-  ],
-  'mul':[
-    {
-      'given': '4 multiplied by 7',
-      'ans': ['4*7', '(4)(7)', '(4)7', '4(7)'],
-      'display_ans': ['4 * 7'],
-      'sol': ''
-    },
+      {
+        'given': 'The difference of 5x and y decreased by 8',
+        'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
+        'display_ans': ['(5x - y) - 8'],
+        'sol': ''
+      },
+    ],
+    'mul': [
+      {
+        'given': '4 multiplied by 7',
+        'ans': ['4*7', '(4)(7)', '(4)7', '4(7)'],
+        'display_ans': ['4 * 7'],
+        'sol': ''
+      },
 
-    {
-      'given': '2 times the product of 4 and 4',
-      'ans': ['2*4*4', '2*(4*4)', '2(4*4)'],
-      'display_ans': ['2 * (4 * 4)'],
-      'sol': ''
-    },
+      {
+        'given': '2 times the product of 4 and 4',
+        'ans': ['2*4*4', '2*(4*4)', '2(4*4)'],
+        'display_ans': ['2 * (4 * 4)'],
+        'sol': ''
+      },
 
-    {
-      'given': 'Twice a number x',
-      'ans': ['2x', '2*x', '2(x)'],
-      'display_ans': ['2 * x'],
-      'sol': ''
-    },
+      {
+        'given': 'Twice a number x',
+        'ans': ['2x', '2*x', '2(x)'],
+        'display_ans': ['2 * x'],
+        'sol': ''
+      },
 
-    {
-      'given': 'Thrice 5x',
-      'ans': ['3*5x', '3*(5x)', '3(5*x)', '3(5x)', '3(5(x))'],
-      'display_ans': ['3 * 5x'],
-      'sol': ''
-    },
+      {
+        'given': 'Thrice 5x',
+        'ans': ['3*5x', '3*(5x)', '3(5*x)', '3(5x)', '3(5(x))'],
+        'display_ans': ['3 * 5x'],
+        'sol': ''
+      },
 
-    {
-      'given': 'The product of 6 and a number',
-      'ans': ['6*x', '6x', '6(x)'],
-      'display_ans': ['6 * x'],
-      'sol': ''
-    },
-  ],
+      {
+        'given': 'The product of 6 and a number',
+        'ans': ['6*x', '6x', '6(x)'],
+        'display_ans': ['6 * x'],
+        'sol': ''
+      },
+    ],
 
-  'div':[
-    {
-      'given': '2 divided by x	',
-      'ans': ['2/x'],
-      'display_ans': ['2 / x'],
-      'sol': ''
-    },
+    'div': [
+      {
+        'given': '2 divided by x	',
+        'ans': ['2/x'],
+        'display_ans': ['2 / x'],
+        'sol': ''
+      },
 
-    {
-      'given': 'The quotient of x and 14 divided by 3',
-      'ans': ['x/14/3', '(x/14)/3', 'x/(14/3)'],
-      'display_ans': ['(x / 14) / 3'],
-      'sol': ''
-    },
+      {
+        'given': 'The quotient of x and 14 divided by 3',
+        'ans': ['x/14/3', '(x/14)/3', 'x/(14/3)'],
+        'display_ans': ['(x / 14) / 3'],
+        'sol': ''
+      },
 
-    {
-      'given': 'The ratio of 6 and 18',
-      'ans': ['6/18'],
-      'display_ans': ['6 / 18'],
-      'sol': ''
-    },
+      {
+        'given': 'The ratio of 6 and 18',
+        'ans': ['6/18'],
+        'display_ans': ['6 / 18'],
+        'sol': ''
+      },
 
-    {
-      'given': 'One-third of a number',
-      'ans': ['1/3x', '(1/3)*x'],
-      'display_ans': ['1/3x'],
-      'sol': ''
-    },
+      {
+        'given': 'One-third of a number',
+        'ans': ['1/3x', '(1/3)*x'],
+        'display_ans': ['1/3x'],
+        'sol': ''
+      },
 
-    {
-      'given': 'One-half of a number divided by 9',
-      'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
-      'display_ans': ['(1/2x) / 9'],
-      'sol': ''
-    },
-  ]
-}
-
-function checkAns(type, problemNumber){
-  var raw_input = MQ(document.getElementById(type+"-ans-"+problemNumber)).latex();
-  //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird
-  input_value = latex_to_js(raw_input).replace(/\\/g,'')
-  console.log(input_value)
-
-  if (input_value == "" && $("#"+type+"-btn-"+problemNumber).html() != "Solution"){
-    alert("Please type in your answer first.");
+      {
+        'given': 'One-half of a number divided by 9',
+        'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9'],
+        'display_ans': ['(1/2x) / 9'],
+        'sol': ''
+      },
+    ]
   }
-  else{
-    if ($("#"+type+"-btn-"+problemNumber).html() == "Check"){
-      if (input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][0] ||
-          input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][1] ||
-          input_value.replace(/\s/g,'').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][2]){
-        $(document).ready(function(){
-          $("#correct").modal('show');
-      });
-      }
-      else{
-        $(document).ready(function(){
-          $("#incorrect").modal('show');
-          $("#correct_answer").html("The correct answer is: `" +problems[type][problemNumber].display_ans+"`");
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        });;
-      }
-      $("#"+type+"-btn-"+problemNumber).html("Solution");
-      $("#"+type+"-ans-"+problemNumber).css('color', 'gray');
-      $("#"+type+"-ans-"+problemNumber).find('span.mq-textarea textarea').prop("readonly", true);
+
+  function checkAns(type, problemNumber) {
+    var raw_input = MQ(document.getElementById(type + "-ans-" + problemNumber)).latex();
+    //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird
+    input_value = latex_to_js(raw_input).replace(/\\/g, '')
+    console.log(input_value)
+
+    if (input_value == "" && $("#" + type + "-btn-" + problemNumber).html() != "Explanation") {
+      alert("Please type in your answer first.");
     }
-    else{
-      $(document).ready(function(){
-          $("#solution").modal('show');
-          $("#explanation").html("Explanation here... "+problems[type][problemNumber].sol);
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-      });
+    else {
+      if ($("#" + type + "-btn-" + problemNumber).html() == "Check") {
+        if (input_value.replace(/\s/g, '').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][0] ||
+          input_value.replace(/\s/g, '').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][1] ||
+          input_value.replace(/\s/g, '').replace(/([a-z])/g, "x") == problems[type][problemNumber]['ans'][2]) {
+          // Load correct modal
+          $(document).ready(function () {
+            $("#modal-header").html(`Your answer is correct <i class="fa-solid fa-circle-check"></i>`);
+            $("#modal-bg").css("background", "linear-gradient(180deg, #5baf8a, #cccccc)");
+            $("#modal-image").attr("src", "images/Correct.png");
+            $("#modal-footer").html("Keep up the good work!");
+            $("#check-modal").modal('show');
+          });
+        }
+        else {
+          // Load incorrect modal
+          $(document).ready(function () {
+            $("#modal-header").html(`Your answer is incorrect <i class="fa-solid fa-circle-xmark"></i>`);
+            $("#modal-bg").css("background", "linear-gradient(  180deg, #af5a5a, #cccccc)");
+            $("#modal-image").attr("src", "images/Incorrect.png");
+            $("#modal-footer").html("Nice try! Keep practicing.");
+            $("#check-modal").modal('show');
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          });;
+        }
+        // Disable input
+        $("#" + type + "-btn-" + problemNumber).html("Explanation");
+        $("#" + type + "-ans-" + problemNumber).css('color', 'gray');
+        $("#" + type + "-ans-" + problemNumber).find('span.mq-textarea textarea').prop("readonly", true);
+        $("#" + type + "-ans-" + problemNumber).find('span.mq-textarea textarea').prop("disabled", true);
+      }
+      else {
+        $(document).ready(function () {
+          $("#explanation-header").html(problems[type][problemNumber]['given']);
+          $("#solution").html(problems[type][problemNumber].sol);
+          if ((problems[type][problemNumber].display_ans).length > 1) {
+            $("#solution-answer").html("Answers: `" + problems[type][problemNumber].display_ans[0] + "` or `" + problems[type][problemNumber].display_ans[1] + "`");
+          }
+          else
+            $("#solution-answer").html("Answer: `" + problems[type][problemNumber].display_ans + "`");
+          $("#explanation").modal('show');
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        });
+      }
     }
   }
-}
 
-addHTML = "";
-subHTML = "";
-mulHTML = "";
-divHTML = "";
+  addHTML = "";
+  subHTML = "";
+  mulHTML = "";
+  divHTML = "";
 
-for (let i = 0; i <= 4; i++){
-  addHTML += `<tr>`;
-  addHTML += `<td scope="row" class="text-start">`+problems.add[i].given+`</td>`;
-  addHTML += `<td><div type="text" id="add-ans-`+i+`" class="input-mq form-label"></div></td>`;
-  addHTML += `<td><a id="add-btn-`+i+`" class="btn btn-outline-primary answer float-end" onclick="checkAns('add', `+i+`)">Check</a></td>`;
-  addHTML += `</tr>`;
-}
-
-for (let i = 0; i <= 4; i++){
-  subHTML += `<tr>`;
-  subHTML += `<td scope="row" class="text-start">`+problems.sub[i].given+`</td>`;
-  subHTML += `<td><div type="text" id="sub-ans-`+i+`" class="input-mq form-label"></div></td>`;
-  subHTML += `<td><a id="sub-btn-`+i+`" class="btn btn-outline-primary answer float-end" onclick="checkAns('sub', `+i+`)">Check</a></td>`;
-  subHTML += `</tr>`;
-}
-
-for (let i = 0; i <= 4; i++){
-  mulHTML += `<tr>`;
-  mulHTML += `<td scope="row" class="text-start">`+problems.mul[i].given+`</td>`;
-  mulHTML += `<td><div type="text" id="mul-ans-`+i+`" class="input-mq form-label"></div></td>`;
-  mulHTML += `<td><a id="mul-btn-`+i+`" class="btn btn-outline-primary answer float-end" onclick="checkAns('mul', `+i+`)">Check</a></td>`;
-  mulHTML += `</tr>`;
-}
-
-for (let i = 0; i <= 4; i++){
-  divHTML += `<tr>`;
-  divHTML += `<td scope="row" class="text-start">`+problems.div[i].given+`</td>`;
-  divHTML += `<td><div type="text" id="div-ans-`+i+`" class="input-mq form-label"></div></td>`;
-  divHTML += `<td><a id="div-btn-`+i+`" class="btn btn-outline-primary answer float-end" onclick="checkAns('div', `+i+`)">Check</a></td>`;
-  divHTML += `</tr>`;
-}
-
-$("#addProblems").html(addHTML);
-$("#subProblems").html(subHTML);
-$("#mulProblems").html(mulHTML);
-$("#divProblems").html(divHTML);
-
-// Input enter = Check
-//red ung ganto pwede i daan sa form, comments me later.
-for (let i = 0; i <= 4; i++){
-document.getElementById("add-ans-"+i).addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("add-btn-"+i).click();
+  for (let i = 0; i <= 4; i++) {
+    addHTML += `<tr>`;
+    addHTML += `<td scope="row" class="text-start">` + problems.add[i].given + `</td>`;
+    addHTML += `<td><div type="text" id="add-ans-` + i + `" class="input-mq form-label"></div></td>`;
+    addHTML += `<td><a id="add-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('add', ` + i + `)">Check</a></td>`;
+    addHTML += `</tr>`;
   }
-});
-}
 
-for (let i = 0; i <= 4; i++){
-document.getElementById("sub-ans-"+i).addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("sub-btn-"+i).click();
+  for (let i = 0; i <= 4; i++) {
+    subHTML += `<tr>`;
+    subHTML += `<td scope="row" class="text-start">` + problems.sub[i].given + `</td>`;
+    subHTML += `<td><div type="text" id="sub-ans-` + i + `" class="input-mq form-label"></div></td>`;
+    subHTML += `<td><a id="sub-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('sub', ` + i + `)">Check</a></td>`;
+    subHTML += `</tr>`;
   }
-});
-}
 
-for (let i = 0; i <= 4; i++){
-document.getElementById("mul-ans-"+i).addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("mul-btn-"+i).click();
+  for (let i = 0; i <= 4; i++) {
+    mulHTML += `<tr>`;
+    mulHTML += `<td scope="row" class="text-start">` + problems.mul[i].given + `</td>`;
+    mulHTML += `<td><div type="text" id="mul-ans-` + i + `" class="input-mq form-label"></div></td>`;
+    mulHTML += `<td><a id="mul-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('mul', ` + i + `)">Check</a></td>`;
+    mulHTML += `</tr>`;
   }
-});
-}
 
-for (let i = 0; i <= 4; i++){
-document.getElementById("div-ans-"+i).addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("div-btn-"+i).click();
+  for (let i = 0; i <= 4; i++) {
+    divHTML += `<tr>`;
+    divHTML += `<td scope="row" class="text-start">` + problems.div[i].given + `</td>`;
+    divHTML += `<td><div type="text" id="div-ans-` + i + `" class="input-mq form-label"></div></td>`;
+    divHTML += `<td><a id="div-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('div', ` + i + `)">Check</a></td>`;
+    divHTML += `</tr>`;
   }
-});
-}
+
+  $("#addProblems").html(addHTML);
+  $("#subProblems").html(subHTML);
+  $("#mulProblems").html(mulHTML);
+  $("#divProblems").html(divHTML);
+
+  // Input enter = Check
+  //red ung ganto pwede i daan sa form, comments me later.
+  for (let i = 0; i <= 4; i++) {
+    document.getElementById("add-ans-" + i).addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("add-btn-" + i).click();
+      }
+    });
+  }
+
+  for (let i = 0; i <= 4; i++) {
+    document.getElementById("sub-ans-" + i).addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("sub-btn-" + i).click();
+      }
+    });
+  }
+
+  for (let i = 0; i <= 4; i++) {
+    document.getElementById("mul-ans-" + i).addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("mul-btn-" + i).click();
+      }
+    });
+  }
+
+  for (let i = 0; i <= 4; i++) {
+    document.getElementById("div-ans-" + i).addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("div-btn-" + i).click();
+      }
+    });
+  }
 
 
   var answerSpan = document.getElementsByClassName('input-mq');
@@ -494,10 +489,10 @@ document.getElementById("div-ans-"+i).addEventListener("keypress", function(even
   //all loaded input-mq, show
   console.log(answerSpan);
   var answerMathField = []
-  for(let i = 0; i < answerSpan.length; i++){
+  for (let i = 0; i < answerSpan.length; i++) {
     answerMathField[i] = MQ.MathField(answerSpan[i], {
       handlers: {
-        edit: function() {
+        edit: function () {
         }
       }
     });
