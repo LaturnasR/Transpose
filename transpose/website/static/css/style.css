@@ -84,6 +84,10 @@ section.home {
   min-width: 7.5em;
 }
 
+td div.input-mq{
+  width:10em;
+}
+
 .etc_info {
   margin-left: 2%;
   margin-right: 2%;
