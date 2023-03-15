@@ -594,8 +594,6 @@ var Cursor = P(Point, function(_) {
     this.parent = initParent;
     this.options = options;
     var jQ = this.jQ = this._jQ = $('<span class="mq-cursor">&#8203;</span>');
-    
-    console.log(this.jQ)
     //closured for setInterval
     this.blink = function(){ jQ.toggleClass('mq-blink'); };
 
@@ -1622,7 +1620,7 @@ Controller.open(function(_) {
     var ctrlr = this, root = ctrlr.root, cursor = ctrlr.cursor;
     var blurTimeout;
     ctrlr.textarea.focus(function() {
-      if(ctrlr.textarea.prop("disabled")){
+      if(ctrlr.textarea.prop("disabled") || ctrlr.textarea.prop("readonly")){
         ctrlr.blurred = true;
         return
       }
@@ -1694,12 +1692,17 @@ Node.open(function(_) {
     switch (key) {
     case 'Ctrl-Shift-Backspace':
     case 'Ctrl-Backspace':
-      ctrlr.ctrlDeleteDir(L);
+      if(!(ctrlr.textarea.prop("disabled")||ctrlr.textarea.prop("readonly"))){
+
+        ctrlr.ctrlDeleteDir(L); 
+      }
       break;
 
     case 'Shift-Backspace':
     case 'Backspace':
-      ctrlr.backspace();
+      if(!(ctrlr.textarea.prop("disabled")||ctrlr.textarea.prop("readonly"))){
+        ctrlr.backspace();
+      }
       break;
 
     // Tab or Esc -> go one block right if it exists, else escape right.
