@@ -128,7 +128,7 @@
       <form method="POST" id="sentence_form" class="input-group mb-3 container-sm">
           <textarea id="sentence" name="sentence" class="form-control rounded-start-3 bg-light border border-light"
             type="text" for="sentence" placeholder="Enter math phrase: " style="height:20px"></textarea>
-        <button class="btn btn-outline-light-custom  bg-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto; max-width: 500px;">
               <!-- For loop flask-->
               {%for i in example_list%}
@@ -139,12 +139,12 @@
                 </li>
               {%endfor%}
             </ul>
-        <button class="btn btn-outline-light-custom bg-light text-black" style="border-left-color:#000;">Enter</button>
+        <button class="btn btn-light" style="border-left-color:#000;">Enter</button>
       </form>
       <div id="output" class="output"></div>
     </main>
   </div>
-  <a class="btn text-white btn-lg bg-dark" style="position: fixed; bottom:30px; right:21px;" onClick="showTable();">
+  <a class="btn btn-lg btn-dark" style="position: fixed; bottom:30px; right:21px;" onClick="showTable();">
     <i class="fa-solid fa-table"></i>
   </a>
   </section>

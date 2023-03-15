@@ -73,11 +73,15 @@ section.home {
   text-align-last: end;
   width: 1vw;
 }
+.nav-pills .nav-link:hover{
+  background: #7aceff;
+  color: aliceblue;
+}
 
 .answer {
   height: 30px;
   padding-top: 1px;
-  min-width: 5.5em;
+  min-width: 7.5em;
 }
 
 .etc_info {

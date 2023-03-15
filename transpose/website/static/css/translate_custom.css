@@ -58,7 +58,6 @@ ul.dropdown-menu.textcomplete-dropdown {
   font-size: 0.8em;
   min-width: 150px;
 }
-
 ul.dropdown-menu.textcomplete-dropdown li {
   padding: 5px 10px;
   cursor: pointer;
@@ -70,4 +69,8 @@ ul.dropdown-menu.textcomplete-dropdown li span {
 
 ul.dropdown-menu.textcomplete-dropdown li.active {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+ul.dropdown-menu.textcomplete-dropdown li.active:hover {
+  background-color: rgba(255, 255, 255, 0.25);
 }
