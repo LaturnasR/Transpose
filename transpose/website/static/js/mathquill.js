@@ -6,6 +6,9 @@
  * Mozilla Public License, v. 2.0. If a copy of the MPL
  * was not distributed with this file, You can obtain
  * one at http://mozilla.org/MPL/2.0/.
+ * 
+ * Slightly modified to fit our project
+ * --JMDB
  */
 
 (function() {
@@ -590,8 +593,9 @@ var Cursor = P(Point, function(_) {
   _.init = function(initParent, options) {
     this.parent = initParent;
     this.options = options;
-
     var jQ = this.jQ = this._jQ = $('<span class="mq-cursor">&#8203;</span>');
+    
+    console.log(this.jQ)
     //closured for setInterval
     this.blink = function(){ jQ.toggleClass('mq-blink'); };
 
@@ -1618,6 +1622,10 @@ Controller.open(function(_) {
     var ctrlr = this, root = ctrlr.root, cursor = ctrlr.cursor;
     var blurTimeout;
     ctrlr.textarea.focus(function() {
+      if(ctrlr.textarea.prop("disabled")){
+        ctrlr.blurred = true;
+        return
+      }
       ctrlr.blurred = false;
       clearTimeout(blurTimeout);
       ctrlr.container.addClass('mq-focused');
