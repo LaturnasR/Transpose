@@ -104,21 +104,26 @@
   });
 
   function load_content(chr){
+    let directory = ""
     // if c, load complex || otherwise load simple
     switch(chr){
       case "c":
-        $(document).ready(function(){
-          $("#lower_content")
-          .load('static/html/learn_complex.html').hide().fadeIn('slow');
-        });
+        directory = 'static/html/learn_complex.html'
       break;
 
       default:
-        $(document).ready(function(){
-          $("#lower_content")
-          .load('static/html/learn_simple.html').hide().fadeIn('slow');
-        });
+        directory = 'static/html/learn_simple.html'
     }
+
+    $(document).ready(function(){
+      $.when($("#lower_content").load(directory).hide().fadeIn('slow'))
+      .done(function(){
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+      });
+      ;
+       
+      
+    })
   }
 
   $.when(
