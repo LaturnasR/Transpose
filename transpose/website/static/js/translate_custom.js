@@ -52,6 +52,8 @@ $('textarea').textcomplete([{
       "is not equal to",
       "plus", "add", "increase", "exceed", "more",
       "take away", "subtract", "minus", "decrease", "less", "diminish", "reduce", "lost",
+      "times", "multiplied by", 
+      "divide", "divided by",
       "sum of","total of",
       "difference of",
       "product of",
