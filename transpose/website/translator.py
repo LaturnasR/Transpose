@@ -538,25 +538,67 @@ def translate(sentence):
 
 #optional function
 def prettier(trans):
-#making output more readable
+    #making output more readable
+
+    def reg_chg(reg_match, old, txt, mode, new=""):
+        #reusable function, regex based
+        # txt parameter is changed if a regex match is found
+
+        temp = "" + txt
+        x = findall(reg_match, temp)
+        while(x):
+            x = list(set(x))
+
+            if mode == "replace":
+                y = [i.replace(old, new) for i in x]
+            elif mode == "strip":
+                y = [i.strip(old) for i in x]
+            elif mode == "sub":
+                y = [sub(old, new, i) for i in x]
+            else:
+                return
+
+            for i, j in zip(x, y):
+                temp = temp.replace(i, j)
+            x = findall(reg_match, temp)
+        return temp
 
     txt = trans
     txt = txt.replace("( ", "(")
     txt = txt.replace(" )", ")")
     
-    x = findall(r"[0-9]+ \* [a-z]", txt)
-    if x:
-        x = list(set(x))
-        y = [i.replace(" * ", "") for i in x]
-        for i, j in zip(x, y):
-            txt = txt.replace(i, j)
-
-    x = findall(r"\([0-9]+[a-z]\)", txt)
-    if x:
-        x = list(set(x))
-        y = [i.strip("()") for i in x]
-        for i, j in zip(x, y):
-            txt = txt.replace(i, j)
+    #order is important here,
+    txt = reg_chg(#e.g. `c * 16` => `16 * c`
+        reg_match = r"[a-z]+ \* -*[0-9]+", 
+        old = r"([a-z]+) \* (-*[0-9]+)", 
+        new = r"\2 * \1", 
+        txt = txt, 
+        mode = "sub")
+    txt = reg_chg(#e.g. `1c` => `c`
+        reg_match = r"1 \* [a-z]+", 
+        old = "1 * ", 
+        txt = txt, 
+        mode = "replace")
+    txt = reg_chg(#e.g. `2 * c` => `2c`
+        reg_match = r"[0-9]+ \* [a-z]+", 
+        old = " * ", 
+        txt = txt, 
+        mode = "replace")
+    txt = reg_chg(#e.g. `a * z` => `az`
+        reg_match = r"[a-z]+ \* [a-z]+", 
+        old = " * ", 
+        txt = txt, 
+        mode = "replace")
+    txt = reg_chg(#e.g. `(12)` => `12`
+        reg_match = r"\([0-9]+[a-z]+\)", 
+        old = "()", 
+        txt = txt, 
+        mode = "strip")
+    txt = reg_chg(#e.g. `(12 + y) * x` => `(12 + y)x`
+        reg_match = r" *\* *\(|\) *\* *", 
+        old = r" *\* *", 
+        txt = txt, 
+        mode = "strip")
 
     if txt != trans:
         return txt
