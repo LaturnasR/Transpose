@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk import ChartParser
 
-from re import search, match, findall
+from re import search, match, findall, sub
 
 from text2digits import text2digits
 
