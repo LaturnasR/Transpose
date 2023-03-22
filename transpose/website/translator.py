@@ -90,7 +90,7 @@ operator['2REVERSE']['more_than'] += [str(i + " to") for i in operator['EXACT'][
 keyword = [word for i in operator.keys() for j in operator[i].keys() for word in operator[i][j]]
 keyword = list(set(keyword+[j for i in operator.keys() for j in operator[i].keys()]))
 keyword.sort(key=len, reverse=True)
-stopword = ["an", "by", "the", "of", "from", "certain", 'as', 'another', 'when', "with", "root"]
+stopword = ["an", "by", "the", "of", "from", "certain", 'as', 'another', 'when', "with", "root", "into"]
     #filter LEADING keywords out
 leading_keyword = set([word for i in operator["LEADING"].keys() for word in operator["LEADING"][i]])
 modified_keyword = list(set(keyword) - leading_keyword)
@@ -162,7 +162,7 @@ def _name_conversion(sentence):
 
     token = word_tokenize(sentence)
     pos = pos_tag(token)
-    variable = ['x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v']
+    variable = ['x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w']
     #[i][0] = word
     #[i][1] = PartOfSpeech
     i = 0
@@ -575,7 +575,7 @@ def prettier(trans):
         txt = txt, 
         mode = "sub")
     txt = reg_chg(#e.g. `1c` => `c`
-        reg_match = r"1 \* [a-z]+", 
+        reg_match = r"(?![a-z0-9A-Z])1 \* [a-z]+", 
         old = "1 * ", 
         txt = txt, 
         mode = "replace")
@@ -590,7 +590,7 @@ def prettier(trans):
         txt = txt, 
         mode = "replace")
     txt = reg_chg(#e.g. `(12)` => `12`
-        reg_match = r"\([0-9]+[a-z]+\)", 
+        reg_match = r"(?![/*^] *)(\([0-9]+[a-z]+\))(?! *[/*^])", 
         old = "()", 
         txt = txt, 
         mode = "strip")
