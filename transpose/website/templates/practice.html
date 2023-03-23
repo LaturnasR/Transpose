@@ -52,7 +52,8 @@
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2>Practice</h2>
-        <p>
+        <div class="spacer"></div>
+        <p class="desc">
           Listed in each selection are different variations of sample problems. Try to translate these
           problems into their equivalent expressions and check if you got the right answer. This will help you
           familiarize yourself with the 'keywords' and their effect on the sentences or phrases.
@@ -456,7 +457,7 @@
 
   for (let i = 0; i <= 4; i++) {
     addHTML += `<tr>`;
-    addHTML += `<td scope="row" class="text-start">` + problems.add[i].given + `</td>`;
+    addHTML += `<td scope="row" class="text-start info">` + problems.add[i].given + `</td>`;
     addHTML += `<td><div type="text" id="add-ans-` + i + `" class="input-mq form-label"></div></td>`;
     addHTML += `<td><a id="add-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('add', ` + i + `)">Check</a></td>`;
     addHTML += `</tr>`;
@@ -464,7 +465,7 @@
 
   for (let i = 0; i <= 4; i++) {
     subHTML += `<tr>`;
-    subHTML += `<td scope="row" class="text-start">` + problems.sub[i].given + `</td>`;
+    subHTML += `<td scope="row" class="text-start info">` + problems.sub[i].given + `</td>`;
     subHTML += `<td><div type="text" id="sub-ans-` + i + `" class="input-mq form-label"></div></td>`;
     subHTML += `<td><a id="sub-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('sub', ` + i + `)">Check</a></td>`;
     subHTML += `</tr>`;
@@ -472,7 +473,7 @@
 
   for (let i = 0; i <= 4; i++) {
     mulHTML += `<tr>`;
-    mulHTML += `<td scope="row" class="text-start">` + problems.mul[i].given + `</td>`;
+    mulHTML += `<td scope="row" class="text-start info">` + problems.mul[i].given + `</td>`;
     mulHTML += `<td><div type="text" id="mul-ans-` + i + `" class="input-mq form-label"></div></td>`;
     mulHTML += `<td><a id="mul-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('mul', ` + i + `)">Check</a></td>`;
     mulHTML += `</tr>`;
@@ -480,7 +481,7 @@
 
   for (let i = 0; i <= 4; i++) {
     divHTML += `<tr>`;
-    divHTML += `<td scope="row" class="text-start">` + problems.div[i].given + `</td>`;
+    divHTML += `<td scope="row" class="text-start info">` + problems.div[i].given + `</td>`;
     divHTML += `<td><div type="text" id="div-ans-` + i + `" class="input-mq form-label"></div></td>`;
     divHTML += `<td><a id="div-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('div', ` + i + `)">Check</a></td>`;
     divHTML += `</tr>`;
