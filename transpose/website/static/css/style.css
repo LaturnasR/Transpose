@@ -1,3 +1,31 @@
+@font-face {
+  font-family: Bayon;
+  src: url(/static/fonts/Bayon-Regular.ttf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(/static/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: Mukta;
+  src: url(/static/fonts/Mukta-Regular.ttf);
+}
+.desc{
+  font-size: 19px;
+}
+
+.info{
+  font-size: 18px;
+}
+
+.short_desc{
+  font-size: 16px !important;
+}
+
+
+
 #home-section {
   height: 100%;
   width: 100%;
