@@ -60,343 +60,62 @@
         </p>
       </div>
 
+      {% 
+      set type_det = {
+        'add':['Addition', 'fa-plus'], 
+        'sub':['Subtraction', 'fa-minus'], 
+        'mul':['Multiplication', 'fa-xmark'], 
+        'div':['Division', 'fa-divide']
+      }%}
       <!-- Operator pills -->
       <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist"
         style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active fw-semibold mx-2" id="pills-addition-tab" data-bs-toggle="pill"
-            data-bs-target="#pills-addition" type="button" role="tab" aria-controls="pills-addition"
-            aria-selected="true">Addition <i class="fa-solid fa-plus"></i></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-subtraction-tab" style="--bs-nav-link-color: #47b2e4"
-            data-bs-toggle="pill" data-bs-target="#pills-subtraction" type="button" role="tab"
-            aria-controls="pills-subtraction" aria-selected="false">Subtraction <i
-              class="fa-solid fa-minus"></i></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-multiplication-tab" style="--bs-nav-link-color: #47b2e4"
-            data-bs-toggle="pill" data-bs-target="#pills-multiplication" type="button" role="tab"
-            aria-controls="pills-multiplication" aria-selected="false">Multiplication <i
-              class="fa-solid fa-xmark"></i></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link fw-semibold mx-2" id="pills-division-tab" style="--bs-nav-link-color: #47b2e4"
-            data-bs-toggle="pill" data-bs-target="#pills-division" type="button" role="tab"
-            aria-controls="pills-division" aria-selected="false">Division <i class="fa-solid fa-divide"></i></button>
-        </li>
+        {% for i in problems %}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link 
+            {% if i == 'add'%}
+            active
+            {%endif%}
+            fw-semibold mx-2" id="pills-{{i}}-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-{{i}}" type="button" role="tab" aria-controls="pills-{{i}}"
+              aria-selected="true">{{type_det[i][0]}} <i class="fa-solid {{type_det[i][1]}}"></i></button>
+          </li>
+        {%endfor%}
       </ul>
+
       <div class="tab-content" id="pills-tabContent">
-
-        <!-- Addition problems -->
-        <div class="tab-pane fade show active" id="pills-addition" role="tabpanel" aria-labelledby="pills-addition-tab"
-          tabindex="0">
-          <div class="div_content" id="addition">
-            <br>
-            <div class="table-responsive align-middle px-2 rounded">
-              <table class="table  rounded fs-6 text-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-start" style="width:60%">Problem</th>
-                    <th scope="col">Answer</th>
-                    <th scope="col" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="addProblems"> </tbody>
-              </table>
+        {%for i in problems%}
+          <!-- Questions problems -->
+          <div class="tab-pane fade 
+            {% if i == 'add'%}
+            show active
+            {%endif%}
+          " id="pills-{{i}}" role="tabpanel" aria-labelledby="pills-{{i}}-tab"
+            tabindex="0">
+            <div class="div_content" id="{{i}}">
+              <br>
+              <div class="table-responsive align-middle px-2 rounded">
+                <table class="table  rounded fs-6 text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-start" style="width:60%">Problem</th>
+                      <th scope="col">Answer</th>
+                      <th scope="col" class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="{{i}}Problems"> </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Subtraction problems -->
-        <div class="tab-pane fade" id="pills-subtraction" role="tabpanel" aria-labelledby="pills-subtraction-tab"
-          tabindex="0">
-          <div class="div_content" id="subtraction">
-            <br>
-            <div class="table-responsive align-middle px-2 rounded">
-              <table class="table  rounded fs-6 text-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-start" style="width:60%">Problem</th>
-                    <th scope="col">Answer</th>
-                    <th scope="col" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="subProblems"> </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Multiplication problems -->
-        <div class="tab-pane fade" id="pills-multiplication" role="tabpanel" aria-labelledby="pills-multiplication-tab"
-          tabindex="0">
-          <div class="div_content" id="multiplication">
-            <br>
-            <div class="table-responsive align-middle px-2 rounded">
-              <table class="table  rounded fs-6 text-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-start" style="width:60%">Problem</th>
-                    <th scope="col">Answer</th>
-                    <th scope="col" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="mulProblems"> </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Division problems -->
-        <div class="tab-pane fade" id="pills-division" role="tabpanel" aria-labelledby="pills-division-tab"
-          tabindex="0">
-          <div class="div_content" id="division">
-            <br>
-            <div class="table-responsive align-middle px-2 rounded">
-              <table class="table  rounded fs-6 text-center">
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-start" style="width:60%">Problem</th>
-                    <th scope="col">Answer</th>
-                    <th scope="col" class="text-center">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="divProblems"> </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        {%endfor%}
       </div>
     </div>
   </section>
 </section>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-  </script>
-
 <script>
-
-  let problems = {
-    'add': [
-      {
-        'given': '4 more than 11',
-        'ans': ['11+4'],
-        'display_ans': ['11 + 4'],
-        'sol': `
-        The operator keyword '<b>more than</b>' implies that the first operand '<b>4</b>' will be added to the second operand '<b>11</b>'.
-      `
-      },
-
-      {
-        'given': '3 plus the sum of 9 and x',
-        'ans': ['3+9+x', '3+(9+x)'],
-        'display_ans': ['3 + (9 + x)'],
-        'sol': `
-        The first operator '<b>plus</b>' has operands '<b>3</b>' and '<b>the sum of 9 and x</b>'. Since the second operand is another operation, 
-        it will be grouped and enclosed by a pair of parentheses.
-      `
-      },
-
-      {
-        'given': 'A number added to 16',
-        'ans': ['16+x'],
-        'display_ans': ['16 + x'],
-        'sol': `
-        The keyword '<b>added to</b>' implies to add the first 
-        operand '<b>16</b>' to the second operand '<b>number</b>' which we will be assign as '<b>x</b>'.
-      `
-      },
-
-      {
-        'given': 'Total of 17 and 5x',
-        'ans': ['17+5x'],
-        'display_ans': ['17 + 5x'],
-        'sol': `
-        The word '<b>total of</b>' means to add the two operands together. The order of operands will not matter. 
-      `
-      },
-
-      {
-        'given': 'The sum of 6 and x increased by 2',
-        'ans': ['6+x+2', '(6+x)+2', '6+(x+2)'],
-        'display_ans': ['(6 + x) + 2', '6 + (x + 2)'],
-        'sol': `
-        This is an ambigous phrase. <br><br>
-        <b>Solution 1:</b><br>
-        The first operator '<b>The sum of</b>' has operands '<b>6</b>' and '<b>x</b>'. 
-        The phrase '<b>increased by 2</b>' means to add 2 to the first operation '<b>The sum of 6 and x</b>'<br><br>
-        <b>Solution 2:</b><br>
-        The first operator '<b>The sum of</b>' has operands '<b>6</b>' and '<b>x increased by 2</b>'. 
-        Since the second operand is another operation, it will be grouped and enclosed by a pair of parentheses.<br>
-        `
-      },
-    ],
-    'sub': [
-      {
-        'given': '12 less than 19	',
-        'ans': ['19-12'],
-        'display_ans': ['19 - 12'],
-        'sol': `
-        The operator keyword '<b>less than</b>' implies that the first operand '<b>12</b>' will be subtracted from the second operand '<b>19</b>'.
-      `
-      },
-
-      {
-        'given': '3 minus the difference of 2 and 4',
-        'ans': ['3-2-4', '3-(2-4)'],
-        'display_ans': ['3 - (2 - 4)'],
-        'sol': `
-        The first operator '<b>minus</b>' has operands '<b>3</b>' and '<b>the difference of 2 and 4</b>'. Since the second operand is another operation, 
-        it will be grouped and enclosed by a pair of parentheses.
-      `
-      },
-
-      {
-        'given': '13 subtracted by 6',
-        'ans': ['13-6'],
-        'display_ans': ['13 - 6'],
-        'sol': `
-        The keyword '<b>subtracted by</b>' implies to subtract the second 
-        operand '<b>6</b>' to the first operand '<b>13</b>'.
-      `
-      },
-
-      {
-        'given': '13 subtracted from 6',
-        'ans': ['6-13'],
-        'display_ans': ['6 - 13'],
-        'sol':`
-        The keyword '<b>subtracted from</b>' implies to subtract the first 
-        operand '<b>13</b>' to the second operand '<b>6</b>'.
-      `
-      },
-
-      {
-        'given': 'The difference of 5x and y decreased by 8',
-        'ans': ['5x-y-8', '(5x-y)-8', '5x-(y-8)'],
-        'display_ans': ['(5x - y) - 8'],
-        'sol': `
-        This is an ambigous phrase. <br><br>
-        <b>Solution 1:</b><br>
-        The first operator '<b>The sum of</b>' has operands '<b>5x</b>' and '<b>y</b>'. 
-        The phrase '<b>decreased by 8</b>' means to subtract 8 from the first operation '<b>The sum of 6 and x</b>'<br><br>
-        <b>Solution 2:</b><br>
-        The first operator '<b>The sum of</b>' has operands '<b>5x</b>' and '<b>y-8</b>'. 
-        Since the second operand is another operation, it will be grouped and enclosed by a pair of parentheses.<br>
-        `
-      },
-    ],
-    'mul': [
-      {
-        'given': '4 multiplied by 7',
-        'ans': ['4*7', '(4)(7)', '(4)7', '4(7)'],
-        'display_ans': ['4 * 7'],
-        'sol':`
-        The keyword '<b>multiplied by</b>' is pretty straightforward. We multiply the first operand 
-        '<b>4</b>' by the second operand '<b>7</b>'.
-      `
-      },
-
-      {
-        'given': '2 times the product of 4 and 4',
-        'ans': ['2*4*4', '2*(4*4)', '2(4*4)'],
-        'display_ans': ['2 * (4 * 4)'],
-        'sol': `
-        The first operator '<b>times</b>' has operands '<b>2</b>' and '<b>the product of 4 and 4</b>'. Since the second operand is another operation, 
-        it will be grouped and enclosed by a pair of parentheses.
-      `
-      },
-
-      {
-        'given': 'Twice a number x',
-        'ans': ['2x', '2*x', '2(x)'],
-        'display_ans': ['2 * x'],
-        'sol': `
-        The keyword '<b>twice</b>' means that the value '<b>a number x</b>' or simply '<b>x</b>' will be repeated two times. 
-        `
-      },
-
-      {
-        'given': 'Thrice 5x',
-        'ans': ['3*5x', '3*(5x)', '3(5*x)', '3(5x)', '3(5(x))'],
-        'display_ans': ['3 * 5x'],
-        'sol': `
-        The keyword '<b>thrice</b>' is just the '<b>3<b>' version of twice. It means that the value '<b>5x</b>' will be repeated three times. 
-        `
-      },
-
-      {
-        'given': 'The product of 6 and a number',
-        'ans': ['6*x', '6x', '6(x)'],
-        'display_ans': ['6 * x'],
-        'sol': `
-        The keyword '<b>the product of</b>' implies that the first operand '<b>6</b>' will be multiplied by the second operand '<b>a number<b>' which we will assign as '<b>x</b>'.
-        `
-      },
-    ],
-
-    'div': [
-      {
-        'given': '2 divided by x	',
-        'ans': ['2/x'],
-        'display_ans': ['2 / x'],
-        'sol':`
-        The keyword '<b>divided by</b>' is pretty straightforward. We divide the first operand 
-        '<b>2</b>' by the second operand '<b>x</b>'.
-      `
-      },
-
-      {
-        'given': 'The quotient of x and 14 divided by 3',
-        'ans': ['x/14/3', '(x/14)/3', 'x/(14/3)'],
-        'display_ans': ['((x / 14)) / 3'],
-        'sol': `
-        This is an ambigous phrase. <br><br>
-        <b>Solution 1:</b><br>
-        The first operator '<b>The quotient of</b>' has operands '<b>x</b>' and '<b>14</b>'. 
-        The phrase '<b>divided by 3</b>' means to divide the first operation by 3'<b>The quotient of x and 14</b>'<br><br>
-        <b>Solution 2:</b><br>
-        The first operator '<b>The quotient of</b>' has operands '<b>x</b>' and '<b>14 divided by 3</b>'. 
-        Since the second operand is another operation, it will be grouped and enclosed by a pair of parentheses.<br>
-        `
-      },
-
-      {
-        'given': 'The ratio of 6 and 18',
-        'ans': ['6/18'],
-        'display_ans': ['6 / 18'],
-        'sol': `
-        The keyword '<b>ratio of</b>' indicates a quantity's value compared to another, usually by dividing them. In this case, 
-        '<b>6</b>' will be divided by '<b>18</b>' to show how small '<b>6</b>' is compared to '<b>18</b>'. 
-        `
-      },
-
-      {
-        'given': 'One-third of a number',
-        'ans': ['1/3x', '(1/3)*x', 'x/3'],
-        'display_ans': ['1/3x', 'x/3'],
-        'sol': `
-        The keyword '<b>one-third of</b>' indicates a third of a quantity, which is equivalent to the quotient of a number when it is divided by three. 
-        In this case, '<b>x</b>' will be divided by '<b>3</b>'.
-        `
-      },
-
-      {
-        'given': 'One-half of a number, divided by 9',
-        'ans': ['1/2x/9', '(1/2x)/9', '((1/2)*x)/9', '(x/2)/9'],
-        'display_ans': ['((1/2x)) / 9', '((x/2))/9'],
-        'sol': `
-        The keyword '<b>one-half of</b>' indicates the half of a quantity, which is equivalent to the quotient of a number when it is divided by two. 
-        In this case, '<b>x</b>' will be divided by '<b>2</b>'. With the help of the comma, we know that the second phrase '<b>divided by 9</b>', will be performed 
-        only after the first operation.
-        `
-      },
-    ]
-  }
-
+let problems = {{problems | safe}}
   function checkAns(type, problemNumber) {
     var raw_input = MQ(document.getElementById(type + "-ans-" + problemNumber)).latex();
     //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird
@@ -441,95 +160,35 @@
           if ((problems[type][problemNumber].display_ans).length > 1) {
             $("#solution-answer").html("Answers: `" + problems[type][problemNumber].display_ans[0] + "` or `" + problems[type][problemNumber].display_ans[1] + "`");
           }
-          else
+          else{
             $("#solution-answer").html("Answer: `" + problems[type][problemNumber].display_ans + "`");
+          }
           $("#explanation").modal('show');
           MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         });
       }
     }
   }
+  for(let i in problems){
+    htmldata = "";
+    for(let j in problems[i]){
+      htmldata += `<tr>`;
+      htmldata += `<td scope="row" class="text-start info">` + problems[i][j].given + `</td>`;
+      htmldata += `<td><div type="text" probtype="`+ i +`" probnum="`+j+`" id="`+ i +`-ans-` + j + `" class="input-mq form-label"></div></td>`;
+      htmldata += `<td><a id="`+ i +`-btn-` + j + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('`+ i +`', ` + j + `)">Check</a></td>`;
+      htmldata += `</tr>`;
 
-  addHTML = "";
-  subHTML = "";
-  mulHTML = "";
-  divHTML = "";
-
-  for (let i = 0; i <= 4; i++) {
-    addHTML += `<tr>`;
-    addHTML += `<td scope="row" class="text-start info">` + problems.add[i].given + `</td>`;
-    addHTML += `<td><div type="text" id="add-ans-` + i + `" class="input-mq form-label"></div></td>`;
-    addHTML += `<td><a id="add-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('add', ` + i + `)">Check</a></td>`;
-    addHTML += `</tr>`;
-  }
-
-  for (let i = 0; i <= 4; i++) {
-    subHTML += `<tr>`;
-    subHTML += `<td scope="row" class="text-start info">` + problems.sub[i].given + `</td>`;
-    subHTML += `<td><div type="text" id="sub-ans-` + i + `" class="input-mq form-label"></div></td>`;
-    subHTML += `<td><a id="sub-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('sub', ` + i + `)">Check</a></td>`;
-    subHTML += `</tr>`;
-  }
-
-  for (let i = 0; i <= 4; i++) {
-    mulHTML += `<tr>`;
-    mulHTML += `<td scope="row" class="text-start info">` + problems.mul[i].given + `</td>`;
-    mulHTML += `<td><div type="text" id="mul-ans-` + i + `" class="input-mq form-label"></div></td>`;
-    mulHTML += `<td><a id="mul-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('mul', ` + i + `)">Check</a></td>`;
-    mulHTML += `</tr>`;
-  }
-
-  for (let i = 0; i <= 4; i++) {
-    divHTML += `<tr>`;
-    divHTML += `<td scope="row" class="text-start info">` + problems.div[i].given + `</td>`;
-    divHTML += `<td><div type="text" id="div-ans-` + i + `" class="input-mq form-label"></div></td>`;
-    divHTML += `<td><a id="div-btn-` + i + `" class="btn btn-outline-theme answer float-center" onclick="checkAns('div', ` + i + `)">Check</a></td>`;
-    divHTML += `</tr>`;
-  }
-
-  $("#addProblems").html(addHTML);
-  $("#subProblems").html(subHTML);
-  $("#mulProblems").html(mulHTML);
-  $("#divProblems").html(divHTML);
-
-  // Input enter = Check
-  //red ung ganto pwede i daan sa form, comments me later.
-  for (let i = 0; i <= 4; i++) {
-    document.getElementById("add-ans-" + i).addEventListener("keypress", function (event) {
+    }
+    // Input enter = Check
+    $(".input-mq").off("keypress").keypress(function(event){
       if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("add-btn-" + i).click();
+        let temp_i = $(this).attr('probtype')
+        let temp_j = $(this).attr('probnum')
+        checkAns(temp_i, temp_j)
       }
     });
+    $("#"+ i +"Problems").html(htmldata);
   }
-
-  for (let i = 0; i <= 4; i++) {
-    document.getElementById("sub-ans-" + i).addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("sub-btn-" + i).click();
-      }
-    });
-  }
-
-  for (let i = 0; i <= 4; i++) {
-    document.getElementById("mul-ans-" + i).addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("mul-btn-" + i).click();
-      }
-    });
-  }
-
-  for (let i = 0; i <= 4; i++) {
-    document.getElementById("div-ans-" + i).addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("div-btn-" + i).click();
-      }
-    });
-  }
-
 
   var answerSpan = document.getElementsByClassName('input-mq');
 
@@ -537,12 +196,7 @@
   console.log(answerSpan);
   var answerMathField = []
   for (let i = 0; i < answerSpan.length; i++) {
-    answerMathField[i] = MQ.MathField(answerSpan[i], {
-      handlers: {
-        edit: function () {
-        }
-      }
-    });
+    answerMathField[i] = MQ.MathField(answerSpan[i]);
   }
 </script>
 

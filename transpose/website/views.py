@@ -5,23 +5,23 @@ import json, os
 
 #top directory
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-
-#looks for the file phrases.json
-#in static/json directory, using the top directory as a prefix
-json_url = os.path.join(SITE_ROOT, "static/json", "phrases.json")
-
-#json is loaded
-data = json.load(open(json_url))
-  
 views = Blueprint('views', __name__)
+
 @views.route('/')
 def index():
 	return render_template('index.html')
     
+#looks for the file phrases.json
+#in static/json directory, using the top directory as a prefix
+json_url_phrases = os.path.join(SITE_ROOT, "static/json", "phrases.json")
+
+#json is loaded
+data_phrases = json.load(open(json_url_phrases))
+
 @views.route('/translate')
 def translate():
-	example_sent = data[random.randint(0, len(data) - 1)]
-	return render_template('translate.html', example_list=sorted(data, key=str.casefold), example_sent = example_sent)
+	example_sent = data_phrases[random.randint(0, len(data_phrases) - 1)]
+	return render_template('translate.html', example_list=sorted(data_phrases, key=str.casefold), example_sent = example_sent)
 
 @views.route('/learn')
 def learn():
@@ -31,9 +31,16 @@ def learn():
 def layout():
 	return render_template('layout.html')
 
+#looks for the file problems.json
+#in static/json directory, using the top directory as a prefix
+json_url_problems = os.path.join(SITE_ROOT, "static/json", "problems.json")
+
+#json is loaded
+data_problems = json.load(open(json_url_problems))
+
 @views.route('/practice')
 def practice():
-	return render_template('practice.html')
+	return render_template('practice.html', problems=data_problems)
     
 @views.route('/about_us')
 def about_us():

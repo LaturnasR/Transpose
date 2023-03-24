@@ -20,21 +20,4 @@
     </div>
   </header>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
-    </script>
-
-  <script>
-    $("#sentence_form").submit(function () {
-      $("#output").css("background", "white");
-    });
-  </script>
-
-  <!-- custom js, needs jQuery on top -->
-  <script src="static/js/bar_loader.js"></script>
-  <script>
-    $SCRIPT_ROOT = {{ request.script_root | tojson }};
-  </script>
-  <script src="static/js/translate_post.js"></script>
-  {% endblock %}
+{% endblock %}
