@@ -22,8 +22,12 @@ const body_text = "Transpose is an educational web app intended to supplement th
 
 //function to add text letter by letter
 var showText = function(target, message, index, interval) {
+    if(/^([ ,.;:\[\]\{\}\(\)-_=+|\\\/])$/.test(message[index]) || message.length == index){
+      console.log("asd")
+      $(target).lettering("words"); 
+    }
   if (index < message.length) {
-    $(target).append(message[index++]);
+    $(target).html($(target).html()+message[index++]);
     setTimeout(function() {
       showText(target, message, index, interval);
     }, interval);
@@ -31,8 +35,9 @@ var showText = function(target, message, index, interval) {
 }
 $(function() {
   showText(".lead", body_text, 0, 50);
+  
 });
-
+//adds bounce bounce
 $(document).ready(function() {
   setTimeout(() => {
     $(".bn632-hover.bn19")
