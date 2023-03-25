@@ -65,17 +65,36 @@
   <script>
     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   </script>
+  <style type="text/css">
+  #toTopBtn{
+    animation-delay: 0s;
+  }
+  </style>
   <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;">
     ☝🏻 
   </a>
   <script>
     $(document).ready(function() {
+      $("#toTopBtn").css("animation-delay", "0s")
       $(window).scroll(function() {
         if ($(this).scrollTop() > 20) {
-          $('#toTopBtn').addClass("animate__animated animate__bounce");
-          $('#toTopBtn').show();
+          $('#toTopBtn')
+            .removeClass("animate__animated animate__backOutDown")
+            .delay("250")
+            .addClass("animate__animated animate__backInUp")
+            .show();
         } else {
-          $('#toTopBtn').hide();
+          $('#toTopBtn')
+            .removeClass("animate__animated animate__backInUp")
+            .delay("250")
+            .addClass("animate__animated animate__backOutDown")
+            .one('animationend', function(){
+              if (!$(this).hasClass("animate__backInUp") && $(this).hasClass("animate__backOutDown"))
+                $(this).hide()
+              
+
+            });
+          ;
         }
       });
 
