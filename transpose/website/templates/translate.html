@@ -4,12 +4,6 @@
 <!-- independent css file -->
 <link rel="stylesheet" href="/static/css/translate_custom.css">
 
-<!-- up here so modal will show as the html is loaded -->
-<script>
-  $(document).ready(function () {
-    $("#instructions").modal('show');
-  });
-</script>
 
 <div id="instructions" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -17,13 +11,12 @@
     <div class="modal-content border border-dark">
       <div class="modal-header border-bottom border-dark text-white" style="background-color: #259d95;">
         <h2 class="modal-title fs-3 fw-bolder"><i class="fa-solid fa-circle-info"></i>&ensp;Instructions</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p class="mb-0">Go learn and practice </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary px-4 fw-semibold" data-bs-dismiss="modal" style="background: #259d95;">OK!</button>
+        <button id="instructions_close" type="button" class="btn btn-primary px-4 fw-semibold" data-bs-dismiss="modal" style="background: #259d95;">OK!</button>
       </div>
     </div>
   </div>
@@ -143,18 +136,29 @@
       <div id="output" class="output"></div>
     </main>
   </div>
-  <a class="btn btn-lg btn-dark" style="position: fixed; bottom:30px; right:21px;" onClick="showTable();">
+  <a id="table_btn" class="btn btn-lg btn-dark" style="position: fixed; bottom:30px; right:21px;">
     <i class="fa-solid fa-table"></i>
   </a>
 </section>
 
 <script>
-  function showTable() {
+  $("#table_btn").on('click', function(){
     $("#table").modal('show');
-  }
-  function showInstructions() {
+  })
+  $(document).ready(function () {
     $("#instructions").modal('show');
-  }
+  });
+  $("#instructions_close").on('click', function(){
+    $('#table_btn')
+      .css('border', '1px solid pink')
+      .addClass("animate__animated animate__headShake")
+      .on('animationend', function(){
+        $(this)
+          .removeClass("animate__animated animate__headShake")
+          .css('border', '')
+      });
+  });
+    // $('#table_btn').show();
 
 </script>
 <!-- jquery-textcomplete -->

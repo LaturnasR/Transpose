@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/static/css/navbar.css">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/mathquill.css" />
+  <link rel="stylesheet" href="static/css/animate.min.css" />
+  <link rel="stylesheet" href="static/css/css_buttons.css" />
   <script src="/static/js/mathquill.js"></script>
 </head>
 
@@ -62,6 +64,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   <script>
     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  </script>
+  <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;">
+    ☝🏻 
+  </a>
+  <script>
+    $(document).ready(function() {
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 20) {
+          $('#toTopBtn').addClass("animate__animated animate__bounce");
+          $('#toTopBtn').show();
+        } else {
+          $('#toTopBtn').hide();
+        }
+      });
+
+      $('#toTopBtn').click(function() {
+        $("html, body").animate({
+          scrollTop: 0
+        }, 1);
+        return false;
+      });
+    });
   </script>
 </body>
 

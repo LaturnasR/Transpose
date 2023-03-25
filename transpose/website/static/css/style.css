@@ -24,7 +24,9 @@
   font-size: 16px !important;
 }
 
-
+.text-shadow{
+  text-shadow: 1px 2px #000;
+}
 
 #home-section {
   height: 100%;
@@ -39,7 +41,7 @@
 }
 
 .banner_custom {
-  background: linear-gradient(45deg, rgba(0, 0, 32, 0.6), rgba(0, 75, 128, 0.6)), url("../../images/Banner.png");
+  background: linear-gradient(45deg, rgb(79 79 131 / 60%), rgb(11 49 76 / 60%)), url("../../images/Banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -131,11 +133,6 @@ td div.input-mq{
   padding: 0.5em;
   text-align: center;
 }
-
-.shadow {
-  text-shadow: 2px 2px #000;
-}
-
 /* Bootstrap Customs*/
 .btn-outline-dark:hover {
   background-color: #333 !important;
@@ -407,4 +404,58 @@ p.lead span.bg-success{
 
 .page-section .icon-box:hover h4 a {
   color: #47b2e4;
+}
+
+/*--------------------------------------------------------------
+  # Scroll-to-Top Button
+  --------------------------------------------------------------*/
+
+
+:root {
+  --back-to-top-offset: 200px;
+  --back-to-top-button-size: 2.8em;
+
+  --color-accent: hsl(210, 100%, 39%);
+  --color-accent-bright: hsl(210, 100%, 49%);
+  --color-accent-alpha: hsla(210, 100%, 39%, 0.4);
+}
+
+#toTopBtn {
+  place-self: end;
+  position: fixed;
+  bottom: 2.7em;
+  right: 2em;
+}
+
+#toTopBtn {
+  min-width: var(--back-to-top-button-size);
+  height: var(--back-to-top-button-size);
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  text-decoration: none;
+  background-color: var(--color-accent);
+  box-shadow: 0 0.6em 1em 0.2em var(--color-accent-alpha);
+  transform: translateY(0%);
+  transition: ease-out 200ms;
+  transition-property: transform, background-color;
+}
+
+#toTopBtn:hover {
+  transform: translateY(-22%);
+  background-color: var(--color-accent-bright);
+}
+
+#toTopBtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 200%;
+  transform: translateY(-30%);
+  background-color: rgba(0, 0, 0, 0);
+  display: block;
 }
