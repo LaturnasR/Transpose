@@ -30,18 +30,37 @@
 </div>
 
 <!-- Explanation Modal -->
-<div class="modal fade" id="explanation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="1explanation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="height: 180px">
+      <div class="modal-header" id="1explanation-header" style="height: 180px">
       </div>
       <div class="modal-body text-center">
-        <h3 class="text-black" id="explanation-header"></h3>
         <br>
-        <p id="solution" class="fs-6 mb-2"></p>
-        <p id="solution-answer" class="mb-2"></p>
+        <p id="1solution" class="fs-6 mb-2"></p>
+        <p id="1solution-answer" class="mb-2"></p>
         <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="explanation" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border border-dark">
+      <div class="modal-header border-bottom border-dark text-white" style="background-color: #259d95;">
+        <h2 class="modal-title fs-3 fw-bolder"><i class="fa-solid fa-lightbulb"></i></i>&ensp;Explanation</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p id="explanation-header"  class="fs-3 fw-bolder"</p>
+        <p id="solution" class="fs-6 mb-4"></p>
+        <p id="solution-answer" class="mb-2 fw-semibold"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary px-4 fw-semibold" data-bs-dismiss="modal" style="background: #259d95;">OK!</button>
       </div>
     </div>
   </div>
