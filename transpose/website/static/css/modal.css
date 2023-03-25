@@ -26,14 +26,14 @@
   outline: 0;
 }
 
-.check-modal-dialog {
+.check-modalc-dialog {
   position: relative;
   width: auto;
   margin: 0.5rem;
   pointer-events: none;
 }
 
-.modal.fade .modal-dialog {
+.modal.fade .modalc-dialog {
   -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
   -o-transition: transform 0.3s ease-out;
@@ -45,38 +45,38 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .modal.fade .modal-dialog {
+  .modal.fade .modalc-dialog {
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
   }
 }
 
-.modal.show .modal-dialog {
+.modal.show .modalc-dialog {
   -webkit-transform: none;
   -ms-transform: none;
   transform: none;
 }
 
-.modal-dialog-scrollable {
+.modalc-dialog-scrollable {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   max-height: calc(100% - 1rem);
 }
 
-.modal-dialog-scrollable .modal-content {
+.modalc-dialog-scrollable .modal-content {
   max-height: calc(100vh - 1rem);
   overflow: hidden;
 }
 
-.modal-dialog-scrollable .modal-header,
-.modal-dialog-scrollable .modal-footer {
+.modalc-dialog-scrollable .modalc-header,
+.modalc-dialog-scrollable .modal-footer {
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.modal-dialog-scrollable .modal-body {
+.modalc-dialog-scrollable .modalc-body {
   overflow-y: auto;
 }
 
@@ -96,7 +96,7 @@
   content: "";
 }
 
-.modalc-dialog-centered.modal-dialog-scrollable {
+.modalc-dialog-centered.modalc-dialog-scrollable {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -107,30 +107,12 @@
   height: 100%;
 }
 
-.modalc-dialog-centered.modal-dialog-scrollable .modal-content {
+.modalc-dialog-centered.modalc-dialog-scrollable .modal-content {
   max-height: none;
 }
 
-.modalc-dialog-centered.modal-dialog-scrollable::before {
+.modalc-dialog-centered.modalc-dialog-scrollable::before {
   content: none;
-}
-
-.modal-content {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  pointer-events: auto;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
-  outline: 0;
 }
 
 .modal-backdrop {
@@ -151,7 +133,7 @@
   opacity: 0.5;
 }
 
-.modal-header {
+.modalc-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,7 +149,7 @@
   border-top-right-radius: 0.3rem;
 }
 
-.modal-header .close {
+.modalc-header .close {
   padding: 1rem 1rem;
   margin: -1rem -1rem -1rem auto;
 }
@@ -177,7 +159,7 @@
   line-height: 1.5;
 }
 
-.modal-body {
+.modalc-body {
   position: relative;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -218,16 +200,16 @@
 }
 
 @media (min-width: 576px) {
-  .modal-dialog {
+  .modalc-dialog {
     max-width: 500px;
     margin: 1.75rem auto;
   }
 
-  .modal-dialog-scrollable {
+  .modalc-dialog-scrollable {
     max-height: calc(100% - 3.5rem);
   }
 
-  .modal-dialog-scrollable .modal-content {
+  .modalc-dialog-scrollable .modal-content {
     max-height: calc(100vh - 3.5rem);
   }
 
@@ -267,21 +249,12 @@
   margin-bottom: 0;
 }
 
-.modal-dialog {
+.modalc-dialog {
   max-width: 600px;
 }
 
-.modal-content {
-  overflow: hidden;
-  border: none;
-  position: relative;
-  padding: 0 !important;
-  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-}
 
-.modal-content .modal-header {
+.modal-content .modalc-header {
   position: relative;
   padding: 0;
   border: none;
@@ -300,14 +273,14 @@
   color: #fff;
 }
 
-.modal-content .modal-body {
+.modal-content .modalc-body {
   border: none;
   overflow: hidden;
   margin-top: -180px;
   z-index: 2;
 }
 
-.modal-content .modal-body .icon {
+.modal-content .modalc-body .icon {
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -316,21 +289,21 @@
   margin-bottom: 10px;
 }
 
-.modal-content .modal-body h2 {
+.modal-content .modalc-body h2 {
   font-weight: 700;
   color: #fff;
 }
 
-.modal-content .modal-body h4 {
+.modal-content .modalc-body h4 {
   font-size: 18px;
 }
 
-.modal-content .modal-body h3 {
+.modal-content .modalc-body h3 {
   font-weight: 800;
   font-size: 22px;
 }
 
-.modal-content .modal-body h3 span {
+.modal-content .modalc-body h3 span {
   font-weight: 300;
 }
 
