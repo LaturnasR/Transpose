@@ -112,10 +112,31 @@
     </main>
   </div>
 
+  <!-- very specific css changes on this page-->
+  <style type="text/css">
+    .dropup .dropdown-toggle::after{
+      margin-left:0;
+    }
+    #dropdown_bottom.show{
+      display:flex;
+    }
+    #dropdown_bottom_btn{
+
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  </style>
   <!-- Fixed Buttons -->
-  <a id="table_btn" class="btn btn-lg btn-dark" style="position: fixed; bottom:30px; right:21px;">
-    <i class="fa-solid fa-table"></i>
-  </a>
+  <div id="bottom_btn" class="btn-group dropup position-fixed bottom-0 end-0 m-3">
+    <button id="dropdown_bottom_btn"type="button" class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    </button>
+      <ul id="dropdown_bottom"class="dropdown-menu bg-transparent border-0 justify-content-end">
+        <!-- Dropdown menu links -->
+        <a id="table_btn" class="btn btn-lg btn-light">
+          <i class="fa-solid fa-table"></i>
+        </a>
+      </ul>
+  </div>
 </section>
 
 <script>
@@ -129,7 +150,7 @@
 
   // #instructions on close animation
   $("#instructions_close").on('click', function(){
-    $('#table_btn')
+    $('#bottom_btn')
       .css('border', '2px solid pink')
       .addClass("animate__animated animate__headShake animate__slow")
       .on('animationend', function(){
