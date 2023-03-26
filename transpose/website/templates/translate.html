@@ -111,12 +111,17 @@
   </div>
 
   <!-- very specific css changes on this page-->
+  <!-- prolly shouldnt be in general css file -->
   <style type="text/css">
     .dropup .dropdown-toggle::after{
       margin-left:0;
     }
     #dropdown_bottom.show{
       display:flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      gap: 8px;
     }
     #dropdown_bottom_btn{
 
@@ -133,6 +138,11 @@
         <a id="table_btn" class="btn btn-lg btn-light">
           <i class="fa-solid fa-table"></i>
         </a>
+        <a id="instructions_btn" class="btn btn-lg btn-light"
+        data-bs-toggle="tooltip" data-bs-title="Back to Top" data-bs-placement="top" data-bs-trigger="hover"
+        >
+          <i class="fa-solid fa-circle-info"></i>
+        </a>
       </ul>
   </div>
 </section>
@@ -141,6 +151,9 @@
   // modals
   $("#table_btn").on('click', function(){
     $("#table").modal('show');
+  })
+  $("#instructions_btn").on('click', function(){
+    $("#instructions").modal('show');
   })
   $(document).ready(function () {
     $("#instructions").modal('show');
