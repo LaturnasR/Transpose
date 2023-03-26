@@ -13,15 +13,15 @@
   src: url(/static/fonts/Mukta-Regular.ttf);
 }
 .desc{
-  font-size: 19px;
+  font-size: 20px;
 }
 
 .info{
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .short_desc{
-  font-size: 16px !important;
+  font-size: 17px !important;
 }
 
 .text-shadow{
