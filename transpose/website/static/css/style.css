@@ -418,7 +418,7 @@ p.lead span.bg-success{
   --back-to-top-offset: 200px;
   --back-to-top-button-size: 2.8em;
 
-  --color-accent: hsl(210, 100%, 39%);
+  --color-accent: hsl(210deg 73.96% 84.88%);
   --color-accent-bright: hsl(210, 100%, 49%);
   --color-accent-alpha: hsla(210, 100%, 39%, 0.4);
 }
@@ -429,9 +429,7 @@ p.lead span.bg-success{
   bottom: 2.7em;
   right: 2em;
   animation-delay: 0s;
-}
 
-#toTopBtn {
   min-width: var(--back-to-top-button-size);
   height: var(--back-to-top-button-size);
   border-radius: 50%;
@@ -440,6 +438,7 @@ p.lead span.bg-success{
   place-items: center;
 
   text-decoration: none;
+  border: 2px solid white;
   background-color: var(--color-accent);
   box-shadow: 0 0.6em 1em 0.2em var(--color-accent-alpha);
   transform: translateY(0%);

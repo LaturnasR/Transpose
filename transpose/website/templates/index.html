@@ -23,7 +23,6 @@ const body_text = "Transpose is an educational web app intended to supplement th
 //function to add text letter by letter
 var showText = function(target, message, index, interval) {
   if(/^([ ,.;:\[\]\{\}\(\)-_=+|\\\/])$/.test(message[index]) || message.length == index){
-    console.log("asd")
     $(target).lettering("words"); 
   }
   if (index < message.length) {
@@ -32,24 +31,27 @@ var showText = function(target, message, index, interval) {
       showText(target, message, index, interval);
     }, interval);
   }
+  else{
+
+    //adds bounce bounce
+    $(document).ready(function() {
+      setTimeout(() => {
+        $(".bn632-hover.bn19")
+        .addClass("animate__animated animate__bounce")
+        .on("animationend", function(){
+          $(this).removeClass('animate__animated animate__bounce')
+          setTimeout(() => {
+            $(this).addClass('animate__animated animate__bounce') 
+          }, "2000");
+        })
+      }, "1000");; 
+    });
+  }
 }
 $(function() {
   showText(".lead", body_text, 0, 50);
 });
 
-//adds bounce bounce
-$(document).ready(function() {
-  setTimeout(() => {
-    $(".bn632-hover.bn19")
-    .addClass("animate__animated animate__bounce")
-    .on("animationend", function(){
-      $(this).removeClass('animate__animated animate__bounce')
-      setTimeout(() => {
-        $(this).addClass('animate__animated animate__bounce') 
-      }, "2000");
-    })
-  }, "1000");; 
-});
 </script>
 
 {% endblock %}
