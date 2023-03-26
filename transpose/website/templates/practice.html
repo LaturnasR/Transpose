@@ -180,6 +180,8 @@ let problems = {{problems | safe}}
       htmldata += `</tr>`;
 
     }
+    $("#"+ i +"Problems").html(htmldata);
+  }
     // Input enter = Check
     $(".input-mq").off("keypress").keypress(function(event){
       if (event.key === "Enter") {
@@ -188,8 +190,6 @@ let problems = {{problems | safe}}
         checkAns(temp_i, temp_j)
       }
     });
-    $("#"+ i +"Problems").html(htmldata);
-  }
 
   var answerSpan = document.getElementsByClassName('input-mq');
 
