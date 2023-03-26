@@ -152,10 +152,11 @@
   $("#instructions_close").on('click', function(){
     $('#bottom_btn')
       .css('border', '2px solid pink')
-      .addClass("animate__animated animate__headShake animate__slow")
+      .css('transition', 'all 0.4s')
+      .addClass("btn btn-info animate__animated animate__headShake animate__slow")
       .on('animationend', function(){
         $(this)
-          .removeClass("animate__animated animate__headShake animate__slow")
+          .removeClass("btn btn-info animate__animated animate__headShake animate__slow")
           .css('border', '')
       });
   });
