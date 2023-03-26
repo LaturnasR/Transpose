@@ -42,7 +42,7 @@
       <div class="row">
         {%for i in range(cores|count)%}
         
-        <div class="col-xl-3 col-md-6 mt-4 mt-md-0 my-md-4 d-flex align-items-stretch text-center" data-aos="zoom-in" data-aos-delay="400" onclick="location.href='#{{cores[i]["title"]}}';" style="cursor: pointer;">
+        <div class="col-xl-3 col-md-6 mt-4 mt-md-0 my-md-4 d-flex align-items-stretch text-center" onclick="location.href='#{{cores[i]["title"]}}';" style="cursor: pointer;">
           <div class="icon-box">
             <div class="icon">
               <i class="{{cores[i]["class_icon"]}}"></i>
@@ -60,6 +60,7 @@
     </div>
   </section>
 
+  <!-- loaded w/ jquery -->
   <div id="lower_content">
 
   </div>
@@ -77,6 +78,7 @@
     })
   });
 
+  //change lower content button
   //#top_btn on click event
   $("#top_btn").click(function(){
     chr = $(this).attr("value")

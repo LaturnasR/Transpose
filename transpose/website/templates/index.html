@@ -17,15 +17,15 @@
   </header>
 
 <script type="text/javascript">
-//animate__animated animate__bounce animate__infinite
 const body_text = "Transpose is an educational web app intended to supplement the learning of students regarding translations of English phrases to their mathematical symbol equivalents."
 
+//lettering.js
 //function to add text letter by letter
 var showText = function(target, message, index, interval) {
-    if(/^([ ,.;:\[\]\{\}\(\)-_=+|\\\/])$/.test(message[index]) || message.length == index){
-      console.log("asd")
-      $(target).lettering("words"); 
-    }
+  if(/^([ ,.;:\[\]\{\}\(\)-_=+|\\\/])$/.test(message[index]) || message.length == index){
+    console.log("asd")
+    $(target).lettering("words"); 
+  }
   if (index < message.length) {
     $(target).html($(target).html()+message[index++]);
     setTimeout(function() {
@@ -35,8 +35,8 @@ var showText = function(target, message, index, interval) {
 }
 $(function() {
   showText(".lead", body_text, 0, 50);
-  
 });
+
 //adds bounce bounce
 $(document).ready(function() {
   setTimeout(() => {

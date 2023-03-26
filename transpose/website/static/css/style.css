@@ -428,6 +428,7 @@ p.lead span.bg-success{
   position: fixed;
   bottom: 2.7em;
   right: 2em;
+  animation-delay: 0s;
 }
 
 #toTopBtn {
@@ -462,6 +463,10 @@ p.lead span.bg-success{
   background-color: rgba(0, 0, 0, 0);
   display: block;
 }
+
+/*--------------------------------------------------------------
+  # buttons
+  --------------------------------------------------------------*/
 
 .bn632-hover {
   width: 160px;

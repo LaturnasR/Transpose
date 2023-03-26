@@ -90,40 +90,13 @@
       </div>
 
       <div class="spacer py-2"></div>
-
-      <!-- <div class="bg-light rounded-3 container-sm">
-        <div class="d-flex flex-row justify-content-between">
-          <div class="d-flex flex-column">
-            <div class="d-inline">
-              Examples:
-            </div>
-            <div class="pt-1" id="example" value="{{example_sent}}">{{example_sent}}</div>
-          </div>
-          <div class="align-self-center">
-            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-            <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto;max-width: 500px;"> -->
-
-      <!-- For loop flask
-              {%for i in example_list%}
-                <li class="phrases dropdown-item user-select-none" value="{{i}}" 
-                style="width: 400px; white-space: normal; cursor: pointer"
-                >
-                  {{i}}
-                </li>
-              {%endfor%}
-            </ul>
-          </div>
-        </div>
-      </div> -->
-
-
+      <!-- Translate bar -->
       <form method="POST" id="sentence_form" class="input-group mb-3 container-sm">
         <textarea id="sentence" name="sentence" class="form-control rounded-start-3 bg-light border border-light"
           type="text" for="sentence" placeholder="Enter math phrase: " style="height:20px"></textarea>
         <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
           aria-expanded="false"></button>
         <ul class="dropdown-menu" style="max-height: 200px;overflow-y: auto; max-width: 500px;">
-          <!-- For loop flask-->
           {%for i in example_list%}
           <li class="phrases dropdown-item user-select-none" value="{{i}}"
             style="width: 400px; white-space: normal; cursor: pointer">
@@ -133,34 +106,40 @@
         </ul>
         <button class="btn btn-light" style="border-left-color:#000;">Enter</button>
       </form>
+
+      <!-- Output bar -->
       <div id="output" class="output"></div>
     </main>
   </div>
+
+  <!-- Fixed Buttons -->
   <a id="table_btn" class="btn btn-lg btn-dark" style="position: fixed; bottom:30px; right:21px;">
     <i class="fa-solid fa-table"></i>
   </a>
 </section>
 
 <script>
+  // modals
   $("#table_btn").on('click', function(){
     $("#table").modal('show');
   })
   $(document).ready(function () {
     $("#instructions").modal('show');
   });
+
+  // #instructions on close animation
   $("#instructions_close").on('click', function(){
     $('#table_btn')
-      .css('border', '1px solid pink')
-      .addClass("animate__animated animate__headShake")
+      .css('border', '2px solid pink')
+      .addClass("animate__animated animate__headShake animate__slow")
       .on('animationend', function(){
         $(this)
-          .removeClass("animate__animated animate__headShake")
+          .removeClass("animate__animated animate__headShake animate__slow")
           .css('border', '')
       });
   });
-    // $('#table_btn').show();
-
 </script>
+
 <!-- jquery-textcomplete -->
 <script type="text/javascript" src="static/js/jquery.textcomplete.js"></script>
 
