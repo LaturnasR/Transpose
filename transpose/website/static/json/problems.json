@@ -233,7 +233,7 @@
             "((1/2x)) / 9",
             "((x/2))/9"
          ],
-         "sol":"The keyword '<b>one-half of</b>' indicates the half of a quantity, which is equivalent to the quotient of a number when it is divided by two. \nIn this case, '<b>x</b>' will be divided by '<b>2</b>'. With the help of the comma, we know that the second phrase '<b>divided by 9</b>', will be performed \nonly after the first operation."
+         "sol":"The keyword '<b>one-half of</b>' indicates the half of a quantity, which is equivalent to the quotient of a number when it is divided by two. \nIn this case, '<b>x</b>' will be divided by '<b>2</b>'. With the help of the <b>comma</b>, we know that the second phrase '<b>divided by 9</b>', will be performed \nonly after the first operation."
       }
    ]
 }
