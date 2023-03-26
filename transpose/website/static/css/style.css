@@ -107,7 +107,9 @@ section.home {
   background: #7aceff;
   color: aliceblue;
 }
-
+.nav-pills .nav-link.active{
+  outline: 1px solid var(--bs-nav-pills-link-active-bg);
+}
 .answer {
   height: 30px;
   padding-top: 1px;
@@ -408,6 +410,31 @@ p.lead span.bg-success{
   --------------------------------------------------------------*/
 .lead span:hover {
     font-weight:bold;
+}
+
+/*--------------------------------------------------------------
+  # etcs...
+  --------------------------------------------------------------*/
+.gradient-background {
+  background: linear-gradient(240deg,#aee3b2, #47b2e4);
+  background-size: 120% 120%;
+  animation: gradient-animation 1.8s linear infinite;
+}
+.gradient-background2 {
+  background: linear-gradient(240deg,#14b3ea, #f00364);
+  background-size: 120% 120%;
+  animation: gradient-animation 1.8s linear infinite;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /*--------------------------------------------------------------
   # Scroll-to-Top Button

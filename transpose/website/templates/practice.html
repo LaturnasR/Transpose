@@ -23,7 +23,7 @@
         </div>
         <br>
         <h4 id="modal-footer" class="mb-2"></h4>
-        <button type="button" class="bn632c-hover bn25c mt-3" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="bn632-hover bn25 mt-3" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border border-dark">
       <div class="modal-header border-bottom border-dark text-white gradient-background">
-        <h2 class="modal-title fs-3 fw-bolder"><i class="fa-solid fa-lightbulb"></i></i>&ensp;Explanation</h2>
+        <h2 class="text-shadow modal-title fs-3 fw-bolder"><i class="fa-solid fa-lightbulb"></i>&ensp;Explanation</h2>
       </div>
       <div class="modal-body text-center">
         <p id="explanation-header"  class="fs-3 fw-bolder"</p>
@@ -42,7 +42,32 @@
         <p id="solution-answer" class="mb-2 fw-semibold"></p>
       </div>
       <div class="modal-footer py-1">
-        <button type="button" class="bn632c-hover bn25c fw-semibold" data-bs-dismiss="modal">OK!</button>
+        <button type="button" class="bn632-hover bn25 fw-semibold" data-bs-dismiss="modal">OK!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quiz  Modal -->
+<div id="quiz" class="modal fade"  data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border border-dark" style="max-width: 675px;">
+      <div class="modal-header border-bottom border-dark text-white gradient-background2">
+        <h2 class="text-shadow modal-title fs-3 fw-bolder"><i class="fa-solid fa-pen-to-square"></i>&ensp;Challenge</h2>
+      </div>
+      <div class="modal-body text-center">
+        <table class="table  rounded fs-6 text-center">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start" style="width:60%">Problem</th>
+              <th scope="col">Answer</th>
+            </tr>
+          </thead>
+          <tbody id="quizProblems"> </tbody>
+        </table>
+      </div>
+      <div class="modal-footer py-1">
+        <button type="button" class="bn632-hover bn25 fw-semibold" data-bs-dismiss="modal">OK!</button>
       </div>
     </div>
   </div>
@@ -112,11 +137,62 @@
         {%endfor%}
       </div>
     </div>
+    <div class="d-flex justify-content-center">
+      <button type="button"  id="btn-quiz" class="btn btn-outline-danger fw-semibold">
+        Challenge for a prize!
+      </button>
+    </div>
   </section>
 </section>
 
+
+<!-- for quiz modal -->
+<script type="text/javascript">
+  // quiz is json, and jsons are escaped on unsafe load.
+  // so safe is stated on quiz and problems var.
+  let quiz = {{quiz | safe}}
+  $("#btn-quiz").on("click", function(){
+    //picks some givens on json quiz
+    let tiers = [["easy", 3], ["medium", 2], ["hard", 1]]
+    let questions = []
+    for(let i in tiers){
+      let used_questions = [-1]
+      let index = -1
+      for(let j = 0; j < tiers[i][1]; j++){
+        while(used_questions.includes(index)){
+          index = Math.floor(Math.random() * quiz[tiers[i][0]].length);
+        }
+        used_questions.push(index)
+        questions.push(quiz[tiers[i][0]][index])
+      }
+    }
+    console.log(questions)
+    //generate htmldata to insert the modal
+
+    $("#quizProblems").html("");
+    for(let i in questions){
+      htmldata = "";
+      htmldata += `<tr>`;
+      htmldata += `<td scope="row" class="text-start info">` + questions[i]["phrase"] + `</td>`;
+      htmldata += `<td><div type="text" probnum="`+i+`" class="input-mq form-label"></div></td>`;
+      htmldata += `</tr>`;
+      $("#quizProblems").append(htmldata);
+    }
+      //then show modal
+      $("#quiz").modal('show');
+  let answerSpan = document.getElementsByClassName('input-mq');
+
+  //all loaded input-mq, show
+  console.log(answerSpan);
+  let answerMathField = []
+  for (let i = 0; i < answerSpan.length; i++) {
+    answerMathField[i] = MQ.MathField(answerSpan[i]);
+  }
+    })
+
+</script>
 <script>
-let problems = {{problems | safe}}
+  let problems = {{problems | safe}}
   function checkAns(type, problemNumber) {
     var raw_input = MQ(document.getElementById(type + "-ans-" + problemNumber)).latex();
     //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird

@@ -14,8 +14,6 @@ def index():
 #looks for the file phrases.json
 #in static/json directory, using the top directory as a prefix
 json_url_phrases = os.path.join(SITE_ROOT, "static/json", "phrases.json")
-
-#json is loaded
 data_phrases = json.load(open(json_url_phrases))
 
 @views.route('/translate')
@@ -34,13 +32,13 @@ def layout():
 #looks for the file problems.json
 #in static/json directory, using the top directory as a prefix
 json_url_problems = os.path.join(SITE_ROOT, "static/json", "problems.json")
-
-#json is loaded
 data_problems = json.load(open(json_url_problems))
+json_url_quiz = os.path.join(SITE_ROOT, "static/json", "quiz.json")
+data_quiz = json.load(open(json_url_quiz))
 
 @views.route('/practice')
 def practice():
-	return render_template('practice.html', problems=data_problems)
+	return render_template('practice.html', problems=data_problems, quiz=data_quiz)
     
 @views.route('/about_us')
 def about_us():
