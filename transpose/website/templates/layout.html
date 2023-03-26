@@ -48,7 +48,8 @@
   <!-- navbar active selector -->
   <script type="text/javascript">
     document.querySelectorAll(".nav-link").forEach((link) => {
-      if (link.href === window.location.href) {
+      var compare = (window.location.href).replace(/#[a-zA-Z]*/, '')
+      if (link.href === compare) {
         link.classList.add("active");
         link.setAttribute("aria-current", "page");
       }
@@ -70,11 +71,14 @@
     animation-delay: 0s;
   }
   </style>
-  <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;">
+  <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;"
+  data-bs-toggle="tooltip" data-bs-title="Back to Top" data-bs-placement="top" data-bs-trigger="hover"
+  >
     ☝🏻 
   </a>
   <script>
     $(document).ready(function() {
+      $('#toTopBtn[data-bs-toggle="tooltip"]').tooltip();
       $("#toTopBtn").css("animation-delay", "0s")
       $(window).scroll(function() {
         if ($(this).scrollTop() > 20) {
@@ -84,6 +88,7 @@
             .addClass("animate__animated animate__backInUp")
             .show();
         } else {
+          $('.tooltip').hide()
           $('#toTopBtn')
             .removeClass("animate__animated animate__backInUp")
             .delay("250")

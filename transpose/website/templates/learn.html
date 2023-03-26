@@ -69,10 +69,11 @@
 <script type="text/javascript">
   //enables tooltip
   $(document).ready(function(){
-    $('[data-bs-toggle="tooltip"]').tooltip();
-    $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
-        $('.tooltip').find('.tooltip-arrow').css('display', 'none');
-        $('.tooltip').find('.tooltip-inner').addClass('animated updown');
+    $('#top_btn[data-bs-toggle="tooltip"]').tooltip();
+    $('#top_btn[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+        $('.tooltip')
+          .find('.tooltip-inner')
+          .addClass('animated updown floating_tooltip-inner')
     })
   });
 
