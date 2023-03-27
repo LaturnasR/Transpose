@@ -50,7 +50,7 @@
 
 <!-- Quiz  Modal -->
 <div id="quiz" class="modal fade"  data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" style="max-width: 675px;">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 750px;">
     <div class="modal-content border border-dark">
       <div class="modal-header border-bottom border-dark text-white gradient-background2">
         <h2 class="text-shadow modal-title fs-3 fw-bolder"><i class="fa-solid fa-pen-to-square"></i>&ensp;Challenge</h2>
@@ -59,7 +59,7 @@
         <table class="table  rounded fs-6 text-center">
           <thead>
             <tr>
-              <th scope="col">Difficulty</th>
+              <th scope="col" class="text-start" style="width:25%">Difficulty</th>
               <th scope="col" class="text-start" style="width:60%">Problem</th>
               <th scope="col">Answer</th>
             </tr>
@@ -164,7 +164,7 @@
           index = Math.floor(Math.random() * quiz[tiers[i][0]].length);
         }
         used_questions.push(index)
-        quiz[tiers[i][0]][index]["tier"] = tiers[i][0]
+        quiz[tiers[i][0]][index]["tier"] = tiers[i][0] + "( +"+quiz[tiers[i][0]][index]["score"]+" )"
         questions.push(quiz[tiers[i][0]][index])
       }
     }
