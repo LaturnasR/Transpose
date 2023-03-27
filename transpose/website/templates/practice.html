@@ -59,6 +59,7 @@
         <table class="table  rounded fs-6 text-center">
           <thead>
             <tr>
+              <th scope="col">Difficulty</th>
               <th scope="col" class="text-start" style="width:60%">Problem</th>
               <th scope="col">Answer</th>
             </tr>
@@ -163,16 +164,17 @@
           index = Math.floor(Math.random() * quiz[tiers[i][0]].length);
         }
         used_questions.push(index)
+        quiz[tiers[i][0]][index]["tier"] = tiers[i][0]
         questions.push(quiz[tiers[i][0]][index])
       }
     }
-    console.log(questions)
     //generate htmldata to insert the modal
 
     $("#quizProblems").html("");
     for(let i in questions){
       htmldata = "";
       htmldata += `<tr>`;
+      htmldata += `<td scope="row" class="text-start info"><small>` + questions[i]["tier"] + `</small></td>`;
       htmldata += `<td scope="row" class="text-start info">` + questions[i]["phrase"] + `</td>`;
       htmldata += `<td><div type="text" probnum="`+i+`" class="input-mq form-label"></div></td>`;
       htmldata += `</tr>`;
@@ -183,7 +185,6 @@
   let answerSpan = document.getElementsByClassName('input-mq');
 
   //all loaded input-mq, show
-  console.log(answerSpan);
   let answerMathField = []
   for (let i = 0; i < answerSpan.length; i++) {
     answerMathField[i] = MQ.MathField(answerSpan[i]);
@@ -270,7 +271,6 @@
   var answerSpan = document.getElementsByClassName('input-mq');
 
   //all loaded input-mq, show
-  console.log(answerSpan);
   var answerMathField = []
   for (let i = 0; i < answerSpan.length; i++) {
     answerMathField[i] = MQ.MathField(answerSpan[i]);
