@@ -42,13 +42,17 @@
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
-.bn632-hover:focus {
-  outline: 1px solid pink;
+.bn632-hover:focus{
+  outline: 2px solid white;
+  color: #fff;
+  background-position: 15% 0;
+}
+.bn632-hover:hover {
   color: #fff;
   background-position: 100% 0;
 }
 
-.bn632-hover:hover {
-  color: #fff;
+.bn632-hover.bn25:active {
+  outline: 2px solid white;
   background-position: 100% 0;
 }

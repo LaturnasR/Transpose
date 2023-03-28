@@ -12,6 +12,9 @@
   font-family: Mukta;
   src: url(/static/fonts/Mukta-Regular.ttf);
 }
+#quizCloseBtn{
+  --bs-emphasis-color-rgb: 255,255,255;
+}
 .desc{
   font-size: 1.28em;
 }
@@ -118,6 +121,10 @@ section.home {
 
 td div.input-mq{
   width:10em;
+}
+
+#quizProblems td div.input-mq{
+  width:100%;
 }
 
 .etc_info {
