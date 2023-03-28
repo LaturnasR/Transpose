@@ -16,40 +16,28 @@
     </div>
   </header>
 
+<!-- jquery_lettering -->
+<script src="/static/js/lettering_custom.js"></script>
 <script type="text/javascript">
 const body_text = "Transpose is an educational web app intended to supplement the learning of students regarding translations of English phrases to their mathematical symbol equivalents."
 
-//lettering.js
-//function to add text letter by letter
-var showText = function(target, message, index, interval) {
-  if(/^([ ,.;:\[\]\{\}\(\)-_=+|\\\/])$/.test(message[index]) || message.length == index){
-    $(target).lettering("words"); 
-  }
-  if (index < message.length) {
-    $(target).html($(target).html()+message[index++]);
-    setTimeout(function() {
-      showText(target, message, index, interval);
-    }, interval);
-  }
-  else{
-
-    //adds bounce bounce
-    $(document).ready(function() {
-      setTimeout(() => {
-        $(".bn632-hover.bn19")
-        .addClass("animate__animated animate__bounce")
-        .on("animationend", function(){
-          $(this).removeClass('animate__animated animate__bounce')
-          setTimeout(() => {
-            $(this).addClass('animate__animated animate__bounce') 
-          }, "2000");
-        })
-      }, "1000");; 
-    });
-  }
+function bounce(){
+  //adds bounce bounce
+  $(document).ready(function() {
+    setTimeout(() => {
+      $(".bn632-hover.bn19")
+      .addClass("animate__animated animate__bounce")
+      .on("animationend", function(){
+        $(this).removeClass('animate__animated animate__bounce')
+        setTimeout(() => {
+          $(this).addClass('animate__animated animate__bounce') 
+        }, "2000");
+      })
+    }, "1000");; 
+  });
 }
 $(function() {
-  showText(".lead", body_text, 0, 50);
+  lettering(".lead", body_text, 0, 50, bounce);
 });
 
 </script>
