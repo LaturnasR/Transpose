@@ -1,3 +1,30 @@
+#dropdown_bottom_btn.bigger{
+  border: 2px solid pink;
+  margin-bottom: 1.5em;
+  margin-right: 1.0em;
+
+  transition: all 0.4s;
+}
+
+.dropup .dropdown-toggle::after{
+  margin-left:0;
+}
+#dropdown_bottom.show{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  gap: 8px;
+}
+#dropdown_bottom_btn{
+  transition: all 0.4s;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.form-floating:not(.form-control:disabled)::before {
+  pointer-events: none;
+}
+
 /* dropdown hover  */
 
 .dropdown-item:focus, .dropdown-item:hover{
