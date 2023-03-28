@@ -44,10 +44,10 @@ $("#instructions_close").on('click', function(){
   if($("#codeInput").val() != "ITJMDBRL" && Cookies.get('passed') != "true"){
     animateCSS('#codeInput', 'headShake');
     $("#codeInput").css('border', '2px solid red');
-    Cookies.set('passed', true);
   }
   
   else{
+    Cookies.set('passed', true);
     $("#codeInput").prop('disabled', true);
     $("#codeInput").css('border', '2px solid green');
     $("#instructions").modal('hide');
