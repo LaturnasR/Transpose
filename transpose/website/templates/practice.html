@@ -9,69 +9,7 @@
   var MQ = MathQuill.getInterface(2);
 </script>
 
-<!-- Check Answer Modal -->
-<div class="modal modalc fade" id="check-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modalc-dialog modal-dialog-centered modalc-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modalc-header ftco-degree-bg" id="modal-bg">
-      </div>
-      <div class="modalc-body pt-md-0 text-center">
-        <h2 id="modal-header"></h2>
-        <div class="icon d-flex align-items-center justify-content-center">
-          <img id="modal-image" alt="" class="img-fluid">
-        </div>
-        <br>
-        <h4 id="modal-footer" class="mb-2"></h4>
-        <button type="button" class="bn632-hover bn25 mt-3" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Explanation  Modal -->
-<div id="explanation" class="modal fade"  data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border border-dark">
-      <div class="modal-header border-bottom border-dark text-white gradient-background">
-        <h2 class="text-shadow modal-title fs-3 fw-bolder"><i class="fa-solid fa-lightbulb"></i>&ensp;Explanation</h2>
-      </div>
-      <div class="modal-body text-center">
-        <p id="explanation-header"  class="fs-3 fw-bolder"</p>
-        <p id="solution" class="fs-6 mb-4"></p>
-        <p id="solution-answer" class="mb-2 fw-semibold"></p>
-      </div>
-      <div class="modal-footer py-1">
-        <button type="button" class="bn632-hover bn25 fw-semibold" data-bs-dismiss="modal">OK!</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Quiz  Modal -->
-<div id="quiz" class="modal fade"  data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" style="max-width: 750px;">
-    <div class="modal-content border border-dark">
-      <div class="modal-header border-bottom border-dark text-white gradient-background2">
-        <h2 class="text-shadow modal-title fs-3 fw-bolder"><i class="fa-solid fa-pen-to-square"></i>&ensp;Challenge</h2>
-      </div>
-      <div class="modal-body text-center">
-        <table class="table  rounded fs-6 text-center">
-          <thead>
-            <tr>
-              <th scope="col" class="text-start" style="width:25%">Difficulty</th>
-              <th scope="col" class="text-start" style="width:60%">Problem</th>
-              <th scope="col">Answer</th>
-            </tr>
-          </thead>
-          <tbody id="quizProblems"> </tbody>
-        </table>
-      </div>
-      <div class="modal-footer py-1">
-        <button type="button" class="bn632-hover bn25 fw-semibold" data-bs-dismiss="modal">OK!</button>
-      </div>
-    </div>
-  </div>
+<div id="practice_modal_group">
 </div>
 
 <section id="home-section">
@@ -139,23 +77,34 @@
       </div>
     </div>
     <div class="d-flex justify-content-center">
-      <button type="button"  id="btn-quiz" class="btn btn-outline-danger fw-semibold">
+      <button type="button"  id="btn-quiz" class="btn btn-outline-danger fw-semibold"
+ data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Get access to our translate page as a prize!"
+ data-bs-placement="top"
+      >
         Challenge for a prize!
       </button>
     </div>
   </section>
 </section>
 
-
+<script type="text/javascript">
+  $("#practice_modal_group").load("static/html/practice_modals.html")
+</script>
 <!-- for quiz modal -->
 <script type="text/javascript">
+
+  //enables popover
+  $(document).ready(function(){
+    $('[data-bs-toggle="popover"]').popover();
+  });
   // quiz is json, and jsons are escaped on unsafe load.
   // so safe is stated on quiz and problems var.
   let quiz = {{quiz | safe}}
+  let questions = []
   $("#btn-quiz").on("click", function(){
     //picks some givens on json quiz
     let tiers = [["easy", 3], ["medium", 2], ["hard", 1]]
-    let questions = []
+    questions = []
     for(let i in tiers){
       let used_questions = [-1]
       let index = -1
@@ -176,20 +125,76 @@
       htmldata += `<tr>`;
       htmldata += `<td scope="row" class="text-start info"><small>` + questions[i]["tier"] + `</small></td>`;
       htmldata += `<td scope="row" class="text-start info">` + questions[i]["phrase"] + `</td>`;
-      htmldata += `<td><div type="text" probnum="`+i+`" class="input-mq form-label"></div></td>`;
+      htmldata += `<td><div type="text" probnum="`+i+`" id="quiz-ans-`+i+`" class="input-mq form-label"></div></td>`;
       htmldata += `</tr>`;
       $("#quizProblems").append(htmldata);
     }
-      //then show modal
-      $("#quiz").modal('show');
-  let answerSpan = document.getElementsByClassName('input-mq');
+    //then show modal
+    $("#quiz").modal('show');
+    let answerSpan = document.getElementsByClassName('input-mq');
 
-  //all loaded input-mq, show
-  let answerMathField = []
-  for (let i = 0; i < answerSpan.length; i++) {
-    answerMathField[i] = MQ.MathField(answerSpan[i]);
-  }
+    //all loaded input-mq, show
+    let answerMathField = []
+    for (let i = 0; i < answerSpan.length; i++) {
+      answerMathField[i] = MQ.MathField(answerSpan[i]);
+    }
+
+    //button "submit" handler
+    $("#quizSubmit").on("click", function(){
+      var stored_answer = []
+      for(let i in questions){
+        let raw_input = MQ(document.getElementById("quiz-ans-" + i)).latex();
+        let input_value = latex_to_js(raw_input).replace(/\\/g, '')
+        if(input_value == ""){
+          console.log("no input")
+          $("#quiz-ans-" + i).css('border', '2px solid #ff8d00');
+          stored_answer = []
+          continue
+        }
+        // Disable input
+        $("#quiz-ans-" + i).css('color', 'gray');
+        $("#quiz-ans-" + i).css('border', '1px solid lightgray');
+        $("#quiz-ans-" + i).find('span.mq-textarea textarea').prop("readonly", true);
+        stored_answer.push(input_value)
+      }
+
+      //answer checking
+      if(stored_answer.length == questions.length){
+        var user_score = 0
+        var max_score = 0
+        for(let i = 0; i < questions.length; i++){
+          user_score += questions[i]["answer"].includes(stored_answer[i])*questions[i]["score"]
+          max_score += questions[i]["score"]
+          console.log(questions[i]["answer"].includes(stored_answer[i])*questions[i]["score"])
+        }
+        console.log("Score: " + ((user_score/max_score) * 100).toFixed(2) + "%");
+        if(((user_score/max_score) * 100).toFixed(2) >= 70){
+          // Load correct modal
+          $(document).ready(function () {
+            $("#check-modal-header").html(`You passed the challenge! <i class="fa-solid fa-circle-check"></i>`);
+            $("#check-modal-bg").css("background", "linear-gradient(180deg, #5baf8a, #cccccc)");
+            $("#check-modal-image").attr("src", "images/Correct.png");
+            $("#check-modal-footer").html("You scored "+ ((user_score/max_score) * 100).toFixed(2) + "% ! You really understand how this works! <h6 class='pt-2 text-secondary'>For the prize, the secret keycode for the translate page is: </h6>");
+            $("#check-modal").modal('show');
+          });
+        }
+        else {
+          // Load incorrect modal
+          $(document).ready(function () {
+            $("#check-modal-header").html(`Your score didn't quite got there!`);
+            $("#check-modal-bg").css("background", "linear-gradient(  180deg, #8e5aaf, #cccccc)");
+            $("#check-modal-image").attr("src", "images/Incorrect.png");
+            $("#check-modal-footer").html("Nice try! You'll get this on your next try, we believe in you!");
+            $("#check-modal").modal('show');
+          });;
+        }
+        $("#quiz").modal('hide');
+      }
+      else{
+        alert("Answer all of the items!")
+      }
     })
+  });
 
 </script>
 <script>
@@ -208,27 +213,27 @@
         if (problems[type][problemNumber]['ans'].includes(input_value.replace(/\s/g, '').replace(/([a-z])/g, "x"))) {
           // Load correct modal
           $(document).ready(function () {
-            $("#modal-header").html(`Your answer is correct <i class="fa-solid fa-circle-check"></i>`);
-            $("#modal-bg").css("background", "linear-gradient(180deg, #5baf8a, #cccccc)");
-            $("#modal-image").attr("src", "images/Correct.png");
-            $("#modal-footer").html("Keep up the good work!");
+            $("#check-modal-header").html(`Your answer is correct <i class="fa-solid fa-circle-check"></i>`);
+            $("#check-modal-bg").css("background", "linear-gradient(180deg, #5baf8a, #cccccc)");
+            $("#check-modal-image").attr("src", "images/Correct.png");
+            $("#check-modal-footer").html("Keep up the good work!");
             $("#check-modal").modal('show');
           });
         }
         else {
           // Load incorrect modal
           $(document).ready(function () {
-            $("#modal-header").html(`Your answer is incorrect <i class="fa-solid fa-circle-xmark"></i>`);
-            $("#modal-bg").css("background", "linear-gradient(  180deg, #af5a5a, #cccccc)");
-            $("#modal-image").attr("src", "images/Incorrect.png");
-            $("#modal-footer").html("Nice try! Keep practicing to familiarize yourself with the keywords.");
+            $("#check-modal-header").html(`Your answer is incorrect <i class="fa-solid fa-circle-xmark"></i>`);
+            $("#check-modal-bg").css("background", "linear-gradient(  180deg, #8e5aaf, #cccccc)");
+            $("#check-modal-image").attr("src", "images/Incorrect.png");
+            $("#check-modal-footer").html("Nice try! Keep practicing to familiarize yourself with the keywords.");
             $("#check-modal").modal('show');
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
           });;
         }
         // Disable input
         $("#" + type + "-btn-" + problemNumber).html("Explanation");
         $("#" + type + "-ans-" + problemNumber).css('color', 'gray');
+        $("#" + type + "-ans-" + problemNumber).css('border', '1px solid lightgray');
         $("#" + type + "-ans-" + problemNumber).find('span.mq-textarea textarea').prop("readonly", true);
       }
       else {
