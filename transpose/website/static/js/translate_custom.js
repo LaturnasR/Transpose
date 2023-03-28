@@ -55,7 +55,7 @@ $("#instructions_close").on('click', function(){
     //animation on modal close
     $("#dropdown_bottom_btn").addClass("border border-4 border-danger bigger animate__slow")
     animateCSS('#dropdown_bottom_btn', 'headShake').then(function(){
-      $("#dropdown_bottom_btn").removeClass("border border-3 border-danger bigger animate__slow")
+      $("#dropdown_bottom_btn").removeClass("border border-4 border-danger bigger animate__slow")
     })
   }
 });
