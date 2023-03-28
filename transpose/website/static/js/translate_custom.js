@@ -6,6 +6,7 @@ $(document).ready(function(){
     $("#codeInput").attr("data-bs-title", "Code already entered")
     $("#codeInput").attr("placeholder", "Just click 'OK!', we're good!")
     $("#codeInput").prop("readonly", true)
+    $("#codeInput").css('border', '2px solid green');
   }
 })
 /* instructions modal popover */
