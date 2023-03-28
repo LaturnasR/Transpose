@@ -2,9 +2,11 @@
 {% block content %}
 
 <!-- independent css file -->
+<!-- very specific css changes on this page-->
+<!-- prolly shouldnt be in general css file -->
 <link rel="stylesheet" href="/static/css/translate_custom.css">
 
-
+<!-- Instruction Modal -->
 <div id="instructions" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -15,8 +17,11 @@
       <div class="modal-body">
         <p class="mb-0">Transpose is a simple tool to help users translate English phrases to math phrases. Go through the learn and practice pages first to understand math phrase translations better.</p>
       </div>
-      <div class="modal-footer py-1">
-        <button id="instructions_close" type="button" class="bn632-hover bn25 fw-semibold" data-bs-dismiss="modal">OK!</button>
+      <div class="modal-footer py-1 justify-content-between">
+        <input type="text" class="form-control w-50" id="codeInput" placeholder="Enter Code"
+        data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Enter Code" data-bs-content="You can get the code by doing the challenge in practice page."
+        data-bs-placement="top">
+        <button id="instructions_close" type="button" class="bn632-hover bn25 fw-semibold">OK!</button>
       </div>
     </div>
   </div>
@@ -84,7 +89,9 @@
       <div class="pt-5 text-center">
         <img style="width:276px; height:208px;" src="images/Logo.png">
         <h1 style="font-family: Bayon; color: white; font-size: 65px; text-shadow: 1px 2px #000;">TRANSPOSE</h1>
-        <h5 class="text-white" style="font-family: Montserrat; ">English to Math Expression</h5>
+        <h5 class="text-white text-shadow" id="translate_subtitle" style="font-family: Montserrat; ">
+          Translates Verbal Math Phrases into Math Expressions!
+        </h5>
       </div>
 
       <div class="spacer py-2"></div>
@@ -110,36 +117,20 @@
     </main>
   </div>
 
-  <!-- very specific css changes on this page-->
-  <!-- prolly shouldnt be in general css file -->
-  <style type="text/css">
-    .dropup .dropdown-toggle::after{
-      margin-left:0;
-    }
-    #dropdown_bottom.show{
-      display:flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-content: flex-end;
-      gap: 8px;
-    }
-    #dropdown_bottom_btn{
-
-      padding-left: 1.25rem;
-      padding-right: 1.25rem;
-    }
-  </style>
   <!-- Fixed Buttons -->
   <div id="bottom_btn" class="btn-group dropup position-fixed bottom-0 end-0 m-3">
-    <button id="dropdown_bottom_btn"type="button" class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <button id="dropdown_bottom_btn"type="button" class="btn btn-lg btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+data-bs-second-toggle="popover" data-bs-content="Options" data-bs-placement="left" data-bs-trigger="hover"
+    >
     </button>
       <ul id="dropdown_bottom"class="dropdown-menu bg-transparent border-0 justify-content-end">
         <!-- Dropdown menu links -->
-        <a id="table_btn" class="btn btn-lg btn-light">
+        <a id="table_btn" class="btn btn-lg btn-light"
+        data-bs-toggle="popover" data-bs-content="Cheatsheet" data-bs-placement="left" data-bs-trigger="hover">
           <i class="fa-solid fa-table"></i>
         </a>
         <a id="instructions_btn" class="btn btn-lg btn-light"
-        data-bs-toggle="tooltip" data-bs-title="Back to Top" data-bs-placement="top" data-bs-trigger="hover"
+        data-bs-toggle="popover" data-bs-content="Instructions" data-bs-placement="left" data-bs-trigger="hover"
         >
           <i class="fa-solid fa-circle-info"></i>
         </a>
@@ -147,37 +138,11 @@
   </div>
 </section>
 
-<script>
-  // modals
-  $("#table_btn").on('click', function(){
-    $("#table").modal('show');
-  })
-  $("#instructions_btn").on('click', function(){
-    $("#instructions").modal('show');
-  })
-  $(document).ready(function () {
-    $("#instructions").modal('show');
-  });
-
-  // #instructions on close animation
-  $("#instructions_close").on('click', function(){
-    $('#bottom_btn')
-      .css('border', '2px solid pink')
-      .css('transition', 'all 0.4s')
-      .addClass("btn btn-warning animate__animated animate__headShake animate__slow")
-      .on('animationend', function(){
-        $(this)
-          .removeClass("btn btn-info animate__animated animate__headShake animate__slow")
-          .css('border', '')
-      });
-  });
-</script>
 
 <!-- jquery-textcomplete -->
 <script type="text/javascript" src="static/js/jquery.textcomplete.js"></script>
 
 <!-- custom js, needs jQuery on top -->
 <script type="text/javascript" src="static/js/translate_custom.js"></script>
-
-
+<script type="text/javascript" src="static/js/animate_custom.js"></script>
 {% endblock %}

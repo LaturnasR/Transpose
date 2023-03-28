@@ -1,3 +1,64 @@
+/* checks if user has entered the code already */
+$(document).ready(function(){
+
+  if(Cookies.get('passed')){
+    $("#codeInput").attr("data-bs-content", "You don't need to input the code again in this session!")
+    $("#codeInput").attr("data-bs-title", "Code already entered")
+    $("#codeInput").attr("placeholder", "Just click 'OK!', we're good!")
+    $("#codeInput").prop("readonly", true)
+  }
+})
+/* instructions modal popover */
+//enables popover on keycode input
+$(document).ready(function(){
+  $('[data-bs-toggle="popover"]').popover();
+});
+
+/* modals */
+// instruction modal
+$(document).ready(function () {
+  $("#instructions").modal('show');
+});
+$("#instructions_btn").on('click', function(){
+  $("#instructions").modal('show');
+})
+
+// table modal
+$("#table_btn").on('click', function(){
+  $("#table").modal('show');
+})
+
+/* fixed bottom button dropdown */
+$(document).ready(function(){
+  $('[data-bs-second-toggle="popover"]').popover();
+});
+$("#dropdown_bottom a").on('click', function(){
+  $("#dropdown_bottom_btn").dropdown('toggle');
+})
+
+/* animations */
+// #instructions on close animation
+$("#instructions_close").on('click', function(){
+  //if codeInput is invalid
+  if($("#codeInput").val() != "ITJMDBRL" && Cookies.get('passed') != "true"){
+    animateCSS('#codeInput', 'headShake');
+    $("#codeInput").css('border', '2px solid red');
+    Cookies.set('passed', true);
+  }
+  
+  else{
+    $("#codeInput").prop('disabled', true);
+    $("#codeInput").css('border', '2px solid green');
+    $("#instructions").modal('hide');
+
+    //animation on modal close
+    $("#dropdown_bottom_btn").addClass("border border-4 border-danger bigger animate__slow")
+    animateCSS('#dropdown_bottom_btn', 'headShake').then(function(){
+      $("#dropdown_bottom_btn").removeClass("border border-3 border-danger bigger animate__slow")
+    })
+  }
+});
+
 /* dropdown example picking */
 $("li.phrases").click(function(e){
   $("#example").attr("value",$(this).attr("value"))
