@@ -8,23 +8,28 @@
   
   <!-- bootstrap -->
   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-  
+  <!-- bootstrap -->
+
   <!-- mathquill, modified -->
   <link rel="stylesheet" href="/static/css/mathquill.css" />
   <script src="/static/js/mathquill.js"></script>
-  
+  <!-- mathquill, modified -->
+
   <!-- animate.css -->
   <link rel="stylesheet" href="static/css/animate.min.css" />
+  <!-- animate.css -->
   
   <!-- css.buttons, modified -->
   <link rel="stylesheet" href="static/css/css_buttons.css" />
+  <!-- css.buttons, modified -->
 
   <!-- custom css -->
   <link rel="stylesheet" href="/static/css/navbar.css">
   <link rel="stylesheet" href="/static/css/style.css">
+  <!-- custom css -->
 </head>
 
-<body style="min-height: 100vh; background: linear-gradient(45deg, #5baf8a, #2393ef)">
+<body>
   <!-- NavBar -->
   <nav class="navbar navbar-expand-sm fixed-top bg-light" style="--bs-navbar-padding-y:0">
     <div class="container-fluid">
@@ -54,8 +59,9 @@
       </div>
     </div>
   </nav>
+  <!-- NavBar -->
 
-  <!-- navbar active selector -->
+  <!-- navbar js active selector -->
   <script type="text/javascript">
     document.querySelectorAll(".nav-link").forEach((link) => {
       var compare = (window.location.href).replace(/#[a-zA-Z]*/, '')
@@ -65,36 +71,44 @@
       }
     });
   </script>
+  <!-- navbar js active selector -->
 
   <!-- jQuery -->
   <script src="/static/js/jquery-3.6.3.min.js"></script>
+  <!-- jQuery -->
+
+  <!-- content -->
   {% block content %}{% endblock %}
+  <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;"
+  data-bs-toggle="tooltip" data-bs-title="Back to Top" data-bs-placement="top" data-bs-trigger="hover"
+  >
+    ☝🏻 
+  </a>
+  <!-- content -->
 
-  <!-- bootstrap -->
+  <!-- bootstrap js-->
   <script src="/static/js/bootstrap.bundle.min.js"></script>
+  <!-- bootstrap js-->
 
-  <!-- font-awesome -->
+  <!-- font-awesome js-->
   <script src="/static/js/font-awesome.js"></script>
+  <!-- font-awesome js-->
 
   <!-- mathjax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   <script>
     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   </script>
+  <!-- mathjax -->
 
   <!-- js_cookie -->
   <script src="/static/js/jquery_lettering.js"></script>
+  <!-- js_cookie -->
 
   <!-- jquery_lettering -->
   <script src="/static/js/js.cookie.min.js"></script>
+  <!-- jquery_lettering -->
 
-  <!-- scroll back to top -->
-  <a id="toTopBtn" class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3" style="display:none;"
-  data-bs-toggle="tooltip" data-bs-title="Back to Top" data-bs-placement="top" data-bs-trigger="hover"
-  >
-    ☝🏻 
-  </a>
-  
   <!-- custom js, scroll back to top -->
   <script>
     $(document).ready(function() {
@@ -134,6 +148,7 @@
       });
     });
   </script>
+  <!-- custom js, scroll back to top -->
 </body>
 
 </html>

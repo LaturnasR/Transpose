@@ -12,8 +12,33 @@
   font-family: Mukta;
   src: url(/static/fonts/Mukta-Regular.ttf);
 }
-#quizCloseBtn{
-  --bs-emphasis-color-rgb: 255,255,255;
+
+html{
+  display: table;
+  /* min-width: 100vw; */
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #5baf8a, #2393ef);
+  margin: auto;
+}
+body{
+
+    padding-top: 5em;
+    padding-bottom: 5em;
+    text-align: -webkit-center;
+    /* overflow: hidden; */
+    display: table-cell;
+    vertical-align: middle;
+    background: transparent;
+    /* padding: 3em; */
+    /* min-height: 95vh; */
+    /* background: linear-gradient(45deg, #5baf8a, #2393ef);*/
+}
+body:has(div#home_page){
+
+    background: linear-gradient(45deg, rgb(79 79 131 / 60%), rgb(11 49 76 / 60%)), url(../../images/Banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .desc{
   font-size: 1.28em;
@@ -27,16 +52,11 @@
   font-size: 1.15em !important;
 }
 
-.text-shadow{
-  text-shadow: 1px 2px #000;
-}
 
-#home-section {
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  margin-left: 0%;
-  padding: 6em;
+.custom_container {
+/*  height: 100%;*/
+  width: 90%;
+/*  padding: 6em;*/
 }
 
 #sentence_form{
@@ -44,10 +64,10 @@
 }
 
 .banner_custom {
-  background: linear-gradient(45deg, rgb(79 79 131 / 60%), rgb(11 49 76 / 60%)), url("../../images/Banner.png");
+  background: linea/*r-gradient(45deg, rgb(79 79 131 / 60%), rgb(11 49 76 / 60%)), url("../../images/Banner.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100vh;*/
 }
 
 .feature_section {
@@ -96,10 +116,6 @@
   font-family: Bayon;
   color: #FFFFFF;
   font-size: 4em;
-}
-
-section.home {
-  transition: margin-left 0.5s;
 }
 
 .action {
@@ -177,10 +193,6 @@ td div.input-mq{
 
 /* Mobile */
 @media (max-width: 1080px) {
-  #home-section {
-    padding: 2em 2em 2em 2em;
-  }
-
   #sentence_form{
     width: 100%;
   }
@@ -212,7 +224,7 @@ td div.input-mq{
   }
 
   .page-section {
-    margin-top: 60px;
+/*    margin-top: 60px;*/
   }
 }
 
@@ -229,54 +241,6 @@ td div.input-mq{
   padding-bottom: 30px;
 }
 
-/*
-  # Button animation
-  vvvvvvvvvvvvvvvvvvvvvvv*/
-
-@keyframes float {
-  0% {
-    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.4);
-    transform: translatey(0px);
-  }
-  50% {
-    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
-    transform: translatey(-5px);
-  }
-  100% {
-    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.4);
-    transform: translatey(0px);
-  }
-}
-.tooltip-arrow{
-  display:none!important;
-}
-.tooltip-inner{
-  box-shadow: 0 5px 5px 0px rgba(0,0,0,0)!important;
-  background:#fff;
-  color: #000;
-  border: 1px solid #37517e;
-}
-.updown{
-  animation: float 2.5s ease-in-out infinite;
-  box-shadow: 0 5px 5px 0px rgba(0,0,0,0)!!important;
-}
-.section-title #top_btn:hover{
-  transform: translatey(0px);
-  animation: float 2.5s ease-in-out infinite;
-  background: #fff;
-  border-color: #aee3b2;
-}
-.section-title #top_btn{
-  background: #fcffff;
-  transition: all 0.25s ease-out;
-  color: #37517e;
-  border: 1px solid #37517e;
-  border-radius: var(--bs-border-radius);
-  font-size: 20px;
-  font-weight: 500;
-}
-/*    ^^^^^^^^^^^^^^
-  # Button animation */
 
 .section-title h2{
   display: inline;
@@ -367,8 +331,9 @@ p.lead span.bg-success{
 }
 
 .page-section {
-  padding: 60px 0;
-  overflow: hidden;
+/* wlang silbi to pero since ginagamit sa iba more than sa learn page, left here for now */
+/*  padding: 60px 0;*/
+/*  overflow: hidden;*/
 }
 
 .page-section .icon-box {
@@ -415,7 +380,10 @@ p.lead span.bg-success{
 /*--------------------------------------------------------------
   # Lettering.js
   --------------------------------------------------------------*/
-.lead span:hover {
+.home_body{
+    font-size:1.25rem;
+}  
+.home_body span:hover {
     font-weight:bold;
 }
 
@@ -442,6 +410,15 @@ p.lead span.bg-success{
   100% {
     background-position: 0% 50%;
   }
+}
+
+.text-shadow{
+  text-shadow: 1px 2px #000;
+}
+
+.px-custom{
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 /*--------------------------------------------------------------
   # Scroll-to-Top Button
@@ -496,3 +473,57 @@ p.lead span.bg-success{
   background-color: rgba(0, 0, 0, 0);
   display: block;
 }
+
+
+/*
+  # Button animation
+  vvvvvvvvvvvvvvvvvvvvvvv*/
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.4);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.2);
+    transform: translatey(-5px);
+  }
+  100% {
+    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.4);
+    transform: translatey(0px);
+  }
+}
+.tooltip-arrow{
+  display:none!important;
+}
+.tooltip-inner{
+  box-shadow: 0 5px 5px 0px rgba(0,0,0,0)!important;
+  background:#fff;
+  color: #000;
+  border: 1px solid #37517e;
+}
+.updown{
+  animation: float 2.5s ease-in-out infinite;
+  box-shadow: 0 5px 5px 0px rgba(0,0,0,0)!!important;
+}
+.section-title #top_btn:hover{
+  transform: translatey(0px);
+  animation: float 2.5s ease-in-out infinite;
+  background: #fff;
+  border-color: #aee3b2;
+}
+.section-title #top_btn{
+  background: #fcffff;
+  transition: all 0.25s ease-out;
+  color: #37517e;
+  border: 1px solid #37517e;
+  border-radius: var(--bs-border-radius);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#quizCloseBtn{
+  --bs-emphasis-color-rgb: 255,255,255;
+}
+/*    ^^^^^^^^^^^^^^
+  # Button animation */
