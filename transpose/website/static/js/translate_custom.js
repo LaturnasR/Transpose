@@ -4,17 +4,11 @@ $(document).ready(function(){
   if(Cookies.get('passed')){
     $("#codeInput").attr("data-bs-content", "You don't need to input the code again in this session!")
     $("#codeInput").attr("data-bs-title", "Code already entered")
-    $("#codeInput").attr("placeholder", "Just click 'OK!', we're good!")
+    $("#codeInput").attr("placeholder", "Go on, we're good!")
     $("#codeInput").prop("readonly", true)
     $("#codeInput").css('border', '2px solid green');
   }
 })
-/* instructions modal popover */
-//enables popover on keycode input
-$(document).ready(function(){
-  $('[data-bs-toggle="popover"]').popover();
-});
-
 /* modals */
 // instruction modal
 $(document).ready(function () {
@@ -48,7 +42,7 @@ $("#instructions_close").on('click', function(){
   
   else{
     Cookies.set('passed', true);
-    $("#codeInput").prop('disabled', true);
+    $("#codeInput").prop('readonly', true);
     $("#codeInput").css('border', '2px solid green');
     $("#instructions").modal('hide');
 
@@ -71,7 +65,9 @@ $("li.phrases").click(function(e){
 /* form submit */
 $(document).on('submit','#sentence_form',function(e){
   $("#output").css("background", "white");
-  $("#output").html("loading....");
+  $("#output").html(`<div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>`);
 
   e.preventDefault();
   $.ajax({

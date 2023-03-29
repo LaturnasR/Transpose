@@ -18,9 +18,16 @@
         <p class="mb-0">Transpose is a simple tool to help users translate English phrases to math phrases. Go through the learn and practice pages first to understand math phrase translations better.</p>
       </div>
       <div class="modal-footer py-1 justify-content-between">
-        <input type="text" class="form-control w-50" id="codeInput" placeholder="Enter Code"
-        data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Enter Code" data-bs-content="You can get the code by doing the challenge in practice page."
-        data-bs-placement="top">
+        <div class="d-flex flex-row">
+          <a href="practice" type="button" class="btn btn-warning me-1"
+          data-bs-toggle="popover" data-bs-content="Go Back: Practice" data-bs-placement="left" data-bs-trigger="hover">
+            <i class="fa-solid fa-left-long"></i>
+          </a>
+
+          <input type="text" class="form-control" id="codeInput" placeholder="Enter Code"
+          data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Enter Code" data-bs-content="You can get the code by doing the challenge in <a href='practice'>practice</a> page."
+          data-bs-placement="top">
+        </div>
         <button id="instructions_close" type="button" class="bn632-hover bn25 fw-semibold">OK!</button>
       </div>
     </div>
@@ -123,6 +130,17 @@ data-bs-second-toggle="popover" data-bs-content="Options" data-bs-placement="lef
     </button>
       <ul id="dropdown_bottom"class="dropdown-menu bg-transparent border-0 justify-content-end">
         <!-- Dropdown menu links -->
+<!-- 
+    <div class="d-flex flex-row container fs-5">
+      <a href="/" type="button" class="mx-2 btn btn-light">
+        <i class="fa-solid fa-left-long"></i>
+        Home
+      </a>
+      <a href="practice" type="button" class="mx-1 btn btn-light">
+        Practice
+        <i class="fa-solid fa-right-long"></i>
+      </a>
+    </div> -->
         <a id="table_btn" class="btn btn-lg btn-light"
         data-bs-toggle="popover" data-bs-content="Cheatsheet" data-bs-placement="left" data-bs-trigger="hover">
           <i class="fa-solid fa-table"></i>

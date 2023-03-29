@@ -112,6 +112,9 @@
   <!-- custom js, scroll back to top -->
   <script>
     $(document).ready(function() {
+      //enables popover on keycode input
+      $('[data-bs-toggle="popover"]').popover();
+      
       //tooltip
       $('#toTopBtn[data-bs-toggle="tooltip"]').tooltip();
 

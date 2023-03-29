@@ -25,6 +25,15 @@
   color: #244660;
 /*  box-shadow: 0 4px 15px 0 rgb(70 171 134 / 75%);*/
 }
+.bn632-hover.bn19:after {
+  content:"Get Started";
+}
+.bn632-hover.bn19:hover:after {
+  content:"Start Learning!";
+}
+.bn632-hover.bn19:active{
+  outline: 2px solid aliceblue;
+}
 .bn632-hover.bn25 {
   border-radius: 10px;
   width: 80px;
@@ -42,7 +51,7 @@
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
-.bn632-hover:focus{
+.bn632-hover.bn25:focus{
   outline: 2px solid white;
   color: #fff;
   background-position: 15% 0;

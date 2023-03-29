@@ -416,6 +416,10 @@ p.lead span.bg-success{
   text-shadow: 1px 2px #000;
 }
 
+.head_nav{
+  margin-bottom: -4rem;
+}
+
 .px-custom{
   padding-left: 5rem;
   padding-right: 5rem;
