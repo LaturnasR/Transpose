@@ -30,8 +30,8 @@
 			"score": 1
 		},
 		{
-			"phrase": "Five less the number d",
-			"answer": ["5-d"],
+			"phrase": "Five less than number d",
+			"answer": ["d-5"],
 			"score": 1
 		},
 		{
@@ -83,6 +83,87 @@
 		{
 			"phrase": "The quotient of 3 and x",
 			"answer": ["3/x"],
+			"score": 1
+		},
+		{
+			"phrase": "The ratio of 15 to x",
+			"answer": ["15/x"],
+			"score": 1
+		},
+		{
+			"phrase": "Six multiplied by a number n",
+			"answer": ["6n", "6*n"],
+			"score": 1
+		},
+		{
+			"phrase": "The quotient of thirteen and x",
+			"answer": ["13/x"],
+			"score": 1
+		},
+		{
+			"phrase": "One-fourth of x plus 4",
+			"answer": ["(1/4)x+4", "1/4x+4", "(1/4)*x+4", "x/4+4", "(x/4)+4"],
+			"score": 1
+		},
+		{
+			"phrase": "The sum of eleven and a number t",
+			"answer": ["11+t"],
+			"score": 1
+		},
+		{
+			"phrase": "Seven less than number c",
+			"answer": ["c-7"],
+			"score": 1
+		},
+		{
+			"phrase": "The product of two, four, and six.",
+			"answer": ["2*4*6"],
+			"score": 1
+		},
+		{
+			"phrase": "One more than a number c",
+			"answer": [
+				"c+1"
+			],
+			"score": 1
+		},
+		{
+			"phrase": "Three times twice a number y",
+			"answer": [
+				"3*(2*y)",
+				"3*2y",
+				"3*(2y)"
+			],
+			"score": 1
+		},
+		{
+			"phrase": "Thrice of six",
+			"answer": ["3*6"],
+			"score": 1
+		},
+		{
+			"phrase": "One-half of a number r",
+			"answer": ["(1/2)*r", "(1/2)r", "r/2"],
+			"score": 1
+		},
+		{
+			"phrase": "The ratio of the numbers two and g",
+			"answer": ["2/g"],
+			"score": 1
+		},
+		{
+			"phrase": "Nine increased by fourteen",
+			"answer": ["9+14"],
+			"score": 1
+		},
+		{
+			"phrase": "Ten multiplied by k",
+			"answer": ["10*k", "10k", "k*10"],
+			"score": 1
+		},
+		{
+			"phrase": "The quotient of four and z",
+			"answer": ["4/z"],
 			"score": 1
 		}
 	],
@@ -144,6 +225,71 @@
 		{
 			"phrase": "The difference of a number x and 4, less than 7",
 			"answer": ["7-(x-4)", "7-x-4"],
+			"score": 2
+		},
+		{
+			"phrase": "6 times a number x, added to y",
+			"answer": ["y+6x", "y+(6x)", "y+(6*x)"],
+			"score": 2
+		},
+		{
+			"phrase": "The product of the numbers g and f plus 15",
+			"answer": ["gf+15", "g*f+15", "g(f+15)", "g*(f+15)"],
+			"score": 2
+		},
+		{
+			"phrase": "Thrice the sum of 11 and x",
+			"answer": ["3*(11+x)", "3(11+x)"],
+			"score": 2
+		},
+		{
+			"phrase": "The total of sixteen and negative x",
+			"answer": ["16+-x", "16+(-x)"],
+			"score": 2
+		},
+		{
+			"phrase": "A number y diminished by the product of two and nine",
+			"answer": ["y-(2*9)", "y-(9*2)"],
+			"score": 2
+		},
+		{
+			"phrase": "Five subtracted by eleven, multiplied by five",
+			"answer": ["(5-11)5", "(5-11)*5"],
+			"score": 2
+		},
+		{
+			"phrase": "Eight times a number, increased by three",
+			"answer": ["8x+3","8*x+3","(8*x)+3"],
+			"score": 2
+		},
+		{
+			"phrase": "Eighteen subtracted by the sum of x and 7",
+			"answer": ["18-(x+7)","18-(7+x)"],
+			"score": 2
+		},
+		{
+			"phrase": "Thrice the difference of a number x and 3",
+			"answer": ["3*(x-3)", "3(x-3)","3*(3-x)", "3(3-x)"],
+			"score": 2
+		},
+		{
+			"phrase": "Eight subtracted from the quotient of 5 and x",
+			"answer": ["(5/x)-8"],
+			"score": 2
+		},
+		{
+			"phrase": "x less than twice z",
+			"answer": ["(2*z)-x", "2z-x", "(2z)-x", "2*z-x"],
+			"score": 2
+		},
+		{
+			"phrase": "The sum of a number x and 3, less than y",
+			"answer": ["y-(x+3)", "y-x+3"],
+			"score": 2
+		},
+		{
+			"phrase": "The difference of x and the sum of 1 and 2",
+			"answer": ["x-(1+2)", "x-1+2"],
 			"score": 2
 		}
 	],
