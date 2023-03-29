@@ -101,15 +101,15 @@ $('textarea').textcomplete([{
   match: /(^|\b)(\w{2,})$/,
   search: function (term, callback) {
     var words = [
-      'less than', 'fewer than',
-      'more than', 'greater than', 
+      'less than', 'fewer than', 'subtracted from', 'diminished from', 'decreased from', 
+      'more than', 'greater than', 'added to', 'increased to', 
       'is less than', 'is fewer than',
       "is less than or equal to", "is at least",
-      "is greater than or equal to", "is at most",
-      "is equals to","equal", "yields",
-      "is not equal to",
-      "plus", "add", "increase", "exceed", "more",
-      "take away", "subtract", "minus", "decrease", "less", "diminish", "reduce", "lost",
+      "is more than or equal to", "is at most",
+      "is equals to", "yields",
+      "is not equals to",
+      "plus", "added by", "increased by", "exceeds by",
+      "subtracted by", "reduced by", "diminished by", "decreased by", "take away", "minus", 
       "times", "multiplied by", 
       "divide", "divided by",
       "sum of","total of",
@@ -119,7 +119,7 @@ $('textarea').textcomplete([{
       "the sum of","the total of",
       "the difference of",
       "the product of",
-      "the quotient of", "the ratio of",
+      "the quotient of",
       "the square root of", 
       "square root of", "twice of", "thrice of"
       ];
