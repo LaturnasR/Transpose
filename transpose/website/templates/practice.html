@@ -16,11 +16,11 @@
   <section class="page-section">
     <div class="d-flex flex-row fs-5 head_nav pt-3">
       <a href="learn" type="button" class="mx-3 btn btn-lg btn-warning"
-      data-bs-toggle="popover" data-bs-content="Go Back: Learn" data-bs-placement="top" data-bs-trigger="hover">
+      data-bs-toggle="popover" data-bs-content="Go Back: Learn" data-bs-placement="top" data-bs-trigger="hover focus">
         <i class="fa-solid fa-left-long"></i>
       </a>
       <a href="translate" type="button" class="mx-3 btn btn-lg btn-warning"
-      data-bs-toggle="popover" data-bs-content="Go Next: Translate" data-bs-placement="top" data-bs-trigger="hover">
+      data-bs-toggle="popover" data-bs-content="Go Next: Translate" data-bs-placement="top" data-bs-trigger="hover focus">
         <i class="fa-solid fa-right-long"></i>
       </a>
     </div>
@@ -155,11 +155,12 @@
     }
 
     //button "submit" handler
-    $("#quizSubmit").on("click", function(){
+    $("#quizSubmit").unbind().on("click", function(){
       var stored_answer = []
       for(let i in questions){
         let raw_input = MQ(document.getElementById("quiz-ans-" + i)).latex();
         let input_value = latex_to_js(raw_input).replace(/\\/g, '')
+        input_value = input_value.replace(/\s/g, '')
         if(input_value == ""){
           console.log("no input")
           $("#quiz-ans-" + i).css('border', '2px solid #ff8d00');
