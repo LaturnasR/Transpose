@@ -31,7 +31,7 @@
 
 <body>
   <!-- NavBar -->
-  <nav class="navbar navbar-expand-sm fixed-top bg-light" style="--bs-navbar-padding-y:0">
+  <nav class="navbar navbar-expand-sm fixed-top bg-light" style="--bs-navbar-padding-y:0; z-index: 1056;">
     <div class="container-fluid">
       <a class="navbar-brand nav_name" href="\">TRANSPOSE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -114,7 +114,7 @@
     $(document).ready(function() {
       //enables popover on keycode input
       $('[data-bs-toggle="popover"]').popover();
-      
+
       //tooltip
       $('#toTopBtn[data-bs-toggle="tooltip"]').tooltip();
 
