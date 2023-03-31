@@ -214,7 +214,7 @@
 		},
 		{
 			"phrase": "x subtracted from the quotient of 9 and 1",
-			"answer": ["(9/1)-x"],
+			"answer": ["(9/1)-x","9/1-x"],
 			"score": 2
 		},
 		{
