@@ -120,8 +120,7 @@ $('textarea').textcomplete([{
       "the difference of",
       "the product of",
       "the quotient of",
-      "the square root of", 
-      "square root of", "twice of", "thrice of"
+      "the square of", "twice of", "thrice of"
       ];
 
     term = term.toLowerCase();
