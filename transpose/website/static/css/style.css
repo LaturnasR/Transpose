@@ -14,7 +14,7 @@
 }
 
 html{
-  display: table;
+/*  display: table;*/
   /* min-width: 100vw; */
   width: 100%;
   min-height: 100vh;
@@ -27,14 +27,14 @@ body{
     padding-bottom: 5em;
     text-align: -webkit-center;
     /* overflow: hidden; */
-    display: table-cell;
+/*    display: table-cell;*/
     vertical-align: middle;
     background: transparent;
     /* padding: 3em; */
     /* min-height: 95vh; */
     /* background: linear-gradient(45deg, #5baf8a, #2393ef);*/
 }
-body:has(div#home_page){
+html:has(div#home_page){
 
     background: linear-gradient(45deg, rgb(79 79 131 / 60%), rgb(11 49 76 / 60%)), url(../../images/Banner.png);
     background-repeat: no-repeat;
