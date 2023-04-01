@@ -124,7 +124,6 @@ def _preprocess(sentence):
     sentence = ' '.join(temp)
 
     #3. expanding one-half, one-third, etc....
-
     temp = findall('[a-z]-[a-z]', sentence)
     for i in temp:
         sentence = sentence.replace(i, i.replace("-", " "))
@@ -157,8 +156,8 @@ def _preprocess(sentence):
     return temp2
 
 # conversions
-def _name_conversion(sentence):
-    #2. variable conversion
+def _word_conversion(sentence):
+    #2. word conversion
 
     token = word_tokenize(sentence)
     pos = pos_tag(token)
@@ -415,8 +414,10 @@ def _tree_conversion(token):
 
     for tree in parser.parse(mod_token):
         treestr = str(tree)
+        #constants
         for n in numbers:
             treestr = treestr.replace('#NUM#', str(n), 1)
+        #variables
         for l in var:
             treestr = treestr.replace('#VAR#', l, 1)
         trees.append(Tree.fromstring(treestr))
@@ -427,50 +428,54 @@ def _conversion(sentence):
     #1. number conversion
     sentence = t2d.convert(sentence)
 
-    #2. variable conversion
-    token = _name_conversion(sentence)
+    #2. word conversion
+    token = _word_conversion(sentence)
     
     #3. tree conversion
     trees = _tree_conversion(token)
     if len(trees) == 0:
         return None
+    return trees
 
-    #4. tree reformatting
+# post-processing
+def _postprocess(trees):
+    #1. tree post-processing
     sentence_list = []
     for tree in trees:
         temp = _word_math_tree_to_list(tree)
         sentence_list.append(_semi_flattener(temp))
 
+    #2. convert keywords into math symbols
     for i in range(len(sentence_list)):
         sentence_list[i] = _mid_operator_convert(sentence_list[i])
 
-    return sentence_list
-
-# post-processing
-def _postprocessing(sentence_list):
+    #3. List post-processing
     for i in range(len(sentence_list)):
-        sentence_list[i] = _parenthesis_remover(sentence_list[i])
-        sentence_list[i] = _parenthesis_adder(sentence_list[i])
+        #removes unnecessary list nesting
+        sentence_list[i] = _list_remover(sentence_list[i])
+
+        #adds '(' ')' inside the start and end of a list
+        sentence_list[i] = _list_to_parenthesis(sentence_list[i])
+        
+        #converts the list into string
         sentence_list[i] = (' '.join(_flatten([sentence_list[i]])))
-        #sentence_list[i] is enclosed in anoter []
+        #sentence_list[i] is enclosed in another []
         #for input cases like "one"
 
-    #use list(set(x)) to remove duplicates
+    #used list(set(x)) to remove duplicates
     return list(set(sentence_list))
 
-def _parenthesis_remover(sentence_element):
-    #[['x', '-', 'y'], '+', 'z']
-    #elements of the sentence_element are
-        #['x', '-', 'y'], '+', 'z'
+def _list_remover(sentence_element):
+    #['2', '+', ['s', '+', '3']] to ['2', '+', 's', '+', '3']
     i = 0
     tuple_ops = ['+', '-', '≠']+list(set(operator['3EQUALITY'].keys()))
     while i < len(sentence_element):
-        #if being a list is unneeded
+        #if being a list is unneeded, repetitive is true
         repetitive = False
 
         #check if left and right of the list is + or -
         if isinstance(sentence_element[i], list):
-            sentence_element[i] = _parenthesis_remover(sentence_element[i])
+            sentence_element[i] = _list_remover(sentence_element[i])
             temp_bool1 = i - 1 > 0
             temp_bool2 = i + 1 < len(sentence_element)
             if temp_bool1 and temp_bool2:
@@ -493,7 +498,7 @@ def _parenthesis_remover(sentence_element):
     return sentence_element
 
 def _semi_flattener(tree_list):
-    # list flattener specifically for tree_list
+    # doesn't flatten list with sibling elements
     # dont replace with _flatten(S)
     if type(tree_list) is not list:
         return tree_list
@@ -515,16 +520,19 @@ def _flatten(S):
         return _flatten(S[0]) + _flatten(S[1:])
     return S[:1] + _flatten(S[1:])
 
-def _parenthesis_adder(l):
+def _list_to_parenthesis(l):
+    #[['4', '+', 'y'], '*', 'z'] to
+    #[['(', '4', '+', 'y', ')'], '*', 'z']
     for i in range(len(l)):
         if type(l[i]) is list:
             if(l[i][0] != '('):
                 l[i].insert(0, '(')
                 l[i].append(')')
-                l[i] = _parenthesis_adder(l[i])
+                l[i] = _list_to_parenthesis(l[i])
     return l
 
-# translate func
+# translate method
+# usage, translate("x plus y")
 def translate(sentence):
     sentence = _preprocess(sentence)
 
@@ -532,7 +540,7 @@ def translate(sentence):
     if sentence_list is None:
         return "No Translation: Input Unrecognized"
     
-    sentence_list = _postprocessing(sentence_list)
+    sentence_list = _postprocess(sentence_list)
 
     return sentence_list
 
