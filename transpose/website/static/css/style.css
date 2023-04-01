@@ -193,6 +193,10 @@ td div.input-mq{
 
 /* Mobile */
 @media (max-width: 1080px) {
+  .top_title{
+    padding-top: 1rem;
+    flex-direction: column;
+  }
   #sentence_form{
     width: 100%;
   }
@@ -330,6 +334,9 @@ p.lead span.bg-success{
   overflow: hidden;
 }
 
+.top_title{
+
+}
 .page-section {
 /* wlang silbi to pero since ginagamit sa iba more than sa learn page, left here for now */
 /*  padding: 60px 0;*/
@@ -433,7 +440,7 @@ p.lead span.bg-success{
   --back-to-top-offset: 200px;
   --back-to-top-button-size: 2.8em;
 
-  --color-accent: hsl(210deg 73.96% 84.88%);
+  --color-accent: hsl(255 100% 50%);
   --color-accent-bright: hsl(210, 100%, 49%);
   --color-accent-alpha: hsla(210, 100%, 39%, 0.4);
 }
