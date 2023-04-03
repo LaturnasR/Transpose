@@ -1,6 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<!-- toast show gform -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+  <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="toast-header justify-content-between">
+      <h6><strong class="me-auto">Hello! How's the website?</strong></h6>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <h6>
+        <p>We're doing a research and we'd like you to answer a survey about our website!</p>
+        <a class="btn btn-primary" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfPN565qugIWpuBNT-ZzyLHHL_Q-nIxA5PKDW8FwvfrzcyCbw/viewform?usp=sf_link"
+          data-bs-second-toggle="popover" data-bs-content="To the Survey Form!" data-bs-placement="top" data-bs-trigger="hover focus"
+        >Let's Go!</a>
+      </h6>
+    </div>
+  </div>
+</div>
 <section class="custom_container">
   <section class="page-section">
     <div class="py-5 px-custom w-100 section-bg rounded">
@@ -17,8 +33,7 @@
                 <p class="card-title fw-semibold" align = "center">DE BORJA, JOHN MICHAEL</p>
             </div>
             <div class="card-footer">
-              <!-- Did some stuffs on everything. Just barely but it counts lol. -->
-                <s><p>ALGORITHM</p></s>
+                <p>Did some stuffs. :)</p>
                 <a href="https://www.facebook.com/iamjmdb" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook"></a>
                 <a href="https://www.linkedin.com/in/john-michael-de-borja-a99b8b248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a>
             </div>
@@ -32,7 +47,7 @@
               <p class="card-title fw-semibold" align = "center">LATURNAS, REDEL</p>
             </div>
             <div class="card-footer">
-                <s><p>DESIGN</p></s>
+                <p>DESIGN</p>
                 <a href="https://www.facebook.com/redel135/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook"></a>
                 <a href="https://www.linkedin.com/in/redel-laturnas-05bb11248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a>
             </div>
@@ -46,7 +61,7 @@
               <p class="card-title fw-semibold" align = "center">TRESVALLES, IRISH</p>
             </div>
               <div class="card-footer">
-                <s><p>CONTENT</p></s>
+                <p>CONTENT</p>
                 <a href="https://www.facebook.com/eyerish2001" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook"></a>
                 <a href="https://www.linkedin.com/in/irish-tresvalles-329204241/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a>
             </div>
@@ -69,7 +84,7 @@
         Hello! We are college students from the Technological Institute of the Philippines, and this website you’re viewing is our work for our thesis course. 
       </p>
       <p class="lead text-center">
-        Transpose, this website of ours, is made to help learners understand math translations easier and faster. The functionalities and theme of the website are minimal by design so we can guide our users learn more efficiently.
+        Transpose, this website of ours, is made to help learners understand math translations easier. The functionalities and theme of the website are minimal by design so we can guide our users more efficiently.
 
       </p>
       <p class="lead text-center">
@@ -111,7 +126,7 @@
           <ol class="ms-4 lead container text-start">
             <li>Turn all letters into lowercase</li>
             <li>Ignore all unwanted punctuations (e.g. remove the period)</li>
-            <li>remove words that don’t value to the sentence (e.g. “a”, “of”, “the”) </li>
+            <li>remove words that don’t add value to the sentence (e.g. “a”, “of”, “the”) </li>
             <li>turn all worded numbers into numbers</li>
             <li>Turn all unknown words into variable</li>
           </ol>
@@ -169,4 +184,10 @@
     </div>
   </section>
 </section>
+<script type="text/javascript">
+  
+$(document).ready(function(){
+  $('[data-bs-second-toggle="popover"]').popover();
+});
+</script>
 {% endblock %}

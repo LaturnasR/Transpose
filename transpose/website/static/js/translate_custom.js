@@ -1,3 +1,15 @@
+//only show toast one time on submitting input
+var toast_shown = false
+
+$(document).ready(function(){
+
+  // Input enter = Check
+  $("#codeInput").off("keypress").keypress(function(event){
+    if (event.key === "Enter") {
+      $("#instructions_close").click();
+    }
+  });
+})
 /* checks if user has entered the code already */
 $(document).ready(function(){
 
@@ -64,6 +76,10 @@ $("li.phrases").click(function(e){
 
 /* form submit */
 $(document).on('submit','#sentence_form',function(e){
+  if(! toast_shown){
+    $('#liveToast').toast('show');
+    toast_shown = true
+  }
   $("#output").css("background", "white");
   $("#output").html(`<div class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
