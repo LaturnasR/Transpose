@@ -1,22 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<!-- toast show gform -->
-<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
-  <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-    <div class="toast-header justify-content-between">
-      <h6><strong class="me-auto">Hello! How's the website?</strong></h6>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      <h6>
-        <p>We're doing a research and we'd like you to answer a survey about our website!</p>
-        <a class="btn btn-primary" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfPN565qugIWpuBNT-ZzyLHHL_Q-nIxA5PKDW8FwvfrzcyCbw/viewform?usp=sf_link"
-          data-bs-second-toggle="popover" data-bs-content="To the Survey Form!" data-bs-placement="top" data-bs-trigger="hover focus"
-        >Let's Go!</a>
-      </h6>
-    </div>
-  </div>
-</div>
 <section class="custom_container">
   <section class="page-section">
     <div class="py-5 px-custom w-100 section-bg rounded">
@@ -33,7 +16,7 @@
                 <p class="card-title fw-semibold" align = "center">DE BORJA, JOHN MICHAEL</p>
             </div>
             <div class="card-footer">
-                <p>Did some stuffs. :)</p>
+                <p>Did some stuffs.</p>
                 <a href="https://www.facebook.com/iamjmdb" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-square-facebook"></a>
                 <a href="https://www.linkedin.com/in/john-michael-de-borja-a99b8b248/" target="_blank" style= "text-decoration:none; color: inherit;" class="fa-brands fa-linkedin"></a>
             </div>
@@ -67,7 +50,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section><!-- End Learn Section -->
@@ -81,7 +64,7 @@
       <h2>About Us</h2>
       <div class="spacer"></div>
       <p class="lead text-center">
-        Hello! We are college students from the Technological Institute of the Philippines, and this website you’re viewing is our work for our thesis course. 
+        Hello! We are college students from the Technological Institute of the Philippines, and this website you’re viewing is our work for our thesis course.
       </p>
       <p class="lead text-center">
         Transpose, this website of ours, is made to help learners understand math translations easier. The functionalities and theme of the website are minimal by design so we can guide our users more efficiently.
@@ -107,7 +90,7 @@
       <h2>How Does the Translate Page Work?</h2>
       <div class="spacer"></div>
       <p class="lead text-start">
-        The server that the website uses allows us to run a script that we have in our hands(or kind of stored in our accounts in their servers), and that script we use contains the algorithm which does the translation! 
+        The server that the website uses allows us to run a script that we have in our hands(or kind of stored in our accounts in their servers), and that script we use contains the algorithm which does the translation!
       </p>
       <p class="lead text-start">
         We’ve generalized the major processes the algorithm goes through to give us an output in the Translate page:
@@ -121,7 +104,7 @@
         <div class="card-body text-start">
           Pre-processing is a general term that says we try to shape and form the data we plan to use. Data tends to be noisy, and computers don’t like noise, so we must help our computers understand what we want them to see.
           <br/><br/>
-          For example, we have this sentence “Y added to the product of 2, forty-four, eight, and a number.”. We will follow a series of steps which cleans our input one by one. 
+          For example, we have this sentence “Y added to the product of 2, forty-four, eight, and a number.”. We will follow a series of steps which cleans our input one by one.
           <br/><br/>
           <ol class="ms-4 lead container text-start">
             <li>Turn all letters into lowercase</li>
@@ -162,7 +145,7 @@
         <div class="card-body text-start">
           Post-processing is also another general term when we want to reformat the current output into a simpler form.
           <br/><br/>
-          In our situation, to post-process this, we will have to rely on our own logic to transform it. If we assume that the BLUE words in the tree image are instructions and structure definitions, the algorithm should be able to convert the tree into an Object List, which we can then convert the obvious keywords into math operators. 
+          In our situation, to post-process this, we will have to rely on our own logic to transform it. If we assume that the BLUE words in the tree image are instructions and structure definitions, the algorithm should be able to convert the tree into an Object List, which we can then convert the obvious keywords into math operators.
           <br/><br/>
           For example, the grammar tree above will be converted into
           <br/><br/>
@@ -185,7 +168,7 @@
   </section>
 </section>
 <script type="text/javascript">
-  
+
 $(document).ready(function(){
   $('[data-bs-second-toggle="popover"]').popover();
 });
