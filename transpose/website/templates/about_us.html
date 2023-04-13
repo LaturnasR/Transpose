@@ -110,21 +110,57 @@
             <li>Turn all letters into lowercase</li>
             <li>Ignore all unwanted punctuations (e.g. remove the period)</li>
             <li>remove words that don’t add value to the sentence (e.g. “a”, “of”, “the”) </li>
-            <li>turn all worded numbers into numbers</li>
-            <li>Turn all unknown words into variable</li>
           </ol>
-          Applying these steps should give us a more readable input for the computer, “y added to product 2, 44, 8, and x”. Of course there’s more nuance to actual application of this in code, but this is the general idea of the term “pre-processing”.
+          Applying these steps should give us a more readable input for the computer, “y added to product 2, forty-four, eight, and a number”. Of course there’s more nuance to actual application of this in code, but this is the general idea of the term “pre-processing”.
         </div>
       </div>
 
       <div class="card mt-3">
         <div class="card-header">
           <p class="lead fw-bold">
-            Tree Conversion(Processing)
+            Conversion(Processing)
           </p>
         </div>
         <div class="card-body text-start">
-          Now that the input has been cleaned, our algorithm should be able to see how the structure of the sentence should be. In a nutshell, we defined our own grammar rules which allows the algorithm to identify the valid math phrases in the sentence. Using the pre-process example, this is what the algorithm will see as the sentence structure.
+          This section is divided into three different conversion steps, number conversion, word conversion, and tree conversion.
+          <br/>
+            <br/>
+          <div class="ms-1 py-3 lead text-start fw-lighter">
+            1. Numbers conversion: Convert all worded numbers into numbers
+            <br/>
+            <small class="fw-light">
+              From 
+              <small class="text-danger">
+                y added to product 2, <p class="fw-bold d-inline">forty-four</p>, <p class="fw-bold d-inline">eight</p>, and a number
+              </small>
+              <br/>
+              to
+              <small class="text-primary">
+                y added to product 2, <p class="fw-bold d-inline">44</p>, <p class="fw-bold d-inline">8</p>, and a number
+              </small>
+            </small>
+          </div>
+
+          <div class="ms-1 py-3 lead text-start fw-lighter">
+            2. Word conversion: Convert all unknown words into variable
+            <br/>
+            <small class="fw-light">
+              From 
+              <small class="text-danger">
+                y added to product 2, 44, 8, and <p class="fw-bold d-inline">a number</p>
+              </small>
+              <br/>
+              to
+              <small class="text-primary">
+                y added to product 2, 44, 8, and <p class="fw-bold d-inline">x</p>
+              </small>
+            </small>
+          </div>
+
+          <div class="ms-1 pt-3 lead text-start fw-lighter">
+            3. Tree conversion: Convert the input to a readable format for the algorithm
+          </div>
+          Now that the input has been cleaned, and constants and variables have been determined, our algorithm should be able to see how the structure of the sentence should be. In a nutshell, we defined our own grammar rules which allows the algorithm to identify the valid math phrases in the sentence. Using the pre-process example, this is what the algorithm will see as the sentence structure.
           <br/><br/>
           <div class="text-center">
             <img src="images/grammar_tree.png" class="rounded float-center img-thumbnail" alt="Grammar Tree">
