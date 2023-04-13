@@ -34,16 +34,16 @@
           familiarize yourself with the 'keywords' and their effect on the sentences or phrases.
         </p>
 
-        <h6>Note: to use the multiplication operator such as the <i>ex</i> sign (×) or <i>dot</i> sign (⋅), please use asterisk (*) instead</h6>
+        <h6>Note: to use the multiplication operator such as the <i>ex</i> sign (×) or <i>dot</i> sign (⋅),<span id="please_note"> please use asterisk (*) instead</span></h6>
         <h6>E.g. from (3x × 2) to (3x * 2)</h6>
         <h6>E.g. from (5 ⋅ 2h) to (5 * 2h)</h6>
       </div>
 
-      {% 
+      {%
       set type_det = {
-        'add':['Addition', 'fa-plus'], 
-        'sub':['Subtraction', 'fa-minus'], 
-        'mul':['Multiplication', 'fa-xmark'], 
+        'add':['Addition', 'fa-plus'],
+        'sub':['Subtraction', 'fa-minus'],
+        'mul':['Multiplication', 'fa-xmark'],
         'div':['Division', 'fa-divide']
       }%}
       <!-- Operator pills -->
@@ -51,7 +51,7 @@
         style="--bs-nav-link-color: #47b2e4; --bs-nav-pills-link-active-bg: #47b2e4">
         {% for i in problems %}
           <li class="nav-item" role="presentation">
-            <button class="nav-link 
+            <button class="nav-link
             {% if i == 'add'%}
             active
             {%endif%}
@@ -65,7 +65,7 @@
       <div class="tab-content" id="pills-tabContent">
         {%for i in problems%}
           <!-- Questions problems -->
-          <div class="tab-pane fade 
+          <div class="tab-pane fade
             {% if i == 'add'%}
             show active
             {%endif%}
@@ -89,7 +89,7 @@
           </div>
         {%endfor%}
       </div>
-      
+
       <div class="d-flex justify-content-center">
         <button type="button"  id="btn-quiz" class="btn btn-outline-danger fw-semibold"
          data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Get access to our translate page as a prize!"

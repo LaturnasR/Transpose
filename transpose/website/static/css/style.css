@@ -191,6 +191,10 @@ td div.input-mq{
   --bs-gradient: none;
 }
 
+#please_note{
+  font-weight: 800;
+  color: rebeccapurple;
+}
 /* Mobile */
 @media (max-width: 1080px) {
   .top_title{
@@ -222,7 +226,6 @@ td div.input-mq{
   .page {
     padding: 5% 5%;
   }
-
   .practice_nav {
     flex-flow: column;
   }
@@ -389,7 +392,7 @@ p.lead span.bg-success{
   --------------------------------------------------------------*/
 .home_body{
     font-size:1.25rem;
-}  
+}
 .home_body span:hover {
     font-weight:bold;
 }
