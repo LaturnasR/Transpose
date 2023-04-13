@@ -98,11 +98,11 @@
          "sol":"The keyword '<b>subtracted from</b>' implies to subtract the first \noperand '<b>13</b>' to the second operand '<b>6</b>'."
       },
       {
-         "given":"The difference of 5x and y decreased by 8",
+         "given":"The difference of 5x and 2 decreased by 8",
          "ans":[
-            "5x-y-8",
-            "(5x-y)-8",
-            "5x-(y-8)"
+            "5x-2-8",
+            "(5x-2)-8",
+            "5x-(2-8)"
          ],
          "display_ans":[
             "(5x - y) - 8"
