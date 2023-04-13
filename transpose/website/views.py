@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, json
+from flask import Blueprint, render_template, request
 from .translator import translate as tl, prettier
 import random
 import json, os
