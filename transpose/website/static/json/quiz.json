@@ -244,7 +244,7 @@
 		},
 		{
 			"phrase": "A number y diminished by the product of two and nine",
-			"answer": ["y-(2*9)","y-2*9", ],
+			"answer": ["y-(2*9)","y-2*9"],
 			"score": 2
 		},
 		{
