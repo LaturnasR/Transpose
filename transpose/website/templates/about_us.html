@@ -109,7 +109,7 @@
           <ol class="ms-4 lead container text-start">
             <li>Turn all letters into lowercase</li>
             <li>Ignore all unwanted punctuations (e.g. remove the period)</li>
-            <li>remove words that don’t add value to the sentence (e.g. “a”, “of”, “the”) </li>
+            <li>Remove words that don’t add value to the sentence (e.g. “a”, “of”, “the”) </li>
           </ol>
           Applying these steps should give us a more readable input for the computer, “y added to product 2, forty-four, eight, and a number”. Of course there’s more nuance to actual application of this in code, but this is the general idea of the term “pre-processing”.
         </div>
@@ -164,6 +164,8 @@
           <br/><br/>
           <div class="text-center">
             <img src="images/grammar_tree.png" class="rounded float-center img-thumbnail" alt="Grammar Tree">
+            <br/>
+            <small>Note: You can see in the image that the "added to" phrase is recognized as "more than". This is because phrase have been standardize, which simply means other similar phrase like "greater than", and "added to" becomes "more_than" in the tree conversion</small>
           </div>
           <br/><br/>
           There is more that can be said in this image but suffice to say, the algorithm thinks that the sentence is valid, we just need to do some post-processing.
