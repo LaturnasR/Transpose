@@ -22,7 +22,7 @@
          "sol":"The first operator '<b>plus</b>' has operands '<b>3</b>' and '<b>the sum of 9 and x</b>'. Since the second operand is another operation,\nit will be grouped and enclosed by a pair of parentheses."
       },
       {
-         "given":"A number added to 16",
+         "given":"A number x added to 16",
          "ans":[
             "16+x"
          ],
@@ -39,7 +39,7 @@
          "display_ans":[
             "17 + 5x"
          ],
-         "sol":"The word '<b>total of</b>' means to add the two operands together. The order of operands will not matter. "
+         "sol":"The word '<b>total of</b>' means to add the two operands together. The order of operands will not matter."
       },
       {
          "given":"The sum of 6 and x increased by 2",
@@ -146,7 +146,7 @@
          "display_ans":[
             "2 * x"
          ],
-         "sol":"The keyword '<b>twice</b>' means that the value '<b>a number x</b>' or simply '<b>x</b>' will be repeated two times. "
+         "sol":"The keyword '<b>twice</b>' means that the value '<b>a number x</b>' or simply '<b>x</b>' will be repeated two times."
       },
       {
          "given":"Thrice 5x",
@@ -160,10 +160,10 @@
          "display_ans":[
             "3 * 5x"
          ],
-         "sol":"The keyword '<b>thrice</b>' is just the '<b>3<b>' version of twice. It means that the value '<b>5x</b>' will be repeated three times. "
+         "sol":"The keyword '<b>thrice</b>' is just the '<b>3<b>' version of twice. It means that the value '<b>5x</b>' will be repeated three times."
       },
       {
-         "given":"The product of 6 and a number",
+         "given":"The product of 6 and a number x",
          "ans":[
             "6*x",
             "6x",
@@ -206,10 +206,10 @@
          "display_ans":[
             "6 / 18"
          ],
-         "sol":"The keyword '<b>ratio of</b>' indicates a quantity's value compared to another, usually by dividing them. In this case, \n'<b>6</b>' will be divided by '<b>18</b>' to show how small '<b>6</b>' is compared to '<b>18</b>'. "
+         "sol":"The keyword '<b>ratio of</b>' indicates a quantity's value compared to another, usually by dividing them. In this case, \n'<b>6</b>' will be divided by '<b>18</b>' to show how small '<b>6</b>' is compared to '<b>18</b>'."
       },
       {
-         "given":"One-third of a number",
+         "given":"One-third of a number x",
          "ans":[
             "1/3x",
             "(1/3)*x",
@@ -219,10 +219,10 @@
             "1/3x",
             "x/3"
          ],
-         "sol":"The keyword '<b>one-third of</b>' indicates a third of a quantity, which is equivalent to the quotient of a number when it is divided by three. \nIn this case, '<b>x</b>' will be divided by '<b>3</b>'."
+         "sol":"The keyword '<b>one-third of</b>' indicates a third of a quantity, which is equivalent to the quotient of a number x when it is divided by three. \nIn this case, '<b>x</b>' will be divided by '<b>3</b>'."
       },
       {
-         "given":"One-half of a number, divided by 9",
+         "given":"One-half of a number x, divided by 9",
          "ans":[
             "1/2x/9",
             "(1/2x)/9",
@@ -233,7 +233,112 @@
             "((1/2x)) / 9",
             "((x/2))/9"
          ],
-         "sol":"The keyword '<b>one-half of</b>' indicates the half of a quantity, which is equivalent to the quotient of a number when it is divided by two. \nIn this case, '<b>x</b>' will be divided by '<b>2</b>'. With the help of the <b>comma</b>, we know that the second phrase '<b>divided by 9</b>', will be performed \nonly after the first operation."
+         "sol":"The keyword '<b>one-half of</b>' indicates the half of a quantity, which is equivalent to the quotient of a number x when it is divided by two. \nIn this case, '<b>x</b>' will be divided by '<b>2</b>'. With the help of the <b>comma</b>, we know that the second phrase '<b>divided by 9</b>', will be performed \nonly after the first operation."
+      }
+   ],
+
+   "equ":[
+      {
+         "given":"x is equals to y",
+         "ans":[
+            "x=y"
+         ],
+         "display_ans":[
+            "x = y"
+         ],
+         "sol":"Simply convert the keyword '<b>is equals to</b>' into '<b>=</b>' sign."
+      },
+      {
+         "given":"x is more than y",
+         "ans":[
+            "x>y"
+         ],
+         "display_ans":[
+            "x > y"
+         ],
+         "sol":"The word '<b>is</b>' before the phrase '<b>more than</b>', is the reason why we used '<b> > </b>' symbol instead of '<b> + </b>'."
+      },
+      {
+         "given":"x is fewer than y",
+         "ans":[
+            "x<y"
+         ],
+         "display_ans":[
+            "x < y"
+         ],
+         "sol":"The word '<b>is</b>' before the phrase '<b>fewer than</b>', is the reason why we used '<b> < </b>' symbol instead of '<b> - </b>'."
+      },
+      {
+         "given":"5x plus 3 is equals to 8",
+         "ans":[
+            "5x+3=8"
+         ],
+         "display_ans":[
+            "5x + 3 = 8"
+         ],
+         "sol":"Simply convert the keyword '<b>is equals to</b>' into '<b>=</b>' sign, and '<b>plus</b>' into '<b>+</b>'."
+      },
+      {
+         "given":"Sum of x, y, and z is less than 8 subtracted by x plus z",
+         "ans":[
+            "x+y+z<8-x+z"
+         ],
+         "display_ans":[
+            "x + y + z < 8 - x + z"
+         ],
+         "sol":"The '<b>sum of</b>' keyword is followed by '<b>x</b>', '<b>y</b>', and '<b>z</b>', so we placed a '<b>plus `+`</b>' sign in-between of the three letters involved. \nThen replaced the exact keywords in the sentence such as '<b>is less than</b>', '<b>subtracted by</b>', and '<b>plus</b>' into their sign counterparts."
+      }
+   ],
+   "exp":[
+      {
+         "given":"Square of x",
+         "ans":[
+            "pow(x,2)"
+         ],
+         "display_ans":[
+            "x ^ 2"
+         ],
+         "sol":"Square means exponentiating the term (constant or variable, in this example, the '<b>x</b>') to <b>2</b>.\n In short, we added '<b>^ 2</b>' after the '<b>x</b>' because of the 'square' keyword."
+      },
+      {
+         "given":"The cube of a number x",
+         "ans":[
+            "pow(x,3)"
+         ],
+         "display_ans":[
+            "x ^ 3"
+         ],
+         "sol":"Cube means exponentiating the term (constant or variable, in this example, the '<b>x</b>') to <b>3</b>.\n In short, we added '<b>^ 3</b>' after the '<b>x</b>' because of the 'cube' keyword."
+      },
+      {
+         "given":"x raised to the power of y",
+         "ans":[
+            "pow(x,y)"
+         ],
+         "display_ans":[
+            "x ^ y"
+         ],
+         "sol":"Simply convert the keyword '<b>raised to the power of</b>' into '<b>^</b>' sign, which is an exponent sign."
+      },
+      {
+         "given":"x raised to y",
+         "ans":[
+            "pow(x,y)"
+         ],
+         "display_ans":[
+            "x ^ y"
+         ],
+         "sol":"Simply convert the keyword '<b>raised to</b>' into '<b>^</b>' sign, which is an exponent sign."
+      },
+      {
+         "given":"x to the third power",
+         "ans":[
+            "pow(x,3)"
+         ],
+         "display_ans":[
+            "x ^ 3"
+         ],
+         "sol":"Simply convert the keyword into '<b>^</b>' sign, which is an exponent sign."
       }
    ]
 }

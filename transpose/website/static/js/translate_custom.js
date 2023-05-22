@@ -95,7 +95,7 @@ $(document).on('submit','#sentence_form',function(e){
   })
   .done(function(response){
     $("#output").html(response);
-      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
   })
   .fail(function(){
     $("#output").html("<h6 class='text-danger'>Browser failed to execute the server script</h6>");
@@ -136,7 +136,8 @@ $('textarea').textcomplete([{
       "the difference of",
       "the product of",
       "the quotient of",
-      "the square of", "twice of", "thrice of"
+      "the square of", "twice of", "thrice of",
+      "raised","to the power of",
       ];
 
     term = term.toLowerCase();

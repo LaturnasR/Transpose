@@ -44,7 +44,9 @@
         'add':['Addition', 'fa-plus'],
         'sub':['Subtraction', 'fa-minus'],
         'mul':['Multiplication', 'fa-xmark'],
-        'div':['Division', 'fa-divide']
+        'div':['Division', 'fa-divide'],
+        'equ':['Equality', 'fa-equals'],
+        'exp':['Exponent', 'fa-angle-up']
       }%}
       <!-- Operator pills -->
       <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist"
@@ -107,6 +109,15 @@
 </script>
 <!-- for quiz modal -->
 <script type="text/javascript">
+//title casing
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
 
   //enables popover
   $(document).ready(function(){
@@ -128,7 +139,7 @@
           index = Math.floor(Math.random() * quiz[tiers[i][0]].length);
         }
         used_questions.push(index)
-        quiz[tiers[i][0]][index]["tier"] = tiers[i][0] + "( +"+quiz[tiers[i][0]][index]["score"]+" )"
+        quiz[tiers[i][0]][index]["tier"] = toTitleCase(tiers[i][0]) + " " + "( +"+quiz[tiers[i][0]][index]["score"]+" )"
         questions.push(quiz[tiers[i][0]][index])
       }
     }
@@ -197,7 +208,7 @@
         else {
           // Load incorrect modal
           $(document).ready(function () {
-            $("#check-modal-header").html(`Your score didn't quite got there!`);
+            $("#check-modal-header").html(`Your score didn't quite get there!`);
             $("#check-modal-bg").css("background", "linear-gradient(  180deg, #8e5aaf, #cccccc)");
             $("#check-modal-image").attr("src", "images/Incorrect.png");
             $("#check-modal-footer").html("Nice try! You'll get this on your next try, we believe in you!");
@@ -220,13 +231,15 @@
     //becareful, latex_to_js is designed to be compatible with mathJS only, some translations will be weird
     input_value = latex_to_js(raw_input).replace(/\\/g, '')
     console.log(input_value)
+    console.log(problems[type][problemNumber]['ans'][0])
+    console.log(problems[type][problemNumber]['ans'].includes(input_value.replace(/\s/g, '')))
 
     if (input_value == "" && $("#" + type + "-btn-" + problemNumber).html() != "Explanation") {
       alert("Please type in your answer first.");
     }
     else {
       if ($("#" + type + "-btn-" + problemNumber).html() == "Check") {
-        if (problems[type][problemNumber]['ans'].includes(input_value.replace(/\s/g, '').replace(/([a-z])/g, "x"))) {
+        if (problems[type][problemNumber]['ans'].includes(input_value.replace(/\s/g, ''))) {
           // Load correct modal
           $(document).ready(function () {
             $("#check-modal-header").html(`Your answer is correct <i class="fa-solid fa-circle-check"></i>`);
