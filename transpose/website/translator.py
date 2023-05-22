@@ -1,40 +1,51 @@
 #Author - John Michael De Borja (JPysus)
 #johnmichaeldb@gmail.com
-from nltk import CFG
-from nltk import Tree
+
+#for preprocessing
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
+
+#nltk for tree conversion
+from nltk import CFG
+from nltk import Tree
 from nltk import ChartParser
 
+# text2digits for number conversion
+from text2digits import text2digits
+
+# built-in regex module
 from re import search, match, findall, sub
 
-from text2digits import text2digits
+#
+#
 
 t2d = text2digits.Text2Digits()
 math_word_grammar = CFG.fromstring("""
 
-E -> S MID_OP S | S MID_OP NV | NV MID_OP S | NV MID_OP NV
-E -> S | NV
-S -> O | L 
-L -> MULTIPLIER L
-L -> 'sum' LEADING | 'difference' LEADING | 'product' LEADING | 'quotient' LEADING
-L -> EXACT NV NV | EXACT S S | EXACT S NV | EXACT NV S
-LEADING -> NV ',' LEADING | S ',' LEADING 
-LEADING -> NV 'and' NV | NV 'and' S | S 'and' NV | S 'and' S
-LEADING -> 'and' NV | 'and' S
-O -> NV MID_WORD NV | S MID_WORD S | S ',' MID_WORD ',' S 
-O -> S MID_WORD NV | NV MID_WORD S 
-O -> S ',' MID_WORD L | L MID_WORD ',' S
-O -> S ',' MID_WORD NV | NV MID_WORD ',' S
+E           -> S MID_OP S | S MID_OP NV | NV MID_OP S | NV MID_OP NV
+E           -> S | NV
+S           -> O | L 
+L           -> PREFIX L
+L           -> 'sum' LEADING | 'difference' LEADING | 'product' LEADING | 'quotient' LEADING
+L           -> EXACT NV NV | EXACT S S | EXACT S NV | EXACT NV S
+LEADING     -> NV ',' LEADING | S ',' LEADING 
+LEADING     -> NV 'and' NV | NV 'and' S | S 'and' NV | S 'and' S
+LEADING     -> 'and' NV | 'and' S
+O           -> NV MID_WORD NV | S MID_WORD S | S ',' MID_WORD ',' S 
+O           -> S MID_WORD NV | NV MID_WORD S 
+O           -> S ',' MID_WORD L | L MID_WORD ',' S
+O           -> S ',' MID_WORD NV | NV MID_WORD ',' S
+NV          -> '#VAR#' | '#NUM#' | PREFIX NV | INFIX | POSTFIX
+PREFIX      -> 'square' | 'cube' | 'twice' | 'thrice' | '-'
+POSTFIX     -> NV 'square' | NV 'cube' | NV NV 'power'
+INFIX       -> NV 'raise' S | NV 'power' S | NV 'raise' NV | NV 'power' NV
 
-NV -> '#VAR#' | '#NUM#' | MULTIPLIER NV | NV 'square'
-MULTIPLIER -> 'square' | 'twice' | 'thrice' | '-'
-MID_WORD -> EXACT | REVERSE
-LEAD_WORD -> 'sum' | 'difference' | 'product' | 'quotient'
-MID_OP -> '≠' | '=' | '≤' | '<' | '≥' | '>'
-EXACT -> 'more' | 'less' | 'times' | 'divide'
-REVERSE -> 'more_than' | 'less_than'
+MID_WORD    -> EXACT | REVERSE
+LEAD_WORD   -> 'sum' | 'difference' | 'product' | 'quotient'
+MID_OP      -> '≠' | '=' | '≤' | '<' | '≥' | '>'
+EXACT       -> 'more' | 'less' | 'times' | 'divide'
+REVERSE     -> 'more_than' | 'less_than'
 
 """)
 
@@ -75,13 +86,21 @@ operator = {
         'product': ['multiplication', 'product'],
         'quotient': ['quotient', 'ratio'],
     },
-    'EXPONENT':{
+    'PREFIX':{
         'square':['square'],
-    },
-    'MULTIPLIER':{
+        'cube': ['cube'],
         'twice': ['twice'],
         'thrice': ['thrice'],
     },
+    'INFIX':{
+        'raise': ['raise to', 'raise'],
+        'power': ['to power', 'power'],
+    },
+    'POSTFIX':{
+        'square':['square'],
+        'cube': ['cube'],
+
+    }
 }
 #special case of "subtracted from", "diminished from", and "added to", etc...
 operator['2REVERSE']['less_than'] += [str(i + " from") for i in operator['EXACT']['less']]
@@ -97,6 +116,10 @@ modified_keyword = list(set(keyword) - leading_keyword)
 
 #preprocessing
 def _preprocess(sentence):
+
+    # error, if input has more than one sentence
+    if(sentence.count('.') > 1):
+        return {'error': True, 'message':'Error:<br/> The input should only be composed of one sentence.<br/> Please remove multiple instances of period \'.\' in the input.'}
     #1. noise reduction
         #lowercasing and punctuation
     sentence = sentence.lower()
@@ -108,6 +131,11 @@ def _preprocess(sentence):
     sentence = [WordNetLemmatizer().lemmatize(word, 'v') for word in token]
     sentence = ' '.join(sentence)
 
+    # check if power and raise both exists
+    if(all([x in sentence for x in ['power', 'raise']])):
+        # if so, remove power
+        sentence = sentence.replace('power', '')
+
     #2. standardize keywords
     for i in operator.keys():
         for j in operator[i].keys():
@@ -116,6 +144,7 @@ def _preprocess(sentence):
                     sentence = sentence.replace(k, j)
     #1. noise reduction again
         #stopword
+
     sentence = word_tokenize(sentence)
     temp = []
     for i in sentence:
@@ -188,7 +217,7 @@ def _word_conversion(sentence):
             if i > 0 and i != len(pos):
                 if pos[i-1][1] in ('CD') or match(r"^-?\d*[a-z]$",pos[i-1][0]):
                     temp_op_keyword = list(operator['LEADING'])
-                    temp_op_keyword += list(operator['MULTIPLIER'])
+                    temp_op_keyword += list(operator['PREFIX'])
                     if pos[i+1][1] in ('CD') or match(r"^-?\d*[a-z]$", pos[i+1][0]) or pos[i+1][0] in temp_op_keyword:
                         temp.append("=")
             else:
@@ -267,23 +296,21 @@ def _word_math_tree_to_list(tree, lead_op = None):
     #for E grammar
     if tree.label() in ('E'):
         for i in tree:
-            if i.label() in ('S', 'NV'):
+            if i.label() in ('MID_OP'):
+                output.append(i[0])
+            
+            else: #S, NV
                 output.append(_word_math_tree_to_list(i))
 
-            elif i.label() in ('MID_OP'):
-                output.append(i[0])
-    
-    #for NV grammar
-    elif tree.label() in ('NV'):
+    #for NV grammar and PREFIX, POSTFIX, INFIX  grammar
+    elif tree.label() in ('NV', 'PREFIX', 'POSTFIX', 'INFIX'):
         for i in tree:
             if isinstance(i, str):
-                output.append(i)
-
-            elif i.label() in ('NV'):
+                temp_str = tree.label()[0]+'_'+i if (tree.label() in ['POSTFIX', 'INFIX'] and i in ['power']) else i #i_power or p_power, if else, as is
+                output.append(temp_str.lower())
+            else: #NV, PREFIX, INFIX, POSTFIX
                 output.append(_word_math_tree_to_list(i))
 
-            elif i.label() in ('MULTIPLIER'):
-                output.append(i[0])
     #for S grammar 
     elif tree.label() in ('S'):
         for i in tree:
@@ -294,6 +321,7 @@ def _word_math_tree_to_list(tree, lead_op = None):
     
     #for L grammar
     elif tree.label() in ('L'):
+        p_temp = []     #collects prefix of L's
         temp = []       #collects NV, S output
         temp_op = ""    #temp_op is operator for lead_op param.
 
@@ -305,15 +333,15 @@ def _word_math_tree_to_list(tree, lead_op = None):
             elif i.label() in ('EXACT'):
                 temp_op = i[0]
 
-            elif i.label() in ('S', 'NV', 'L'):
-                temp.append(_word_math_tree_to_list(i))
-
             elif i.label() in ('LEADING'):
                 temp = _word_math_tree_to_list(i, lead_op = temp_op)
 
-            elif i.label() in ('MULTIPLIER'):
-                temp.append(i[0])
-        
+            elif i.label() in ('PREFIX'):
+                p_temp.append(i[0])
+
+            else: #S, NV, L
+                temp.append(_word_math_tree_to_list(i))
+        temp = p_temp+temp
         if temp_op != "":
             #temp_op => operator
             #code to turn [x, y] => [x, temp_op, y]
@@ -332,15 +360,14 @@ def _word_math_tree_to_list(tree, lead_op = None):
             if isinstance(i, str):
                 continue
 
-            elif i.label() in ('S', 'NV'):
-                output.append(_word_math_tree_to_list(i))
-
             #for LEADING again
             elif i.label() in ('LEADING'):
                 temp = _word_math_tree_to_list(i, lead_op)
                 for x in temp:
                     output.append(x)
-            
+
+            else: #S, NV
+                output.append(_word_math_tree_to_list(i))
     
     #for O grammar, add minus etc...
     elif tree.label() in ('O'):
@@ -372,18 +399,34 @@ operator_sign = {
 def _mid_operator_convert(s):
     for i in range(len(s)):
         if isinstance(s[i], str):
-            if s[i] == "square":
+            if s[i] in ["square"]:
                 s[i] = "^ 2"
                 try:
                     s[i], s[i+1] = s[i+1], s[i]
                 except:
                     pass
 
-            elif s[i] == "twice":
+            elif s[i] in ["cube"]:
+                s[i] = "^ 3"
+                try:
+                    s[i], s[i+1] = s[i+1], s[i]
+                except:
+                    pass
+            elif s[i] in ["twice"]:
                 s[i] = "2 *"
 
-            elif s[i] == "thrice":
+            elif s[i] in ["thrice"]:
                 s[i] = "3 *"
+
+            elif s[i] in ["raise", "i_power"]:
+                s[i] = "^"
+
+            elif s[i] in ["p_power"]:
+                s[i] = "^"
+                try:
+                    s[i], s[i-1] = s[i-1], s[i]
+                except:
+                    pass
 
         if type(s[i]) is list:
             s[i] = _mid_operator_convert(s[i])
@@ -434,7 +477,7 @@ def _conversion(sentence):
     #3. tree conversion
     trees = _tree_conversion(token)
     if len(trees) == 0:
-        return None
+        return {'error': True, 'message':'Error: No translation possible.<br/>There\'s something in your input that the algorithm don\'t understand. '}
     return trees
 
 # post-processing
@@ -534,16 +577,20 @@ def _list_to_parenthesis(l):
 # translate method
 # usage, translate("x plus y")
 def translate(sentence):
-    sentence = _preprocess(sentence)
+    try:
+        sentence = _preprocess(sentence)
 
-    sentence_list = _conversion(sentence)
-    if sentence_list is None:
-        return "No Translation: Input Unrecognized"
-    
-    sentence_list = _postprocess(sentence_list)
+        sentence = _conversion(sentence)
+        
+        sentence = _postprocess(sentence)
 
-    return sentence_list
+        return sentence
 
+    except:
+        if type(sentence) is dict and sentence['error']:
+            return sentence['message']
+        else:
+            return "<h6 class='text-danger'>Unknown error occured</h6>"
 #optional function
 def prettier(trans):
     #making output more readable
@@ -598,7 +645,7 @@ def prettier(trans):
         txt = txt, 
         mode = "replace")
     txt = reg_chg(#e.g. `(12)` => `12`
-        reg_match = r"(?![/*^] *)(\([0-9]+[a-z]+\))(?! *[/*^])", 
+        reg_match = r"(?![/*^]) (\([0-9]+[a-z]+\)) (?![/*^])", 
         old = "()", 
         txt = txt, 
         mode = "strip")
